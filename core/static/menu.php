@@ -26,14 +26,13 @@
                     
                     
                     
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                       <a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Foto de  <?php echo $data['nombre'] ?>" />
-								<span class="user-info">
-								Bienvenido, <?php echo $data['nombre']?>
-								</span>
+						<span class="user-info">Bienvenid@:</span>		
+                        <span class="user-info"><?php echo $data['nombre']?> </span>
+                        <i class="ace-icon fa fa-caret-down"></i>
 
-								<i class="ace-icon fa fa-caret-down"></i>
-							</a>
+							</a> 
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
                             <a href="configuracion.php">
