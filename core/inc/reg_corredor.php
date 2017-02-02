@@ -60,8 +60,7 @@ if (!defined('SRCP')) {
                                 correo,
                                 direccion,
                                 fecharegistro,
-                                estatus,
-                                aseguradora_rif
+                                estatus
 				    ) VALUES (
                                 :cedula,
                                 :nombres,
@@ -71,8 +70,7 @@ if (!defined('SRCP')) {
                                 :correo,
                                 :direccion,
                                 :fecharegistro,
-                                :estatus,
-                                :aseguradora_rif
+                                :estatus
 				            )
         		';
         $query_params = array(
@@ -84,12 +82,9 @@ if (!defined('SRCP')) {
             ':correo' => $_POST['correo'],
             ':estatus' => $_POST['estatus'],
             ':fechanacimiento' => $_POST['fechanacimiento'],
-            ':fecharegistro' => $_POST['fecharegistro'],
-            ':aseguradora_rif' => $_POST['aseguradora_rif']
+            ':fecharegistro' => $_POST['fecharegistro']
             );
-        print_r($query);
-        print_r($query_params);
-                die();
+
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
