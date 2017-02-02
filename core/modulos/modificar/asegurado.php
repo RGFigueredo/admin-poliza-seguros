@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Registro de asegurado</title>
+	<title>Modificar asegurado</title>
 	<?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
@@ -34,7 +34,7 @@
 						<a href="index.php?do=panel">Inicio</a>
 					</li>
 					<li>Empresa</li>
-					<li class="active">Registro de asegurado</li>
+					<li class="active">Modificar asegurado</li>
 				</ul>
 				<!-- /.breadcrumb -->
 

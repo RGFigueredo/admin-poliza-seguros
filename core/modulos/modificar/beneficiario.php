@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Registro de beneficiario</title>
+	<title>Modificar beneficiario</title>
 	<?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
@@ -34,7 +34,7 @@
 						<a href="index.php">Inicio</a>
 					</li>
 					<li>Empresa</li>
-					<li class="active">Registro de beneficiario</li>
+					<li class="active">Modificar beneficiario</li>
 				</ul>
 				<!-- /.breadcrumb -->
 
