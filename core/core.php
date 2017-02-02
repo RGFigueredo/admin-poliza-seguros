@@ -3,7 +3,7 @@
 if (!defined('SRCP')) {
     die('Logged Hacking attempt!');
 }
-include_once CORE_DIR.'/sys_config.php';
+#include_once CORE_DIR.'/sys_config.php';
 require CORE_DIR.'/config.php';
 include_once CORE_DIR.'/security/check.loged.php';
 include_once CORE_DIR.'/security/functions.php';

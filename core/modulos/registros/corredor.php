@@ -2,18 +2,19 @@
 <html lang="en">
 
 <head>
-	<title>Registro de corredor</title>
+	<title>Registro de profesores - SRCP</title>
 	<?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
             if (!empty($_POST)) {
-                include_once INC_DIR.'reg_prof.php';
+
+                include_once INC_DIR.'/reg_corredor.php';
             }
         include_once STATIC_DIR.'/header.php';
                 if (!empty($_POST['registro'])) {
-                    include_once INC_DIR.'/reg_prof.php';
+                    include_once INC_DIR.'/reg_corredor.php';
                 }
         ?>
 		<!-- page specific plugin styles -->
@@ -31,10 +32,10 @@
 				<ul class="breadcrumb">
 					<li>
 						<i class="ace-icon fa fa-home home-icon"></i>
-						<a href="index.php?do=panel">Inicio</a>
+						<a href="index.php">Inicio</a>
 					</li>
-					<li>Empresa</li>
-					<li class="active">Registro de corredor</li>
+					<li>Profesores</li>
+					<li class="active">Registro de profesores</li>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -54,7 +55,7 @@
 						<table align="center" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td>
-									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=corredores" method="POST">
 										<input type='hidden' name="registro" value="1">
 										<!-- Tabs -->
 										<div id="wizard" class="swMain">
@@ -98,7 +99,7 @@
                                                     	 <tr>
 														<td align="right">Nombres :</td>
 														<td align="left">
-															<input type="text" id="nombre" name="nombres" value="" class="txtBox">
+															<input type="text" id="nombres" name="nombres" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_nombres"></span>&nbsp;</td>
 													</tr>
@@ -204,7 +205,7 @@
                                                      <tr>
 														<td align="right">Rif - Seniat de la empresa:</td>
 														<td align="left">
-															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J- dddddddd">
+															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J - dddddddd">
 														</td>
 														<td align="left"><span id="msg_rif"></span>&nbsp;</td>
 													</tr>
@@ -234,20 +235,6 @@
 							</tr>
 						</table>
 						<!-- PAGE CONTENT ENDS -->
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
 					</div>
 					<!-- /.col -->
 				</div>
@@ -391,14 +378,17 @@
 		}
 
 		function validateStep1() {
-
+			var isValid = true;
+			return isValid;
 		}
 		function validateStep2(){
-			
+			var isValid = true;
+			return isValid;
 		}
 
 		function validateStep3() {
-			
+			var isValid = true;
+			return isValid;
 		}
 		// Email Validation
 		function isValidEmailAddress(emailAddress) {

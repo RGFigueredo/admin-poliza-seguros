@@ -75,7 +75,7 @@ if (!empty($_POST['login'])){
     header("Location: index.php?do=panel");
     } //fin login_ok
     else{
-   header("Location: panel.php");
+   header("Location: index.php");
     }//fin else login_ok
 }//fin post login padre!
 ?>
