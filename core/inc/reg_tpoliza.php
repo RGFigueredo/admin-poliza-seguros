@@ -7,10 +7,10 @@ if (!defined('SRCP')) {
     if (!empty($_POST)) {
 
         $query = '  SELECT 1
-            		FROM aseguradora
-            		WHERE rif = :rif
+            		FROM tipopolizas
+            		WHERE codigo = :codigo
         		  ';
-        $query_params = array(':rif' => $_POST['rif']);
+        $query_params = array(':codigo' => $_POST['codigo']);
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
@@ -29,17 +29,17 @@ if (!defined('SRCP')) {
             </div>";
         }
         $query = 'SELECT 1
-            	  FROM aseguradora
-            	  WHERE correo = :correo
+            	  FROM tipopolizas
+            	  WHERE codigo = :codigo
         		 ';
         $query_params = array(
-            ':correo' => $_POST['correo'],
+            ':codigo' => $_POST['codigo'],
         );
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
-            die('Fallamos al revisar el correo.: '.$ex->getMessage());
+            die('Fallamos al revisar el codigo.: '.$ex->getMessage());
         }
         $row = $stmt->fetch();
         if ($row) {
@@ -51,45 +51,23 @@ if (!defined('SRCP')) {
         }
 
         /// Si todo pasa enviamos los datos a la base de datos mediante PDO para evitar Inyecciones SQL
-        $query = '	INSERT INTO aseguradora (
-				                rif,
-                                cuentabancaria,
-                                cedulacuentabancaria,
-                                nombre,
-                                direccion,
-                                telefonolocal,
-                                telefonopersonal,
-                                correo,
-                                estatus,
-                                estado,
-                                fechafundacion
+        $query = '	INSERT INTO tipopolizas (
+				                codigo,
+                                nombre,  
+                                costo, 
+                                cobertura
 				    ) VALUES (
-                                :rif,
-                                :cuentabancaria,
-                                :cedulacuentabancaria,
+                                :codigo,
                                 :nombre,
-                                :direccion,
-                                :telefonolocal,
-                                :telefonopersonal,
-                                :correo,
-                                :estatus,
-                                :estado,
-                                :fechafundacion
+                                :costo,
+                                :cobertura                            
 				            )
         		';
         $query_params = array(
-            ':rif' => $_POST['rif'],
-            ':cuentabancaria' => $_POST['cuentabancaria'],
-            ':cedulacuentabancaria' => $_POST['cedulacuentabancaria'],
+            ':codigo' => $_POST['codigo'],
             ':nombre' => $_POST['nombre'],
-            ':direccion' => $_POST['direccion'],
-            ':telefonolocal' => $_POST['telefonolocal'],
-            ':telefonopersonal' => $_POST['telefonopersonal'],
-            ':correo' => $_POST['correo'],
-            ':estatus' => $_POST['estatus'],
-            ':estado' => $_POST['estado'],
-            ':fechafundacion' => $_POST['fechafundacion']
-           
+            ':costo' => $_POST['costo'],
+            ':cobertura' => $_POST['cobertura']
             );
 
         try {
@@ -104,7 +82,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=modaseguradora');
+        header('Location: index.php?do=tpoliza');
     }
 
     if (isset($_GET['accion'])) {

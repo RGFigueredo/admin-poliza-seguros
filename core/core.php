@@ -67,7 +67,20 @@ include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-        
+         case 'addtseguro' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/registros/add_tseguro.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+               case 'addtpoliza' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/registros/add_tpoliza.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
        
 //MODIFICACIONES        
  case 'modaseguradora' :
@@ -98,8 +111,7 @@ include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-        
-        
+ 
         
         
         
@@ -130,6 +142,23 @@ include_once CORE_DIR.'/modulos/listas/lista_beneficiario.php';
           case 'datosaseguradora' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/datos_aseguradora.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+        
+    case 'tseguro' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/lista_tseguro.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+        
+        
+         case 'tpoliza' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/lista_tpoliza.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';

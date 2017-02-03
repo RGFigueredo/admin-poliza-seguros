@@ -111,6 +111,17 @@
 														</td>
 														<td align="left"><span id="msg_estado"></span>&nbsp;</td>
 													</tr>
+                                                      <tr>
+														<td align="right">Estatus del la empresa:</td>
+														<td align="left">
+															<select id="estatus" name="estatus" class="form-control selectpicker">
+															  <option>Activa</option>
+															  <option>Inactiva</option>
+															
+															</select>
+														</td>
+														<td align="left"><span id="msg_estatus"></span>&nbsp;</td>
+													</tr>
 												</table>
 											</div>
                                             
@@ -126,7 +137,7 @@
                                                     <tr>
 														<td align="right">Numero de cuenta :</td>
 														<td align="left">
-															<input type="text" id="cuentabancaria" name="cuentabancaria" value="" class="txtBox bfh-phone" data-format="dddd-dddd-dd-dddddddddd ">
+															<input type="text" id="cuentabancaria" name="cuentabancaria" value="" class="txtBox bfh-phone" data-format="dddd-dddd-dd-dddddddddd">
 														</td>
 														<td align="left"><span id="msg_cuentabancaria"></span>&nbsp;</td>
 													</tr>
@@ -134,7 +145,7 @@
                                                     <tr>
 														<td align="right">Rif de cuenta bancaria  :</td>
 														<td align="left">
-															<input type="text" id="cedulacuentabancaria" name="cedulacuentabancaria" value="" class="txtBox bfh-phone" data-format="J- dddddddd">
+															<input type="text" id="cedulacuentabancaria" name="cedulacuentabancaria" value="" class="txtBox bfh-phone" data-format="J-dddddddd">
 														</td>
 														<td align="left"><span id="msg_cedulacuentabancaria"></span>&nbsp;</td>
 													</tr>

@@ -45,14 +45,13 @@
         <ul class="nav nav-list">
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cogs"></i> <span class="menu-text"> ADMINISTRACION</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
-                
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=addaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Agregar de empresa </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=addaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Agregar aseguradora</a> <b class="ardata"></b> </li>
                 </ul>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=modaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Datos de empresa </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=modaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Datos aseguradora</a> <b class="ardata"></b> </li>
                 </ul>
             </li>
         </ul>
@@ -80,10 +79,10 @@
                 </ul>
             </li>
         </ul>
-       <!--PANEL BENEFICIARIO-->
+        <!--PANEL BENEFICIARIO-->
         <ul class="nav nav-list">
             <li class="">
-                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user"></i> <span class="menu-text"> Panel beneficiarios</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user-o"></i> <span class="menu-text"> Panel beneficiarios</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
                         <a href="index.php?do=addbeneficiario"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
@@ -92,6 +91,29 @@
                 </ul>
             </li>
         </ul>
-        
+        <!--PANEL POLIZAS-->
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-file-text"></i> <span class="menu-text"> Panel Polizas</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=addtpoliza"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                    <li class="">
+                        <a href="index.php?do=tpoliza"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
+                </ul>
+            </li>
+        </ul>
+        <!--PANEL SEGUROS-->
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-handshake-o"></i> <span class="menu-text"> Panel Seguros</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=addtseguro"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                    <li class="">
+                        <a href="index.php?do=tseguro"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
+                </ul>
+            </li>
+        </ul>
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse"> <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i> </div>
     </div>

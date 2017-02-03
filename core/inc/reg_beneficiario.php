@@ -97,7 +97,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=listabeneficiarios');
+        header('Location: index.php?do=listabeneficiario');
     }
 
     if (isset($_GET['accion'])) {

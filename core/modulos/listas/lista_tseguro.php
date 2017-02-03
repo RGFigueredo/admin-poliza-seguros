@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Listar Asegurados </title>
+    <title>Listar tipos de seguros </title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datos_asegurado.php';
+        include INC_DIR.'/datos_tseguro.php';
         include STATIC_DIR.'/header.php';
         ?>
 </head>
@@ -20,7 +20,7 @@
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
                         <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.php">Inicio</a> </li>
-                        <li class="active">Lista de Asegurados</li>
+                        <li class="active">Lista de seguros</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                             <div class="clearfix">
                                 <div class="pull-right tableTools-container"></div>
                             </div>
-                            <div class="table-header"> Asegurados registrados </div>
+                            <div class="table-header"> Seguros registrados </div>
                             <!-- div.table-responsive -->
                             <!-- div.dataTables_borderWrap -->
                             <div>
@@ -48,11 +48,9 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
-                                            <th>Cédula</th>
-                                            <th>Nombres</th>
-                                            <th>Apellidos</th>
-                                            <th>Telefono</th>
-                                            <th>Estatus</th>
+                                            <th>Codigo</th>
+                                            <th>Nombre</th>
+                                            <th>Detalle</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -62,28 +60,22 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <?php echo $row['cedula'];   ?>
+                                                    <?php echo $row['codigo'];   ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['nombres'];  ?>
+                                                    <?php echo $row['nombre'];  ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['apellidos'];?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['telefono']; ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['estatus']?>
+                                                    <?php echo $row['observacion'];?>
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="perfil.php?id=<?PHP echo $row['cedula']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modxcorredor?cedula=<?PHP echo $row['cedula']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="perfil.php?id=<?PHP echo $row['cedula']?>&queja=si">
+                                                        <a href="">
                                                             <button class="btn btn-xs btn-danger" title="Dar de baja" data-toggle="modal" data-target="#Quejas"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>
@@ -118,16 +110,22 @@
                         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                         .dataTable({
                             bAutoWidth: false
-                            , "aoColumns": [
-                                {
+                            , "aoColumns": [{
                                     "bSortable": false
                                 }
-                      
-                                , null, null, null, null, null
-                                , {
+
+
+
+
+
+
+
+
+                                
+                                , null, null, null, null, null, {
                                     "bSortable": false
                                 }
-                    ]
+                            ]
                             , "aaSorting": [], //,
                             //"sScrollY": "200px",
                             //"bPaginate": false,
@@ -166,8 +164,7 @@
                             catch (e) {}
                         }
                         , "sSelectedClass": "success"
-                        , "aButtons": [
-                            {
+                        , "aButtons": [{
                                 "sExtends": "copy"
                                 , "sToolTip": "Copiar al porta papeles"
                                 , "sButtonClass": "btn btn-white btn-primary btn-bold"
@@ -176,21 +173,21 @@
                                     this.fnInfo('<h3 class="no-margin-top smaller">Tabla copiada</h3>\
                                     <p>Copiadas ' + (oTable1.fnSettings().fnRecordsTotal()) + ' Tablas</p>', 1500);
                                 }
-                        },
+                            },
 
                             {
                                 "sExtends": "csv"
                                 , "sToolTip": "Exportar a CSV"
                                 , "sButtonClass": "btn btn-white btn-primary  btn-bold"
                                 , "sButtonText": "<i class='fa fa-file-excel-o bigger-110 green'></i>"
-                        },
+                            },
 
                             {
                                 "sExtends": "pdf"
                                 , "sToolTip": "Exportar a PDF"
                                 , "sButtonClass": "btn btn-white btn-primary  btn-bold"
                                 , "sButtonText": "<i class='fa fa-file-pdf-o bigger-110 red'></i>"
-                        },
+                            },
 
                             {
                                 "sExtends": "print"
@@ -202,7 +199,7 @@
                                       <p>Por favor, utilice la función de imprimir del navegador para imprimir este documento, Normalmente es CTRL+P\
                                       <br />Presione <b>escape</b> cuando termine, para regresar</p>"
                             , }
-                    ]
+                        ]
                     });
                     //we put a container before our table and append TableTools element to it
                     $(tableTools_obj.fnContainer()).appendTo($('.tableTools-container'));
