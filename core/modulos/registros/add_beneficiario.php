@@ -55,7 +55,7 @@
 						<table align="center" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td>
-									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=beneficiarios" method="POST">
+									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addbeneficiarios" method="POST">
 										<input type='hidden' name="registro" value="1">
 										<!-- Tabs -->
 										<div id="wizard" class="swMain">
