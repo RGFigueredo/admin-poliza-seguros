@@ -30,7 +30,7 @@ if (!defined('SRCP')) {
         }
         $query = 'SELECT 1
             	  FROM aseguradora
-            	  WHERE rif = :rif
+            	  WHERE correo = :correo
         		 ';
         $query_params = array(
             ':correo' => $_POST['correo'],
@@ -39,7 +39,7 @@ if (!defined('SRCP')) {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
-            die('Fallamos al revisar el email.: '.$ex->getMessage());
+            die('Fallamos al revisar el correo.: '.$ex->getMessage());
         }
         $row = $stmt->fetch();
         if ($row) {
@@ -81,14 +81,14 @@ if (!defined('SRCP')) {
             ':rif' => $_POST['rif'],
             ':cuentabancaria' => $_POST['cuentabancaria'],
             ':cedulacuentabancaria' => $_POST['cedulacuentabancaria'],
-            ':nombre' => $_POST['nombres'],
+            ':nombre' => $_POST['nombre'],
             ':direccion' => $_POST['direccion'],
             ':telefonolocal' => $_POST['telefonolocal'],
             ':telefonopersonal' => $_POST['telefonopersonal'],
             ':correo' => $_POST['correo'],
             ':estatus' => $_POST['estatus'],
             ':estado' => $_POST['estado'],
-            ':fechafundacion' => $_POST['fechafundacion'],
+            ':fechafundacion' => $_POST['fechafundacion']
            
             );
 
@@ -104,7 +104,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=listacorredores');
+        header('Location: index.php?do=laseguradora');
     }
 
     if (isset($_GET['accion'])) {

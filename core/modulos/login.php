@@ -56,9 +56,9 @@ include_once (CORE_DIR . '/security/check.registro.php');
 								<h1>
 									<i class="ace-icon fa fa-leaf green"></i>
 									<span class="red">Sistema </span>
-									<span class="white" id="id-text2">Registro y Control de Profesores</span>
+									<span class="white" id="id-text2">Registro y Control de aseguradora</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; José Suárez</h4>
+								<h4 class="blue" id="id-company-text">&copy; </h4>
 							</div>
 
 							<div class="space-6"></div>

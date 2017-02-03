@@ -39,42 +39,75 @@ switch ($_GET['do']) {
   
     
         //REGISTROS
-case 'aseguradora' :
+case 'addaseguradora' :
     if ($login_ok) { 
-    include_once CORE_DIR.'/modulos/registros/aseguradora.php';
+    include_once CORE_DIR.'/modulos/registros/add_aseguradora.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }            
-  case 'corredores' :
+  case 'addcorredores' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/corredor.php';
+include_once CORE_DIR.'/modulos/registros/add_corredor.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'asegurados' :
+  case 'addasegurados' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/asegurado.php';
+include_once CORE_DIR.'/modulos/registros/add_asegurado.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'beneficiarios' :
+  case 'addbeneficiarios' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/beneficiario.php';
+include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
         
        
+//MODIFICACIONES        
+ case 'modaseguradora' :
+    if ($login_ok) { 
+    include_once CORE_DIR.'/modulos/modificar/mod_aseguradora.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }            
+  case 'modcorredores' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_corredor.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }       
+  case 'modasegurados' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_asegurado.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }       
+  case 'modbeneficiarios' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
         
-        //LISTAS
         
+        
+        
+        
+        
+        //LISTAS        
  case 'listacorredores' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/listacorredores.php';
+include_once CORE_DIR.'/modulos/listas/lista_corredores.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
@@ -82,14 +115,21 @@ include_once CORE_DIR.'/modulos/listas/listacorredores.php';
         
          case 'listaasegurados' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/listaasegurados.php';
+include_once CORE_DIR.'/modulos/listas/lista_asegurados.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
          case 'listabeneficiarios' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/listabeneficiarios.php';
+include_once CORE_DIR.'/modulos/listas/lista_beneficiarios.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+          case 'datosaseguradora' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/datos_aseguradora.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';

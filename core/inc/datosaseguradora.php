@@ -9,7 +9,7 @@ $query = "  SELECT  rif,
                     correo,
                     estatus,
                     estado,
-                    fechafundacion
+                    fechafundacion                    
             FROM    aseguradora
          ";
     try{

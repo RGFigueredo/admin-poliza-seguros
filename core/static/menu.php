@@ -45,9 +45,14 @@
         <ul class="nav nav-list">
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cogs"></i> <span class="menu-text"> ADMINISTRACION</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=aseguradora"> <i class="menu-icon fa fa-caret-right"></i> Datos de empresa </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=addaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Agregar de empresa </a> <b class="ardata"></b> </li>
+                </ul>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=modaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Datos de empresa </a> <b class="ardata"></b> </li>
                 </ul>
             </li>
         </ul>
@@ -57,7 +62,7 @@
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-paper-plane"></i> <span class="menu-text"> Panel Corredor</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=corredores"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=addcorredores"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
                     <li class="">
                         <a href="index.php?do=listacorredores"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
@@ -69,7 +74,7 @@
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user"></i> <span class="menu-text"> Panel Asegurados</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=asegurados"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=addasegurados"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
                     <li class="">
                         <a href="index.php?do=listaasegurados"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
@@ -81,7 +86,7 @@
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user"></i> <span class="menu-text"> Panel beneficiarios</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=beneficiarios"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=addbeneficiarios"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
                     <li class="">
                         <a href="index.php?do=listabeneficiarios"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
