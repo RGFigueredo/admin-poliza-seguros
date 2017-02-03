@@ -3,23 +3,16 @@
 
 <head>
     <title>Registro de aseguradora</title>
-    <?php
+   <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datosaseguradora.php';
-        include STATIC_DIR.'/header.php';
-    
-    
-
-            
-         
             if (!empty($_POST)) {
 
                 include_once INC_DIR.'/reg_aseguradora.php';
             }
-       
+        include_once STATIC_DIR.'/header.php';
                 if (!empty($_POST['registro'])) {
                     include_once INC_DIR.'/reg_aseguradora.php';
                 }
@@ -54,7 +47,7 @@
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=aseguradora" method="POST">
+                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addaseguradora" method="POST">
                                             <input type='hidden' name="registro" value="1">
                                             <!-- Tabs -->
                                             <div id="wizard" class="swMain">
@@ -145,13 +138,7 @@
 														</td>
 														<td align="left"><span id="msg_cedulacuentabancaria"></span>&nbsp;</td>
 													</tr>
-                                                    <tr>
-														<td align="right">Correo :</td>
-														<td align="left">
-															<input type="email" id="correo" name="correo" value="" class="txtBox">
-														</td>
-														<td align="left"><span id="msg_correo"></span>&nbsp;</td>
-													</tr>
+                                                   
                                                     
                                                     
                                                     
