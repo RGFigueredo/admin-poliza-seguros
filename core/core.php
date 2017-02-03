@@ -19,6 +19,12 @@ switch ($_GET['do']) {
     case 'salir' :
         include_once CORE_DIR.'/security/logout.php';
         break;
+        
+        
+        
+        
+        
+  
         case 'perfil' :
         if ($login_ok) {
             include_once CORE_DIR.'/modulos/perfil.php';
@@ -26,6 +32,12 @@ switch ($_GET['do']) {
         } else {
                 include_once CORE_DIR.'/modulos/login.php';
             }
+        
+        
+        
+        
+  
+    
         //REGISTROS
 case 'aseguradora' :
     if ($login_ok) { 
@@ -55,7 +67,11 @@ include_once CORE_DIR.'/modulos/registros/beneficiario.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-        //LISTAS 
+        
+       
+        
+        //LISTAS
+        
  case 'listacorredores' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/listacorredores.php';
@@ -63,17 +79,13 @@ include_once CORE_DIR.'/modulos/listas/listacorredores.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-<<<<<<< Updated upstream
         
-=======
->>>>>>> Stashed changes
          case 'listaasegurados' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/listaasegurados.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
-<<<<<<< Updated upstream
         }
          case 'listabeneficiarios' :
     if ($login_ok) {
@@ -108,9 +120,6 @@ include_once CORE_DIR.'/modulos/listas/listabeneficiarios.php';
         include_once CORE_DIR.'/modulos/login.php';
         break;
     }  
-=======
-        }   
->>>>>>> Stashed changes
     default:
     if ($login_ok) {
         include_once CORE_DIR.'/modulos/panel.php';
