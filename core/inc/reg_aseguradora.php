@@ -7,10 +7,10 @@ if (!defined('SRCP')) {
     if (!empty($_POST)) {
 
         $query = '  SELECT 1
-            		FROM corredor
-            		WHERE cedula = :cedula
+            		FROM aseguradora
+            		WHERE rif = :rif
         		  ';
-        $query_params = array(':cedula' => $_POST['cedula']);
+        $query_params = array(':rif' => $_POST['rif']);
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
@@ -29,8 +29,8 @@ if (!defined('SRCP')) {
             </div>";
         }
         $query = 'SELECT 1
-            	  FROM corredor
-            	  WHERE correo = :correo
+            	  FROM aseguradora
+            	  WHERE rif = :rif
         		 ';
         $query_params = array(
             ':correo' => $_POST['correo'],
@@ -51,41 +51,45 @@ if (!defined('SRCP')) {
         }
 
         /// Si todo pasa enviamos los datos a la base de datos mediante PDO para evitar Inyecciones SQL
-        $query = '	INSERT INTO corredor (
-				                cedula,
-                                nombres,
-                                apellidos,
-                                fechanacimiento,
-                                telefono,
-                                correo,
+        $query = '	INSERT INTO aseguradora (
+				                rif,
+                                cuentabancaria,
+                                cedulacuentabancaria,
+                                nombre,
                                 direccion,
-                                fecharegistro,
+                                telefonolocal,
+                                telefonopersonal,
+                                correo,
                                 estatus,
-                                aseguradora_rif
+                                estado,
+                                fechafundacion
 				    ) VALUES (
-                                :cedula,
-                                :nombres,
-                                :apellidos,
-                                :fechanacimiento,
-                                :telefono,
-                                :correo,
+                                :rif,
+                                :cuentabancaria,
+                                :cedulacuentabancaria,
+                                :nombre,
                                 :direccion,
-                                :fecharegistro,
+                                :telefonolocal,
+                                :telefonopersonal,
+                                :correo,
                                 :estatus,
-                                :aseguradora_rif
+                                :estado,
+                                :fechafundacion
 				            )
         		';
         $query_params = array(
-            ':nombres' => $_POST['nombres'],
-            ':apellidos' => $_POST['apellidos'],
-            ':cedula' => $_POST['cedula'],
+            ':rif' => $_POST['rif'],
+            ':cuentabancaria' => $_POST['cuentabancaria'],
+            ':cedulacuentabancaria' => $_POST['cedulacuentabancaria'],
+            ':nombre' => $_POST['nombres'],
             ':direccion' => $_POST['direccion'],
-            ':telefono' => $_POST['telefono'],
+            ':telefonolocal' => $_POST['telefonolocal'],
+            ':telefonopersonal' => $_POST['telefonopersonal'],
             ':correo' => $_POST['correo'],
             ':estatus' => $_POST['estatus'],
-            ':fechanacimiento' => $_POST['fechanacimiento'],
-            ':fecharegistro' => $_POST['fecharegistro'],
-            ':aseguradora_rif' => $_POST['aseguradora_rif']
+            ':estado' => $_POST['estado'],
+            ':fechafundacion' => $_POST['fechafundacion'],
+           
             );
 
         try {

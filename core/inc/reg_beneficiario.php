@@ -7,7 +7,7 @@ if (!defined('SRCP')) {
     if (!empty($_POST)) {
 
         $query = '  SELECT 1
-            		FROM corredor
+            		FROM beneficiario
             		WHERE cedula = :cedula
         		  ';
         $query_params = array(':cedula' => $_POST['cedula']);
@@ -29,7 +29,7 @@ if (!defined('SRCP')) {
             </div>";
         }
         $query = 'SELECT 1
-            	  FROM corredor
+            	  FROM beneficiario
             	  WHERE correo = :correo
         		 ';
         $query_params = array(
@@ -51,41 +51,38 @@ if (!defined('SRCP')) {
         }
 
         /// Si todo pasa enviamos los datos a la base de datos mediante PDO para evitar Inyecciones SQL
-        $query = '	INSERT INTO corredor (
+        $query = '	INSERT INTO beneficiario (
 				                cedula,
                                 nombres,
                                 apellidos,
                                 fechanacimiento,
-                                telefono,
-                                correo,
                                 direccion,
-                                fecharegistro,
+                                telefono,
+                                correo,                              
                                 estatus,
-                                aseguradora_rif
+                                asegurado_cedula
 				    ) VALUES (
                                 :cedula,
                                 :nombres,
                                 :apellidos,
                                 :fechanacimiento,
-                                :telefono,
-                                :correo,
                                 :direccion,
-                                :fecharegistro,
+                                :telefono,
+                                :correo,                              
                                 :estatus,
-                                :aseguradora_rif
+                                :asegurado_cedula
 				            )
         		';
         $query_params = array(
-            ':nombres' => $_POST['nombres'],
-            ':apellidos' => $_POST['apellidos'],
             ':cedula' => $_POST['cedula'],
+            ':nombres' => $_POST['nombres'],
+            ':apellidos' => $_POST['apellidos'], 
+            ':fechanacimiento' => $_POST['fechanacimiento'],
             ':direccion' => $_POST['direccion'],
             ':telefono' => $_POST['telefono'],
             ':correo' => $_POST['correo'],
             ':estatus' => $_POST['estatus'],
-            ':fechanacimiento' => $_POST['fechanacimiento'],
-            ':fecharegistro' => $_POST['fecharegistro'],
-            ':aseguradora_rif' => $_POST['aseguradora_rif']
+            ':asegurado_cedula' => $_POST['asegurado_cedula']
             );
 
         try {
@@ -100,7 +97,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=listacorredores');
+        header('Location: index.php?do=listabeneficiarios');
     }
 
     if (isset($_GET['accion'])) {

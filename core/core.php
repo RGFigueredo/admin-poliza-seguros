@@ -80,10 +80,16 @@ include_once CORE_DIR.'/modulos/listas/listacorredores.php';
             include_once CORE_DIR.'/modulos/login.php';
         }
         
-        
          case 'listaasegurados' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/listaasegurados.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+         case 'listabeneficiarios' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/listabeneficiarios.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';

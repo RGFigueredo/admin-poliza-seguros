@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Registro de profesores - SRCP</title>
+	<title>Registro de corredor</title>
 	<?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
@@ -35,7 +35,7 @@
 						<a href="index.php">Inicio</a>
 					</li>
 					<li>Profesores</li>
-					<li class="active">Registro de profesores</li>
+					<li class="active">Registro de corredor</li>
 				</ul>
 				<!-- /.breadcrumb -->
 
@@ -205,7 +205,7 @@
                                                      <tr>
 														<td align="right">Rif - Seniat de la empresa:</td>
 														<td align="left">
-															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J - dddddddd">
+															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd">
 														</td>
 														<td align="left"><span id="msg_rif"></span>&nbsp;</td>
 													</tr>

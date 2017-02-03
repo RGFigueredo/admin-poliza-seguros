@@ -9,11 +9,12 @@
             }
         $data = getDataBySession($_COOKIE['session'], $db);
             if (!empty($_POST)) {
-                include_once INC_DIR.'reg_prof.php';
+
+                include_once INC_DIR.'/reg_asegurado.php';
             }
         include_once STATIC_DIR.'/header.php';
                 if (!empty($_POST['registro'])) {
-                    include_once INC_DIR.'/reg_prof.php';
+                    include_once INC_DIR.'/reg_asegurado.php';
                 }
         ?>
 		<!-- page specific plugin styles -->
@@ -54,7 +55,7 @@
 						<table align="center" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td>
-									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=asegurados" method="POST">
 										<input type='hidden' name="registro" value="1">
 										<!-- Tabs -->
 										<div id="wizard" class="swMain">
@@ -163,21 +164,11 @@
 													</tr>
                                                     
                                                     
-                                                    <tr>
-														<td align="right">Estado :</td>
-														<td align="left">
-															<select id="estado" name="estado" class="form-control selectpicker">
-															  <option>Activo</option>
-															  <option>Inactivo</option>
-															
-															</select>
-														</td>
-														<td align="left"><span id="msg_estado"></span>&nbsp;</td>
-													</tr>
+                                                   
                                                  
                                                     
                                                      <tr>
-														<td align="right">Cedula del corredor quin lo asigno :</td>
+														<td align="right">Cedula del corredor :</td>
 														<td align="left">
 															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="corredor_cedula" value="" class="txtBox" data-format="dddddddd">
 														</td>

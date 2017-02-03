@@ -9,11 +9,12 @@
             }
         $data = getDataBySession($_COOKIE['session'], $db);
             if (!empty($_POST)) {
-                include_once INC_DIR.'reg_prof.php';
+
+                include_once INC_DIR.'/reg_beneficiario.php';
             }
         include_once STATIC_DIR.'/header.php';
                 if (!empty($_POST['registro'])) {
-                    include_once INC_DIR.'/reg_prof.php';
+                    include_once INC_DIR.'/reg_beneficiario.php';
                 }
         ?>
 		<!-- page specific plugin styles -->
@@ -54,7 +55,7 @@
 						<table align="center" border="0" cellpadding="0" cellspacing="0">
 							<tr>
 								<td>
-									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+									<form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=beneficiarios" method="POST">
 										<input type='hidden' name="registro" value="1">
 										<!-- Tabs -->
 										<div id="wizard" class="swMain">
@@ -151,28 +152,24 @@
 												<table cellspacing="3" cellpadding="3" align="center">
 												
                                                 <tr>
-														<td align="right">Por medio del quien es beneficiado :</td>
+														<td align="right">N| Cedula por el cual es beneficiado :</td>
 														<td align="left">
-															<select id="asegurado_cedula" name="asegurado_cedula" class="form-control selectpicker">
-															  
-															  <option>Lista de nombres y cedulas</option>
-														 
-															</select>
+															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="asegurado_cedula" name="asegurado_cedula" value="" class="txtBox" data-format="dddddddd">
 														</td>
 														<td align="left"><span id="msg_asegurado_cedula"></span>&nbsp;</td>
 													</tr>
                                                     
                                                     
                                                     <tr>
-														<td align="right">Estado :</td>
+														<td align="right">Estatus :</td>
 														<td align="left">
-															<select id="estado" name="estado" class="form-control selectpicker">
+															<select id="estatus" name="estatus" class="form-control selectpicker">
 															  <option>Activo</option>
 															  <option>Inactivo</option>
 															
 															</select>
 														</td>
-														<td align="left"><span id="msg_estado"></span>&nbsp;</td>
+														<td align="left"><span id="msg_estatus"></span>&nbsp;</td>
 													</tr>
                                                  
                                                     
