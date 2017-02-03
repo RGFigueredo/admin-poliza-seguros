@@ -87,7 +87,6 @@ if (!defined('SRCP')) {
             ':fecharegistro' => $_POST['fecharegistro'],
             ':aseguradora_rif' => $_POST['aseguradora_rif']
             );
-
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);

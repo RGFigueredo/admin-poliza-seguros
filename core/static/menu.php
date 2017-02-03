@@ -4,13 +4,38 @@
         <div class="navbar-header pull-left">
             <a href="index.php?do=panel" class="navbar-brand"> <small>
 							<i class="fa fa-leaf"></i>
+<<<<<<< Updated upstream
 							Sistema de control y registro aseguradora.
 						</small> </a>
+=======
+							Sistema de control y registro aseguradora. (Usted es: 
+                                <?php switch ($data['nivel']) {
+                                    case 0:
+                                        echo "Desactivado";
+                                        break;
+                                    case 1:
+                                        echo "Administrador";
+                                        break;
+                                    case 2:
+                                        echo "Corredor";
+                                        break;
+                                    case 3;
+                                        echo "Usuario";
+                                        break;
+                                }?>)
+                </small>
+            </a>
+>>>>>>> Stashed changes
         </div>
         <!--menu-->
         <div class="navbar-buttons navbar-header pull-right" role="navigation">
             <ul class="nav ace-nav">
+<<<<<<< Updated upstream
                 <li class="light-blue"> <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+=======
+                <li class="light-blue">
+                       <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+>>>>>>> Stashed changes
 								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Foto de  <?php echo $data['nombre'] ?>" />
 						<span class="user-info">Bienvenid@:</span>		
                         <span class="user-info"><?php echo $data['nombre']?> </span>
@@ -51,20 +76,39 @@
                 </ul>
             </li>
         </ul>
+<<<<<<< Updated upstream
         <!--PANEL CORREDOR-->
         <ul class="nav nav-list">
+=======
+         <!--PANEL CORREDOR-->
+      <ul class="nav nav-list">
+>>>>>>> Stashed changes
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-paper-plane"></i> <span class="menu-text"> Panel Corredor</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
                         <a href="index.php?do=corredores"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
                     <li class="">
+<<<<<<< Updated upstream
                         <a href="index.php?do=listacorredores"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
             </li>
         </ul>
         <!--PANEL ASEGURADO-->
         <ul class="nav nav-list">
+=======
+                        <a href="index.php?do=listacorredores">
+                            <i class="menu-icon fa fa-caret-right"></i> Lista 
+                        </a>
+
+                        <b class="ardata"></b>
+                    </li>   
+                </ul>
+            </li>
+        </ul>
+              <!--PANEL ASEGURADO-->
+      <ul class="nav nav-list">
+>>>>>>> Stashed changes
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user"></i> <span class="menu-text"> Panel Asegurados</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
@@ -75,8 +119,13 @@
                 </ul>
             </li>
         </ul>
+<<<<<<< Updated upstream
        <!--PANEL BENEFICIARIO-->
         <ul class="nav nav-list">
+=======
+              <!--PANEL BENEFICIARIO-->
+      <ul class="nav nav-list">
+>>>>>>> Stashed changes
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-user"></i> <span class="menu-text"> Panel beneficiarios</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
@@ -87,6 +136,13 @@
                 </ul>
             </li>
         </ul>
+<<<<<<< Updated upstream
         
         <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse"> <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i> </div>
     </div>
+=======
+        <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+            <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+        </div>
+    </div>
+>>>>>>> Stashed changes
