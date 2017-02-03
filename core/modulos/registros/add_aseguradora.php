@@ -89,7 +89,7 @@
                                                     <tr>
 														<td align="right">Rif - Seniat :</td>
 														<td align="left">
-															<input type="text" id="rif" name="rif" value="" class="txtBox bfh-phone" data-format="J- dddddddd">
+															<input type="text" id="rif" name="rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd">
 														</td>
 														<td align="left"><span id="msg_rif"></span>&nbsp;</td>
 													</tr>											 

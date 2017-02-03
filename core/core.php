@@ -46,21 +46,21 @@ case 'addaseguradora' :
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }            
-  case 'addcorredores' :
+  case 'addcorredor' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/registros/add_corredor.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'addasegurados' :
+  case 'addasegurado' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/registros/add_asegurado.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'addbeneficiarios' :
+  case 'addbeneficiario' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
         break;  
@@ -77,21 +77,21 @@ include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }            
-  case 'modcorredores' :
+  case 'modcorredor' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/modificar/mod_corredor.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'modasegurados' :
+  case 'modasegurado' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/modificar/mod_asegurado.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }       
-  case 'modbeneficiarios' :
+  case 'modbeneficiario' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
         break;  
@@ -105,24 +105,24 @@ include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
         
         
         //LISTAS        
- case 'listacorredores' :
+ case 'listacorredor' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_corredores.php';
+include_once CORE_DIR.'/modulos/listas/lista_corredor.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
         
-         case 'listaasegurados' :
+         case 'listaasegurado' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_asegurados.php';
+include_once CORE_DIR.'/modulos/listas/lista_asegurado.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-         case 'listabeneficiarios' :
+         case 'listabeneficiario' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_beneficiarios.php';
+include_once CORE_DIR.'/modulos/listas/lista_beneficiario.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';

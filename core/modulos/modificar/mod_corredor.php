@@ -204,7 +204,7 @@
                                                      <tr>
 														<td align="right">Rif - Seniat de la empresa:</td>
 														<td align="left">
-															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J- dddddddd">
+															<input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd">
 														</td>
 														<td align="left"><span id="msg_rif"></span>&nbsp;</td>
 													</tr>

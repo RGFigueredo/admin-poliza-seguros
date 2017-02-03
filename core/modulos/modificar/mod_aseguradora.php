@@ -133,7 +133,7 @@
                                                             <tr>
                                                                 <td align="right">Estatus :</td>
                                                                 <td align="left">
-                                                                    <select id="estatus" name="estatus" value="<?php echo $row['estatus'];   ?>" class="form-control selectpicker">
+                                                                    <select id="estatus" name="estatus" value="" class="form-control selectpicker">
                                                                         <option>
                                                                             <?php echo $row['estatus'];   ?>
                                                                         </option>
