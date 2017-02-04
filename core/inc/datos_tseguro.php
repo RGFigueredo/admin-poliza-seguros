@@ -3,7 +3,7 @@ $query = "  SELECT  id,
 codigo,
                     nombre,
                     observacion                 
-            FROM    tiposeguro
+            FROM    tiposeguro where estatus!='Inactivo' ORDER BY id ASC
          ";
     try{
         $stmt = $db->prepare($query);

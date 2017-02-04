@@ -4,7 +4,7 @@ codigo,
                     nombre,
                      costo,
                     cobertura                 
-            FROM    tipopolizas
+            FROM    tipopolizas  where estatus!='Inactivo' ORDER BY id ASC
          ";
     try{
         $stmt = $db->prepare($query);

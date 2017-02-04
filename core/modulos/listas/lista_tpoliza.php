@@ -79,8 +79,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="">
-                                                            <button class="btn btn-xs btn-danger" title="Dar de baja" data-toggle="modal" data-target="#Quejas"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=tipopolizas&id=<?PHP echo $row['id']?>">
+                                                            <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                 </td>

@@ -83,8 +83,8 @@
                                                         </a>
                                                     </div>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?eliminar=<?php echo $row['cedula'];   ?>">
-                                                            <button class="btn btn-xs btn-danger" title="Dar de baja" data-toggle="modal" data-target="#Quejas"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=asegurado&id=<?PHP echo $row['cedula']?>">
+                                                            <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                 </td>
@@ -121,6 +121,9 @@
                             "aoColumns": [{
                                     "bSortable": false
                                 }
+
+
+
 
 
 
