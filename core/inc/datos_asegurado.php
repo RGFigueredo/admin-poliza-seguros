@@ -5,6 +5,7 @@ $query = "  SELECT  cedula,
                     telefono,
                     estatus
             FROM    asegurado
+            where estatus!='Inactivo'
          ";
     try{
         $stmt = $db->prepare($query);

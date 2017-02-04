@@ -9,7 +9,7 @@ $query = "  SELECT    cedula,
                                 fecharegistro,
                                 estatus,
                                 aseguradora_rif                  
-            FROM    corredor 
+            FROM    corredor where estatus!='Inactivo'
          ";
     try{
         $stmt = $db->prepare($query);

@@ -5,7 +5,7 @@ $query = "  SELECT           cedula,
                                 telefono,                             
                                 estatus                                                            
                               
-            FROM    asegurado                                               
+            FROM    asegurado  where estatus!='Inactivo'                                    
                                                         
          ";
     try{

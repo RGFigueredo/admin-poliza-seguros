@@ -8,7 +8,7 @@ $query = "  SELECT  cedula,
                                 correo,                              
                                 estatus,
                                 asegurado_cedula
-            FROM    beneficiario
+            FROM    beneficiario where estatus!='Inactivo'
          ";
     try{
         $stmt = $db->prepare($query);

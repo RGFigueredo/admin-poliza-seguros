@@ -10,7 +10,7 @@ $query = "  SELECT  rif,
                     estatus,
                     estado,
                     fechafundacion                    
-            FROM    aseguradora
+            FROM    aseguradora where estatus!='Inactivo'
          ";
     try{
         $stmt = $db->prepare($query);
