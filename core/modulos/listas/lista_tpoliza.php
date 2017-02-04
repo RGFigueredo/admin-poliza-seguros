@@ -96,7 +96,6 @@
                 </div>
             </div>
         </div>
-        </div>
         <?php include_once STATIC_DIR.'/footer.php';?>
             <!-- page specific plugin scripts -->
             <script src="assets/js/validar.js"></script>
