@@ -12,7 +12,7 @@
         include STATIC_DIR.'/header.php';  
     
 
- $rif = $_GET['id'];
+ $rif = $_GET['rif'];
  
 $query = "  SELECT  rif,
                     cuentabancaria,
@@ -35,6 +35,15 @@ $query = "  SELECT  rif,
     echo "Error > " .$ex->getMessage();
     }
     $rows = $stmt->fetchAll();
+    
+     //////////// modificar /////////
+                if (!empty($_POST)) {
+                    $var = 'aseguradora';
+                    modificar($var, $rif, $db);
+
+            }
+    
+    
    
 ?>
         <!-- page specific plugin styles -->
@@ -67,7 +76,7 @@ $query = "  SELECT  rif,
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
+                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modaseguradora&rif=<?php echo $rif?>" method="POST">
                                             <input type='hidden' name="registro" value="1">
                                             <!-- Tabs -->
                                             <div id="wizard" class="swMain">
@@ -217,12 +226,12 @@ $query = "  SELECT  rif,
             <!-- ace scripts -->
             <!-- inline scripts related to this page -->
             <script type="text/javascript">
-                $(document).ready(function () {
+                $(document).ready(function() {
                     // wizard
                     $('#wizard').smartWizard({
-                        transitionEffect: 'slideleft'
-                        , onLeaveStep: leaveAStepCallback
-                        , onFinish: onFinishCallback, //enableFinishButton: true
+                        transitionEffect: 'slideleft',
+                        onLeaveStep: leaveAStepCallback,
+                        onFinish: onFinishCallback, //enableFinishButton: true
                     });
 
                     function leaveAStepCallback(obj) {
@@ -242,40 +251,37 @@ $query = "  SELECT  rif,
                     if (validateStep1() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: true
+                            stepnum: 1,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: false
+                            stepnum: 1,
+                            iserror: false
                         });
                     }
                     if (validateStep2() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: true
+                            stepnum: 2,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: false
+                            stepnum: 2,
+                            iserror: false
                         });
                     }
                     if (validateStep3() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: true
+                            stepnum: 3,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: false
+                            stepnum: 3,
+                            iserror: false
                         });
                     }
                     if (!isStepValid) {
@@ -292,14 +298,13 @@ $query = "  SELECT  rif,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -309,14 +314,13 @@ $query = "  SELECT  rif,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -326,14 +330,13 @@ $query = "  SELECT  rif,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -353,24 +356,25 @@ $query = "  SELECT  rif,
                 //datepicker plugin
                 //link
                 $('.date-picker').datepicker({
-                        autoclose: true
-                        , todayHighlight: true
+                        autoclose: true,
+                        todayHighlight: true
                     })
                     //Mostrar el datepicker al hacer click en el icono
-                    .next().on(ace.click_event, function () {
+                    .next().on(ace.click_event, function() {
                         $(this).prev().focus();
                     });
                 //to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
                 $('input[name=date-range-picker]').daterangepicker({
-                    'applyClass': 'btn-sm btn-success'
-                    , 'cancelClass': 'btn-sm btn-default'
-                    , locale: {
-                        applyLabel: 'Apply'
-                        , cancelLabel: 'Cancel'
-                    , }
-                }).prev().on(ace.click_event, function () {
+                    'applyClass': 'btn-sm btn-success',
+                    'cancelClass': 'btn-sm btn-default',
+                    locale: {
+                        applyLabel: 'Apply',
+                        cancelLabel: 'Cancel',
+                    }
+                }).prev().on(ace.click_event, function() {
                     $(this).next().focus();
                 });
+
             </script>
 </body>
 

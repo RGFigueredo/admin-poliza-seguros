@@ -16,7 +16,7 @@
  
 $query = "  SELECT id,
 codigo,
-                    nombre,
+                    nombre,estatus,
                     observacion               
             
             FROM    tiposeguro where id='$id'
@@ -29,7 +29,12 @@ codigo,
     echo "Error > " .$ex->getMessage();
     }
     $rows = $stmt->fetchAll();
-   
+       //////////// modificar /////////
+                if (!empty($_POST)) {
+                    $var = 'tiposeguro';
+                    modificar($var, $id, $db);
+
+            }
 ?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
@@ -63,7 +68,7 @@ codigo,
                                     <td>
                                         <?php foreach ($rows as $row) {
                                                     ?>
-                                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=uptiposeguro?id=<?php echo $row['id'];?>" method="POST">
+                                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modtseguro&id=<?php echo $id?>" method="POST">
                                                 <!-- Tabs -->
                                                 <div id="wizard" class="swMain">
                                                     <ul>
@@ -107,6 +112,19 @@ codigo,
                                                                 <td align="left">
                                                                     <input type="text" id="observacion" name="observacion" value="<?php echo $row['observacion'];?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_observacion"></span>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right">Estatus:</td>
+                                                                <td align="left">
+                                                                    <select id="estatus" name="estatus" class="form-control selectpicker">
+                                                                        <option>
+                                                                            <?php echo $row['estatus'];   ?>
+                                                                        </option>
+                                                                        <option>Activa</option>
+                                                                        <option>Inactiva</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td align="left"><span id="msg_estatus"></span>&nbsp;</td>
                                                             </tr>
                                                         </table>
                                                     </div>

@@ -34,7 +34,12 @@ $query = "  SELECT  cedula,
     echo "Error > " .$ex->getMessage();
     }
     $rows = $stmt->fetchAll();
-   
+      //////////// modificar /////////
+                if (!empty($_POST)) {
+                    $var = 'asegurado';
+                    modificar($var, $cedula, $db);
+
+            } 
 ?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
@@ -66,7 +71,7 @@ $query = "  SELECT  cedula,
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addasegurado" method="POST">
+                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modasegurado&cedula=<?php echo $cedula?>" method="POST">
                                             <input type='hidden' name="registro" value="1">
                                             <!-- Tabs -->
                                             <div id="wizard" class="swMain">

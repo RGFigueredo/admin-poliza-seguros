@@ -1,6 +1,6 @@
 <?php
     // Variables para conectar a la DB MySQL
-     $username = 'root';
+    $username = 'root';
     $password = '';
     $host = 'localhost';
     $dbname = 'aseguradora';

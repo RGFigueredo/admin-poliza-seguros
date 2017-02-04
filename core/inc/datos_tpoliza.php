@@ -3,6 +3,7 @@ $query = "  SELECT  id,
 codigo,
                     nombre,
                      costo,
+                     estatus,
                     cobertura                 
             FROM    tipopolizas  where estatus!='Inactivo' ORDER BY id ASC
          ";
