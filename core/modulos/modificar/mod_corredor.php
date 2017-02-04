@@ -11,9 +11,7 @@
   
         include STATIC_DIR.'/header.php';  
     
-
- $cedula = $_GET['cedula'];
- 
+$cedula = $_GET['cedula'];
 $query = "  SELECT    cedula,
                                 nombres,
                                 apellidos,
@@ -34,8 +32,14 @@ $query = "  SELECT    cedula,
     echo "Error > " .$ex->getMessage();
     }
     $rows = $stmt->fetchAll();
-   
-?>
+
+    //////////// modificar /////////
+                if (!empty($_POST)) {
+                    $var = 'corredor';
+                    modificar($var, $cedula, $db);
+
+            }
+        ?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
@@ -55,9 +59,9 @@ $query = "  SELECT    cedula,
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
                         <form class="form-search"> <span class="input-icon">
-									<input type="text" placeholder="Buscar..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
-									<i class="ace-icon fa fa-search nav-search-icon"></i>
-								</span> </form>
+                                    <input type="text" placeholder="Buscar..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                    <i class="ace-icon fa fa-search nav-search-icon"></i>
+                                </span> </form>
                     </div>
                     <!-- /.nav-search -->
                     <div class="row">
@@ -66,8 +70,8 @@ $query = "  SELECT    cedula,
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="POST">
-                                            <input type='hidden' name="registro" value="1">
+                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modcorredor&cedula=<?php echo $cedula?>" method="POST">
+                                            <input type='hidden' name="actualizar" value="1">
                                             <!-- Tabs -->
                                             <div id="wizard" class="swMain">
                                                 <ul>
@@ -116,9 +120,9 @@ $query = "  SELECT    cedula,
                                                             <tr>
                                                                 <td align="right">Fecha de nacimiento :</td>
                                                                 <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" id="id-date-picker-1" name="fechanacimiento" value="<?php echo $row['fechanacimiento'];   ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
-																	<i class="ace-icon fa fa-calendar"></i>
-															</span> </td>
+                                                                    <input class="date-picker txtBox" id="id-date-picker-1" name="fechanacimiento" value="<?php echo $row['fechanacimiento'];   ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+                                                                    <i class="ace-icon fa fa-calendar"></i>
+                                                            </span> </td>
                                                                 <td align="left"><span id="msg_fechanacimiento"></span>&nbsp;</td>
                                                             </tr>
                                                         </table>
@@ -152,9 +156,9 @@ $query = "  SELECT    cedula,
                                                             <tr>
                                                                 <td align="right">Fecha de registro :</td>
                                                                 <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" value="<?php echo $row['fecharegistro'];   ?>" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" required="required"/>
-																	<i class="ace-icon fa fa-calendar"></i>
-															</span> </td>
+                                                                    <input class="date-picker txtBox" value="<?php echo $row['fecharegistro'];   ?>" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+                                                                    <i class="ace-icon fa fa-calendar"></i>
+                                                            </span> </td>
                                                                 <td align="left"><span id="msg_fecharegistro"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
