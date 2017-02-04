@@ -19,7 +19,7 @@
 							</a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
-                            <a href="configuracion.php"> <i class="ace-icon fa fa-cog"></i> Configuración </a>
+                            <a href="#"> <i class="ace-icon fa fa-cog"></i> Configuración </a>
                         </li>
                         <li>
                             <a href="#"> <i class="ace-icon fa fa-user"></i> Perfil </a>
