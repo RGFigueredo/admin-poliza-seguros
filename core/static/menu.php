@@ -51,7 +51,7 @@
                 </ul>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=modaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Datos aseguradora</a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=listaaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Aseguradoras</a> <b class="ardata"></b> </li>
                 </ul>
             </li>
         </ul>

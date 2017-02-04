@@ -142,7 +142,14 @@ include_once CORE_DIR.'/modulos/modificar/mod_tseguro.php';
         
         
         
-        //LISTAS        
+        //LISTAS   
+         case 'listaaseguradora' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/lista_aseguradora.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
  case 'listacorredor' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/lista_corredor.php';
@@ -180,8 +187,6 @@ include_once CORE_DIR.'/modulos/listas/lista_tseguro.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-        
-        
          case 'tpoliza' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/listas/lista_tpoliza.php';
