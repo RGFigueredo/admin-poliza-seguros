@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2017 a las 05:45:21
+-- Tiempo de generación: 04-02-2017 a las 11:29:42
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -41,6 +41,13 @@ CREATE TABLE `asegurado` (
   `corredor_cedula` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `asegurado`
+--
+
+INSERT INTO `asegurado` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `direccion`, `correo`, `estatus`, `estado`, `corredor_cedula`) VALUES
+('11696062', 'CELINA', 'CASTILLO', '2017-02-01', '+58 ', 'X', 'C', 'En espera', NULL, '21726528');
+
 -- --------------------------------------------------------
 
 --
@@ -66,7 +73,9 @@ CREATE TABLE `aseguradora` (
 --
 
 INSERT INTO `aseguradora` (`rif`, `cuentabancaria`, `cedulacuentabancaria`, `nombre`, `direccion`, `telefonolocal`, `telefonopersonal`, `correo`, `estatus`, `estado`, `fechafundacion`) VALUES
-('J-21726528', '1111-1111-11-1111111111', 'J-21726528', 'MERCANTIL', 'ESTADO LARA BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@CORREO.COM', 'Activa', 'LA', '2017-02-04');
+('J-11696062', '2222-2222-22-2222222222 ', 'J-11696062', 'PROVINCIAL CA', 'CARACAS', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'C@G.COM', 'Inactivo', 'LA', '2017-02-04'),
+('J-21726528', '1111-1111-11-1111111111 ', 'J-21726528', 'MERCANTIL CA', 'ESTADO LARA BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@CORREO.COM', 'Activa', 'DI', '2017-01-30'),
+('J-22222222', '3333-3333-33-3333', 'J-33333333', 'CONATEL', 'X', '+58 ', '+58 ', 'X', 'Inactivo', 'LA', '2017-02-04');
 
 -- --------------------------------------------------------
 
@@ -86,6 +95,13 @@ CREATE TABLE `beneficiario` (
   `asegurado_cedula` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `beneficiario`
+--
+
+INSERT INTO `beneficiario` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `direccion`, `telefono`, `correo`, `estatus`, `asegurado_cedula`) VALUES
+(123456789, 'CELIMAR ', 'ACOSTA', '2017-02-02', '', '+58 ', '', 'Activo', '11696062');
+
 -- --------------------------------------------------------
 
 --
@@ -104,6 +120,13 @@ CREATE TABLE `corredor` (
   `estatus` varchar(45) DEFAULT 'Activo',
   `aseguradora_rif` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `corredor`
+--
+
+INSERT INTO `corredor` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `correo`, `direccion`, `fecharegistro`, `estatus`, `aseguradora_rif`) VALUES
+('21726528', 'ERICK ANTONIO', 'SUAREZ CASTILLO', '1991-05-29', '+58 (0426) 355-3619', 'ERICK@GMAIL.COM', 'BARQUISIMETO SAN JUAN CALLE 36', '2017-02-04', 'Activo', 'J-21726528');
 
 -- --------------------------------------------------------
 
@@ -217,9 +240,9 @@ CREATE TABLE `tipopolizas` (
 --
 
 INSERT INTO `tipopolizas` (`codigo`, `nombre`, `costo`, `cobertura`, `estatus`, `id`) VALUES
-('TP-1', 'Póliza de cobertura limitada', '2500', 'Limitada', 'Activo', 1),
+('TP-1', 'Póliza de cobertura limitada', '2500', 'Limitada', 'Activo', 0),
 ('TP-2', 'Póliza básica', '5000', 'Nacional', 'Activo', 2),
-('TP-3', 'La póliza más popular', '15000', 'Internacional', 'Activo', 3);
+('TP-3', 'La póliza más popular', '15000', 'Internacional', 'Activa', 0);
 
 -- --------------------------------------------------------
 
@@ -240,7 +263,7 @@ CREATE TABLE `tiposeguro` (
 --
 
 INSERT INTO `tiposeguro` (`id`, `codigo`, `nombre`, `observacion`, `estatus`) VALUES
-(1, 'TS-1', 'Seguro de Vida', 'Cubre el riesgo de muerte natural o supervivencia y la incapacidad.', 'Inactivo'),
+(1, 'TS-1', 'Seguro de Vida', 'Cubre el riesgo de muerte natural o supervivencia y la incapacidad.', 'Activa'),
 (2, 'TS-2', 'Seguro de responsabilidad civil', 'Cubre los riesgos que involuntariamente pueden causar daños a terceras personas.', ''),
 (3, 'TS-3', 'Seguro familiar', 'Cubre el riesgo de daños que pueden ocasionar el tomador, su cónyuge, sus hijos menores de edad y/o ', ''),
 (4, 'TS-4', 'Seguro profesional', 'Cubre el riesgo de daños que puedan derivarse del ejercicio de la profesión.', ''),
@@ -249,7 +272,7 @@ INSERT INTO `tiposeguro` (`id`, `codigo`, `nombre`, `observacion`, `estatus`) VA
 (7, 'TS-7', 'Seguro patronal', ' garantiza las indemnizaciones económicas que pueden derivarse de lesiones corporales ocasionadas a ', ''),
 (8, 'TS-8', 'Seguro de crédito', 'cubre al asegurado de la insolvencia de sus deudores.', ''),
 (9, 'TS-9', 'Seguro de Caución', 'tiene por objeto el garantizar el pago de una obligación', ''),
-(10, 'TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', ''),
+(10, 'TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', 'Activa'),
 (11, 'TS-11', 'seguros empresariales', 'cubren los riesgos que tanto los empleados como la propia empresa puedan ser objeto.', ''),
 (12, 'TS-12', 'Seguro de Accidentes', 'Cubre el riesgo de incapacidad o muerte como consecuencia de un accidente.', ''),
 (13, 'TS-13', 'seguro terrestre', 'cubren objetos situados en la tierra.', ''),
@@ -264,8 +287,8 @@ INSERT INTO `tiposeguro` (`id`, `codigo`, `nombre`, `observacion`, `estatus`) VA
 (22, 'TS-22', 'Seguro de incendio', 'Ccubre los daños ocasionados por el fuego o como consecuencia del intento de salvarlos del incendio.', ''),
 (23, 'TS-23', 'Seguro de robo', 'Cubre los objetos robados y los deterioros ocasionados a consecuencia del mismo.', ''),
 (24, 'TS-24', 'Seguro de transporte', 'Cubre los daños ocurridos durante el transporte de mercancías tanto a los medios de transporte como ', ''),
-(25, 'TS-25', 'Seguro de automóvil', 'Cubre variados riesgos en función del tipo de póliza suscrita.', 'Inactivo'),
-(26, 'TS-26', 'Seguro agrícola', 'Cubre los riesgos que afectan a explotaciones agrícolas, ganaderas y forestales.', 'Inactivo');
+(25, 'TS-25', 'Seguro de automóvil', 'Cubre variados riesgos en función del tipo de póliza suscrita.', ''),
+(26, 'TS-26', 'Seguro agrícola', 'Cubre los riesgos que afectan a explotaciones agrícolas, ganaderas y forestales.', '');
 
 -- --------------------------------------------------------
 
@@ -293,7 +316,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `nombre`, `apellido`, `correo`, `telefono`, `direccion`, `password`, `salt`, `cedula`, `nivel`, `cookie`, `logueado`) VALUES
-(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 949426949, 'SI');
+(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 606056161, 'SI');
 
 --
 -- Índices para tablas volcadas
