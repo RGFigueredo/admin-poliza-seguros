@@ -1,5 +1,6 @@
 <?php
-$query = "  SELECT  codigo,
+$query = "  SELECT  id,
+codigo,
                     nombre,
                      costo,
                     cobertura                 

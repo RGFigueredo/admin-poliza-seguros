@@ -8,15 +8,29 @@
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-            if (!empty($_POST)) {
+  
+        include STATIC_DIR.'/header.php';  
+    
 
-                include_once INC_DIR.'/reg_tseguro.php';
-            }
-        include_once STATIC_DIR.'/header.php';
-                if (!empty($_POST['registro'])) {
-                    include_once INC_DIR.'/reg_tseguro.php';
-                }
-        ?>
+ $id = $_GET['id'];
+ 
+$query = "  SELECT id,
+codigo,
+                    nombre,
+                    observacion               
+            
+            FROM    tiposeguro where id='$id'
+         ";
+    try{
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute();
+    }
+    catch(PDOException $ex){
+    echo "Error > " .$ex->getMessage();
+    }
+    $rows = $stmt->fetchAll();
+   
+?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
@@ -71,30 +85,36 @@
                 </span> </a>
                                                     </li>-->
                                                 </ul>
-                                                <div id="step-1">
-                                                    <h2 class="StepTitle">Paso 1: Datos Generales del seguro.</h2>
-                                                    <table cellspacing="3" cellpadding="3" align="center">
-                                                        <tr>
-                                                            <td align="right">Codigo :</td>
-                                                            <td align="left">
-                                                                <input type="text" id="codigo" name="codigo" value="" class="txtBox bfh-phone" data-format="TS-dddd"> </td>
-                                                            <td align="left"><span id="msg_codigo"></span>&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="right">Nombre :</td>
-                                                            <td align="left">
-                                                                <input type="text" id="nombre" name="nombre" value="" class="txtBox"> </td>
-                                                            <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td align="right">Observacion :</td>
-                                                            <td align="left">
-                                                                <input type="text" id="observacion" name="observacion" value="" class="txtBox"> </td>
-                                                            <td align="left"><span id="msg_observacion"></span>&nbsp;</td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                                <!-- <div id="step-2">
+                                                <?php foreach ($rows as $row) {
+                                                    ?>
+                                                    <div id="step-1">
+                                                        <h2 class="StepTitle">Paso 1: Datos Generales del seguro.</h2>
+                                                        <table cellspacing="3" cellpadding="3" align="center">
+                                                            <tr>
+                                                                <td align="right">Codigo :</td>
+                                                                <td align="left">
+                                                                    <input type="text" id="codigo" name="codigo" value="<?php echo $row['codigo'];?>" class="txtBox bfh-phone" data-format="TS-dddd"> </td>
+                                                                <td align="left"><span id="msg_codigo"></span>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right">Nombre :</td>
+                                                                <td align="left">
+                                                                    <input type="text" id="nombre" name="nombre" value="<?php echo $row['nombre'];?>" class="txtBox"> </td>
+                                                                <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td align="right">Observacion :</td>
+                                                                <td align="left">
+                                                                    <input type="text" id="observacion" name="observacion" value="<?php echo $row['observacion'];?>" class="txtBox"> </td>
+                                                                <td align="left"><span id="msg_observacion"></span>&nbsp;</td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                    <?php
+}
+ 
+                                            ?>
+                                                        <!-- <div id="step-2">
                                                     <h2 class="StepTitle">Paso 2: Datos del Seguro</h2>
                                                     <table cellspacing="3" cellpadding="3" align="center">
                                                         <tr>
@@ -167,12 +187,12 @@
             <!-- ace scripts -->
             <!-- inline scripts related to this page -->
             <script type="text/javascript">
-                $(document).ready(function() {
+                $(document).ready(function () {
                     // wizard
                     $('#wizard').smartWizard({
-                        transitionEffect: 'slideleft',
-                        onLeaveStep: leaveAStepCallback,
-                        onFinish: onFinishCallback, //enableFinishButton: true
+                        transitionEffect: 'slideleft'
+                        , onLeaveStep: leaveAStepCallback
+                        , onFinish: onFinishCallback, //enableFinishButton: true
                     });
 
                     function leaveAStepCallback(obj) {
@@ -192,37 +212,40 @@
                     if (validateStep1() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1,
-                            iserror: true
+                            stepnum: 1
+                            , iserror: true
                         });
-                    } else {
+                    }
+                    else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1,
-                            iserror: false
+                            stepnum: 1
+                            , iserror: false
                         });
                     }
                     if (validateStep2() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2,
-                            iserror: true
+                            stepnum: 2
+                            , iserror: true
                         });
-                    } else {
+                    }
+                    else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2,
-                            iserror: false
+                            stepnum: 2
+                            , iserror: false
                         });
                     }
                     if (validateStep3() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3,
-                            iserror: true
+                            stepnum: 3
+                            , iserror: true
                         });
-                    } else {
+                    }
+                    else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3,
-                            iserror: false
+                            stepnum: 3
+                            , iserror: false
                         });
                     }
                     if (!isStepValid) {
@@ -239,13 +262,14 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: true
+                                stepnum: step
+                                , iserror: true
                             });
-                        } else {
+                        }
+                        else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: false
+                                stepnum: step
+                                , iserror: false
                             });
                         }
                     }
@@ -255,13 +279,14 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: true
+                                stepnum: step
+                                , iserror: true
                             });
-                        } else {
+                        }
+                        else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: false
+                                stepnum: step
+                                , iserror: false
                             });
                         }
                     }
@@ -271,13 +296,14 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: true
+                                stepnum: step
+                                , iserror: true
                             });
-                        } else {
+                        }
+                        else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step,
-                                iserror: false
+                                stepnum: step
+                                , iserror: false
                             });
                         }
                     }
@@ -297,25 +323,24 @@
                 //datepicker plugin
                 //link
                 $('.date-picker').datepicker({
-                        autoclose: true,
-                        todayHighlight: true
+                        autoclose: true
+                        , todayHighlight: true
                     })
                     //Mostrar el datepicker al hacer click en el icono
-                    .next().on(ace.click_event, function() {
+                    .next().on(ace.click_event, function () {
                         $(this).prev().focus();
                     });
                 //to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
                 $('input[name=date-range-picker]').daterangepicker({
-                    'applyClass': 'btn-sm btn-success',
-                    'cancelClass': 'btn-sm btn-default',
-                    locale: {
-                        applyLabel: 'Apply',
-                        cancelLabel: 'Cancel',
-                    }
-                }).prev().on(ace.click_event, function() {
+                    'applyClass': 'btn-sm btn-success'
+                    , 'cancelClass': 'btn-sm btn-default'
+                    , locale: {
+                        applyLabel: 'Apply'
+                        , cancelLabel: 'Cancel'
+                    , }
+                }).prev().on(ace.click_event, function () {
                     $(this).next().focus();
                 });
-
             </script>
 </body>
 

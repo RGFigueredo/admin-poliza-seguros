@@ -130,9 +130,9 @@ include_once CORE_DIR.'/modulos/modificar/mod_tpoliza.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
-           case 'modtservicio' :
+           case 'modtseguro' :
     if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_tservicio.php';
+include_once CORE_DIR.'/modulos/modificar/mod_tseguro.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
