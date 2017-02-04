@@ -2,39 +2,21 @@
 <html lang="en">
 
 <head>
-    <title>Registro de beneficiario</title>
+    <title>Registro de tipo de Seguro</title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-  
-        include STATIC_DIR.'/header.php';  
-    
+            if (!empty($_POST)) {
 
- $cedula = $_GET['cedula'];
- 
-$query = "  SELECT cedula,
-                                nombres,
-                                apellidos,
-                                fechanacimiento,
-                                direccion,
-                                telefono,
-                                correo,                              
-                                estatus,
-                                asegurado_cedula
-            FROM    beneficiario where cedula='$cedula'
-         ";
-    try{
-        $stmt = $db->prepare($query);
-        $result = $stmt->execute();
-    }
-    catch(PDOException $ex){
-    echo "Error > " .$ex->getMessage();
-    }
-    $rows = $stmt->fetchAll();
-   
-?>
+                include_once INC_DIR.'/reg_tseguro.php';
+            }
+        include_once STATIC_DIR.'/header.php';
+                if (!empty($_POST['registro'])) {
+                    include_once INC_DIR.'/reg_tseguro.php';
+                }
+        ?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
@@ -47,9 +29,9 @@ $query = "  SELECT cedula,
             <div class="main-content-inner">
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
-                        <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.php">Inicio</a> </li>
+                        <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.php?do=panel">Inicio</a> </li>
                         <li>Empresa</li>
-                        <li class="active">Registro de beneficiario</li>
+                        <li class="active">Registro de tipo de Seguro</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -65,7 +47,7 @@ $query = "  SELECT cedula,
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addbeneficiario" method="POST">
+                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addtseguro" method="POST">
                                             <input type='hidden' name="registro" value="1">
                                             <!-- Tabs -->
                                             <div id="wizard" class="swMain">
@@ -73,10 +55,10 @@ $query = "  SELECT cedula,
                                                     <li>
                                                         <a href="#step-1">
                                                             <label class="stepNumber">1</label> <span class="stepDesc">Generales<br />
-                   <small>Detalles generales</small>
+                   <small>Datos Generales</small>
                 </span> </a>
                                                     </li>
-                                                    <li>
+                                                    <!-- <li>
                                                         <a href="#step-2">
                                                             <label class="stepNumber">2</label> <span class="stepDesc">Seguro<br />
                    <small>Datos Seguro</small>
@@ -87,93 +69,76 @@ $query = "  SELECT cedula,
                                                             <label class="stepNumber">3</label> <span class="stepDesc">Contacto<br />
                    <small>Datos de Contacto</small>
                 </span> </a>
-                                                    </li>
+                                                    </li>-->
                                                 </ul>
-                                                <?php foreach ($rows as $row) {
-                                                    ?>
-                                                    <div id="step-1">
-                                                        <h2 class="StepTitle">Paso 1: Datos Generales beneficiario.</h2>
-                                                        <table cellspacing="3" cellpadding="3" align="center">
-                                                            <tr>
-                                                                <td align="right">Nombres :</td>
-                                                                <td align="left">
-                                                                    <input type="text" id="nombres" name="nombres" value="<?php echo $row['nombres'];?>" class="txtBox"> </td>
-                                                                <td align="left"><span id="msg_nombres"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Apellidos :</td>
-                                                                <td align="left">
-                                                                    <input type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'];?>" class="txtBox"> </td>
-                                                                <td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Cedula :</td>
-                                                                <td align="left">
-                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="<?php echo $row['cedula'];?>" class="txtBox" data-format="dddddddd"> </td>
-                                                                <td align="left"><span id="msg_cedula"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Fecha de nacimiento :</td>
-                                                                <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" id="id-date-picker-1" name="fechanacimiento" type="text" value="<?php echo $row['fechanacimiento'];?>" data-date-format="yyyy-mm-dd" required="required"/>
-																	<i class="ace-icon fa fa-calendar"></i>
-															</span> </td>
-                                                                <td align="left"><span id="msg_fechanacimiento"></span>&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div id="step-2">
-                                                        <h2 class="StepTitle">Paso 2: Detalles seguro</h2>
-                                                        <table cellspacing="3" cellpadding="3" align="center">
-                                                            <tr>
-                                                                <td align="right">N| Cedula por el cual es beneficiado :</td>
-                                                                <td align="left">
-                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="asegurado_cedula" name="asegurado_cedula" value="<?php echo $row['asegurado_cedula'];?>" class="txtBox" data-format="dddddddd"> </td>
-                                                                <td align="left"><span id="msg_asegurado_cedula"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Estatus :</td>
-                                                                <td align="left">
-                                                                    <select id="estatus" name="estatus" class="form-control selectpicker">
-                                                                        <option>
-                                                                            <?php echo $row['estatus'];?>
-                                                                        </option>
-                                                                        <option>Activo</option>
-                                                                        <option>Inactivo</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td align="left"><span id="msg_estatus"></span>&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <div id="step-3">
-                                                        <h2 class="StepTitle">Paso 3: Detalles Contacto</h2>
-                                                        <table cellspacing="3" cellpadding="3" align="center">
-                                                            <tr>
-                                                                <td align="right">Direccion :</td>
-                                                                <td align="left">
-                                                                    <input type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'];?>" class="txtBox"> </td>
-                                                                <td align="left"><span id="msg_direccion"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Telefono :</td>
-                                                                <td align="left">
-                                                                    <input type="text" id="telefono" name="telefono" value="<?php echo $row['telefono'];?>" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
-                                                                <td align="left"><span id="msg_telefono"></span>&nbsp;</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td align="right">Correo :</td>
-                                                                <td align="left">
-                                                                    <input type="email" id="correo" name="correo" value="<?php echo $row['correo'];?>" class="txtBox"> </td>
-                                                                <td align="left"><span id="msg_correo"></span>&nbsp;</td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                    <?php
-}
- 
-                                            ?>
-                                            </div>
+                                                <div id="step-1">
+                                                    <h2 class="StepTitle">Paso 1: Datos Generales del seguro.</h2>
+                                                    <table cellspacing="3" cellpadding="3" align="center">
+                                                        <tr>
+                                                            <td align="right">Codigo :</td>
+                                                            <td align="left">
+                                                                <input type="text" id="codigo" name="codigo" value="" class="txtBox bfh-phone" data-format="TS-dddd"> </td>
+                                                            <td align="left"><span id="msg_codigo"></span>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">Nombre :</td>
+                                                            <td align="left">
+                                                                <input type="text" id="nombre" name="nombre" value="" class="txtBox"> </td>
+                                                            <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">Observacion :</td>
+                                                            <td align="left">
+                                                                <input type="text" id="observacion" name="observacion" value="" class="txtBox"> </td>
+                                                            <td align="left"><span id="msg_observacion"></span>&nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <!-- <div id="step-2">
+                                                    <h2 class="StepTitle">Paso 2: Datos del Seguro</h2>
+                                                    <table cellspacing="3" cellpadding="3" align="center">
+                                                        <tr>
+                                                            <td align="right">Estatus :</td>
+                                                            <td align="left">
+                                                                <select id="estatus" name="estatus" class="form-control selectpicker">
+                                                                    <option>Asegurado</option>
+                                                                    <option>En espera</option>
+                                                                    <option>Sin asignar</option>
+                                                                </select>
+                                                            </td>
+                                                            <td align="left"><span id="msg_estatus"></span>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">Cedula del corredor :</td>
+                                                            <td align="left">
+                                                                <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="corredor_cedula" value="" class="txtBox" data-format="dddddddd"> </td>
+                                                            <td align="left"><span id="msg_corredor_cedula"></span>&nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                                <div id="step-3">
+                                                    <h2 class="StepTitle">Paso 3: Datos de Contacto</h2>
+                                                    <table cellspacing="3" cellpadding="3" align="center">
+                                                        <tr>
+                                                            <td align="right">Direccion :</td>
+                                                            <td align="left">
+                                                                <input type="text" id="direccion" name="direccion" value="" class="txtBox"> </td>
+                                                            <td align="left"><span id="msg_direccion"></span>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">Telefono :</td>
+                                                            <td align="left">
+                                                                <input type="text" id="telefono" name="telefono" value="" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
+                                                            <td align="left"><span id="msg_telefono"></span>&nbsp;</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td align="right">Correo :</td>
+                                                            <td align="left">
+                                                                <input type="email" id="correo" name="correo" value="" class="txtBox"> </td>
+                                                            <td align="left"><span id="msg_correo"></span>&nbsp;</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>--></div>
                                             <!-- End SmartWizard Content -->
                                         </form>
                                     </td>

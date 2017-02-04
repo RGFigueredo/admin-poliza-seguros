@@ -36,6 +36,18 @@ switch ($_GET['do']) {
         
         
         
+        
+           case 'eliminar' :
+        if ($login_ok) {
+            include_once CORE_DIR.'/modulos/eliminar.php';
+            break;
+        } else {
+                include_once CORE_DIR.'/modulos/login.php';
+            }
+        
+        
+        
+        
   
     
         //REGISTROS
@@ -107,6 +119,20 @@ include_once CORE_DIR.'/modulos/modificar/mod_asegurado.php';
   case 'modbeneficiario' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+          case 'modtpoliza' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_tpoliza.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+           case 'modtservicio' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_tservicio.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';

@@ -74,7 +74,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modxcorredor?cedula=<?PHP echo $row['cedula']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modtpoliza&codigo=<?PHP echo $row['codigo']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>

@@ -78,12 +78,12 @@
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="perfil.php?id=<?PHP echo $row['cedula']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modbeneficiario&cedula=<?PHP echo $row['cedula']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="perfil.php?id=<?PHP echo $row['cedula']?>&queja=si">
+                                                        <a href="">
                                                             <button class="btn btn-xs btn-danger" title="Dar de baja" data-toggle="modal" data-target="#Quejas"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>
@@ -118,17 +118,24 @@
                         //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
                         .dataTable({
                             bAutoWidth: false
-                            , "aoColumns": [
-                                {
+                            , "aoColumns": [{
                                     "bSortable": false
                                 }
-                      , null, null, null, null, null
-                                , {
+
+
+
+
+
+
+
+
+
+                                
+                                , null, null, null, null, null, {
                                     "bSortable": false
                                 }
-                    ]
-                            , "aaSorting": []
-                            , //,
+                            ]
+                            , "aaSorting": [], //,
                             //"sScrollY": "200px",
                             //"bPaginate": false,
                             //"sScrollX": "100%",
@@ -166,8 +173,7 @@
                             catch (e) {}
                         }
                         , "sSelectedClass": "success"
-                        , "aButtons": [
-                            {
+                        , "aButtons": [{
                                 "sExtends": "copy"
                                 , "sToolTip": "Copiar al porta papeles"
                                 , "sButtonClass": "btn btn-white btn-primary btn-bold"
@@ -176,21 +182,21 @@
                                     this.fnInfo('<h3 class="no-margin-top smaller">Tabla copiada</h3>\
                                     <p>Copiadas ' + (oTable1.fnSettings().fnRecordsTotal()) + ' Tablas</p>', 1500);
                                 }
-                        },
+                            },
 
                             {
                                 "sExtends": "csv"
                                 , "sToolTip": "Exportar a CSV"
                                 , "sButtonClass": "btn btn-white btn-primary  btn-bold"
                                 , "sButtonText": "<i class='fa fa-file-excel-o bigger-110 green'></i>"
-                        },
+                            },
 
                             {
                                 "sExtends": "pdf"
                                 , "sToolTip": "Exportar a PDF"
                                 , "sButtonClass": "btn btn-white btn-primary  btn-bold"
                                 , "sButtonText": "<i class='fa fa-file-pdf-o bigger-110 red'></i>"
-                        },
+                            },
 
                             {
                                 "sExtends": "print"
@@ -201,8 +207,8 @@
                                 , "sInfo": "<h3 class='no-margin-top'>Vista de impresión</h3>\
                                       <p>Por favor, utilice la función de imprimir del navegador para imprimir este documento, Normalmente es CTRL+P\
                                       <br />Presione <b>escape</b> cuando termine, para regresar</p>"
-                        , }
-                    ]
+                            , }
+                        ]
                     });
                     //we put a container before our table and append TableTools element to it
                     $(tableTools_obj.fnContainer()).appendTo($('.tableTools-container'));
@@ -225,8 +231,7 @@
                     var colvis = new $.fn.dataTable.ColVis(oTable1, {
                         "buttonText": "<i class='fa fa-search'></i>"
                         , "aiExclude": [0, 6]
-                        , "bShowAll": true
-                        , //"bRestore": true,
+                        , "bShowAll": true, //"bRestore": true,
                         "sAlign": "right"
                         , "fnLabel": function (i, title, th) {
                             return $(th).text(); //remove icons, etc

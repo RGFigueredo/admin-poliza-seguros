@@ -8,26 +8,34 @@
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datos_corredor.php';
+  
         include STATIC_DIR.'/header.php';  
     
 
+ $cedula = $_GET['cedula'];
  
-  
-    if (isset($_GET['cedula'])) {
-		$sql = 'SELECT * FROM corredor WHERE cedula = ?';
-		$stmt = $conn->prepare($sql);
-		$results = $stmt->execute(array($_GET['cedula']));
-		$row = $stmt->fetch();
-		if (empty($row)) {
-		}
-       
-        else{
-              
-	}
-    
-    
-        ?>
+$query = "  SELECT    cedula,
+                                nombres,
+                                apellidos,
+                                fechanacimiento,
+                                telefono,
+                                correo,
+                                direccion,
+                                fecharegistro,
+                                estatus,
+                                aseguradora_rif                  
+            FROM    corredor where cedula='$cedula'
+         ";
+    try{
+        $stmt = $db->prepare($query);
+        $result = $stmt->execute();
+    }
+    catch(PDOException $ex){
+    echo "Error > " .$ex->getMessage();
+    }
+    $rows = $stmt->fetchAll();
+   
+?>
         <!-- page specific plugin styles -->
         <link rel="stylesheet" href="assets/css/bootstrap-multiselect.min.css" />
         <link rel="stylesheet" href="assets/css/datepicker.min.css" />
@@ -96,19 +104,19 @@
                                                             <tr>
                                                                 <td align="right">Apellidos :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="apellidos" name="apellidos" value="" class="txtBox"> </td>
+                                                                    <input type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Cedula :</td>
                                                                 <td align="left">
-                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd"> </td>
+                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="<?php echo $row['cedula'];   ?>" class="txtBox" data-format="dddddddd"> </td>
                                                                 <td align="left"><span id="msg_cedula"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Fecha de nacimiento :</td>
                                                                 <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" id="id-date-picker-1" name="fechanacimiento" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+																	<input class="date-picker txtBox" id="id-date-picker-1" name="fechanacimiento" value="<?php echo $row['fechanacimiento'];   ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 																	<i class="ace-icon fa fa-calendar"></i>
 															</span> </td>
                                                                 <td align="left"><span id="msg_fechanacimiento"></span>&nbsp;</td>
@@ -121,19 +129,19 @@
                                                             <tr>
                                                                 <td align="right">Direccion :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="direccion" name="direccion" value="" class="txtBox"> </td>
+                                                                    <input type="text" id="direccion" name="direccion" value="<?php echo $row['direccion'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_direccion"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Telefono :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="telefono" name="telefono" value="" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
+                                                                    <input type="text" id="telefono" name="telefono" value="<?php echo $row['telefono'];   ?>" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
                                                                 <td align="left"><span id="msg_telefono"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Correo :</td>
                                                                 <td align="left">
-                                                                    <input type="email" id="correo" name="correo" value="" class="txtBox"> </td>
+                                                                    <input type="email" id="correo" name="correo" value="<?php echo $row['correo'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_correo"></span>&nbsp;</td>
                                                             </tr>
                                                         </table>
@@ -144,7 +152,7 @@
                                                             <tr>
                                                                 <td align="right">Fecha de registro :</td>
                                                                 <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+																	<input class="date-picker txtBox" value="<?php echo $row['fecharegistro'];   ?>" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 																	<i class="ace-icon fa fa-calendar"></i>
 															</span> </td>
                                                                 <td align="left"><span id="msg_fecharegistro"></span>&nbsp;</td>
@@ -152,13 +160,16 @@
                                                             <tr>
                                                                 <td align="right">Rif - Seniat de la empresa:</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd"> </td>
+                                                                    <input type="text" id="aseguradora_rif" name="aseguradora_rif" value="<?php echo $row['aseguradora_rif'];   ?>" class="txtBox bfh-phone" data-format="J-dddddddd"> </td>
                                                                 <td align="left"><span id="msg_rif"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Estatus del corredor:</td>
                                                                 <td align="left">
                                                                     <select id="estatus" name="estatus" class="form-control selectpicker">
+                                                                        <option>
+                                                                            <?php echo $row['estatus'];   ?>
+                                                                        </option>
                                                                         <option>Activo</option>
                                                                         <option>Inactivo</option>
                                                                     </select>
@@ -200,12 +211,12 @@
             <!-- ace scripts -->
             <!-- inline scripts related to this page -->
             <script type="text/javascript">
-                $(document).ready(function () {
+                $(document).ready(function() {
                     // wizard
                     $('#wizard').smartWizard({
-                        transitionEffect: 'slideleft'
-                        , onLeaveStep: leaveAStepCallback
-                        , onFinish: onFinishCallback, //enableFinishButton: true
+                        transitionEffect: 'slideleft',
+                        onLeaveStep: leaveAStepCallback,
+                        onFinish: onFinishCallback, //enableFinishButton: true
                     });
 
                     function leaveAStepCallback(obj) {
@@ -225,40 +236,37 @@
                     if (validateStep1() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: true
+                            stepnum: 1,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: false
+                            stepnum: 1,
+                            iserror: false
                         });
                     }
                     if (validateStep2() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: true
+                            stepnum: 2,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: false
+                            stepnum: 2,
+                            iserror: false
                         });
                     }
                     if (validateStep3() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: true
+                            stepnum: 3,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: false
+                            stepnum: 3,
+                            iserror: false
                         });
                     }
                     if (!isStepValid) {
@@ -275,14 +283,13 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -292,14 +299,13 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -309,14 +315,13 @@
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -336,24 +341,25 @@
                 //datepicker plugin
                 //link
                 $('.date-picker').datepicker({
-                        autoclose: true
-                        , todayHighlight: true
+                        autoclose: true,
+                        todayHighlight: true
                     })
                     //Mostrar el datepicker al hacer click en el icono
-                    .next().on(ace.click_event, function () {
+                    .next().on(ace.click_event, function() {
                         $(this).prev().focus();
                     });
                 //to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
                 $('input[name=date-range-picker]').daterangepicker({
-                    'applyClass': 'btn-sm btn-success'
-                    , 'cancelClass': 'btn-sm btn-default'
-                    , locale: {
-                        applyLabel: 'Apply'
-                        , cancelLabel: 'Cancel'
-                    , }
-                }).prev().on(ace.click_event, function () {
+                    'applyClass': 'btn-sm btn-success',
+                    'cancelClass': 'btn-sm btn-default',
+                    locale: {
+                        applyLabel: 'Apply',
+                        cancelLabel: 'Cancel',
+                    }
+                }).prev().on(ace.click_event, function() {
                     $(this).next().focus();
                 });
+
             </script>
 </body>
 
