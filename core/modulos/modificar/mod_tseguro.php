@@ -61,18 +61,19 @@ codigo,
                             <table align="center" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td>
-                                        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=addtseguro" method="POST">
-                                            <input type='hidden' name="registro" value="1">
-                                            <!-- Tabs -->
-                                            <div id="wizard" class="swMain">
-                                                <ul>
-                                                    <li>
-                                                        <a href="#step-1">
-                                                            <label class="stepNumber">1</label> <span class="stepDesc">Generales<br />
+                                        <?php foreach ($rows as $row) {
+                                                    ?>
+                                            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=uptiposeguro?id=<?php echo $row['id'];?>" method="POST">
+                                                <!-- Tabs -->
+                                                <div id="wizard" class="swMain">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#step-1">
+                                                                <label class="stepNumber">1</label> <span class="stepDesc">Generales<br />
                    <small>Datos Generales</small>
                 </span> </a>
-                                                    </li>
-                                                    <!-- <li>
+                                                        </li>
+                                                        <!-- <li>
                                                         <a href="#step-2">
                                                             <label class="stepNumber">2</label> <span class="stepDesc">Seguro<br />
                    <small>Datos Seguro</small>
@@ -84,9 +85,8 @@ codigo,
                    <small>Datos de Contacto</small>
                 </span> </a>
                                                     </li>-->
-                                                </ul>
-                                                <?php foreach ($rows as $row) {
-                                                    ?>
+                                                    </ul>
+                                                    <input type='hidden' name="id" value="<?php echo $row['id'];?>">
                                                     <div id="step-1">
                                                         <h2 class="StepTitle">Paso 1: Datos Generales del seguro.</h2>
                                                         <table cellspacing="3" cellpadding="3" align="center">
@@ -159,8 +159,8 @@ codigo,
                                                         </tr>
                                                     </table>
                                                 </div>--></div>
-                                            <!-- End SmartWizard Content -->
-                                        </form>
+                                                <!-- End SmartWizard Content -->
+                                            </form>
                                     </td>
                                 </tr>
                             </table>
@@ -187,12 +187,12 @@ codigo,
             <!-- ace scripts -->
             <!-- inline scripts related to this page -->
             <script type="text/javascript">
-                $(document).ready(function () {
+                $(document).ready(function() {
                     // wizard
                     $('#wizard').smartWizard({
-                        transitionEffect: 'slideleft'
-                        , onLeaveStep: leaveAStepCallback
-                        , onFinish: onFinishCallback, //enableFinishButton: true
+                        transitionEffect: 'slideleft',
+                        onLeaveStep: leaveAStepCallback,
+                        onFinish: onFinishCallback, //enableFinishButton: true
                     });
 
                     function leaveAStepCallback(obj) {
@@ -212,40 +212,37 @@ codigo,
                     if (validateStep1() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: true
+                            stepnum: 1,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 1
-                            , iserror: false
+                            stepnum: 1,
+                            iserror: false
                         });
                     }
                     if (validateStep2() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: true
+                            stepnum: 2,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 2
-                            , iserror: false
+                            stepnum: 2,
+                            iserror: false
                         });
                     }
                     if (validateStep3() == false) {
                         isStepValid = false;
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: true
+                            stepnum: 3,
+                            iserror: true
                         });
-                    }
-                    else {
+                    } else {
                         $('#wizard').smartWizard('setError', {
-                            stepnum: 3
-                            , iserror: false
+                            stepnum: 3,
+                            iserror: false
                         });
                     }
                     if (!isStepValid) {
@@ -262,14 +259,13 @@ codigo,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -279,14 +275,13 @@ codigo,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -296,14 +291,13 @@ codigo,
                             isStepValid = false;
                             $('#wizard').smartWizard('showMessage', 'Corrija los datos en el paso' + step + ' Y continue.');
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: true
+                                stepnum: step,
+                                iserror: true
                             });
-                        }
-                        else {
+                        } else {
                             $('#wizard').smartWizard('setError', {
-                                stepnum: step
-                                , iserror: false
+                                stepnum: step,
+                                iserror: false
                             });
                         }
                     }
@@ -323,24 +317,25 @@ codigo,
                 //datepicker plugin
                 //link
                 $('.date-picker').datepicker({
-                        autoclose: true
-                        , todayHighlight: true
+                        autoclose: true,
+                        todayHighlight: true
                     })
                     //Mostrar el datepicker al hacer click en el icono
-                    .next().on(ace.click_event, function () {
+                    .next().on(ace.click_event, function() {
                         $(this).prev().focus();
                     });
                 //to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
                 $('input[name=date-range-picker]').daterangepicker({
-                    'applyClass': 'btn-sm btn-success'
-                    , 'cancelClass': 'btn-sm btn-default'
-                    , locale: {
-                        applyLabel: 'Apply'
-                        , cancelLabel: 'Cancel'
-                    , }
-                }).prev().on(ace.click_event, function () {
+                    'applyClass': 'btn-sm btn-success',
+                    'cancelClass': 'btn-sm btn-default',
+                    locale: {
+                        applyLabel: 'Apply',
+                        cancelLabel: 'Cancel',
+                    }
+                }).prev().on(ace.click_event, function() {
                     $(this).next().focus();
                 });
+
             </script>
 </body>
 

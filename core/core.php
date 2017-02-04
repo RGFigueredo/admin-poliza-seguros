@@ -191,9 +191,26 @@ include_once CORE_DIR.'/modulos/listas/lista_tpoliza.php';
         }
 
 
+        //ACTUALIZACIONES
+         case 'uptiposeguro' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/actualizar/uptiposeguro.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
 
 
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         

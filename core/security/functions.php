@@ -6,8 +6,7 @@
     function getDataBySession($session, PDO $db)
     {
         $query = 'SELECT nombre,
-                     apellido,
-                     nivel
+                     apellido
               FROM   usuarios
               WHERE  cookie = :id
              ';
