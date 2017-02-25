@@ -130,6 +130,18 @@
                         <a href="index.php?do=tseguro"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
             </li>
+        </ul>
+           <!--PANEL GASTOS-->
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-money"></i> <span class="menu-text"> Panel Gastos</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=addgastos"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                    <li class="">
+                        <a href="index.php?do=listagastos"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
+                </ul>
+            </li>
         </ul>';
                                         break;
                                     case 2:

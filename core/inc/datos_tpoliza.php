@@ -1,11 +1,11 @@
 <?php
-$query = "  SELECT  id,
+$query = "  SELECT  
 codigo,
                     nombre,
                      costo,
                      estatus,
                     cobertura                 
-            FROM    tipopolizas  where estatus!='Inactivo' ORDER BY id ASC
+            FROM    tipopolizas  where estatus!='Inactivo' ORDER BY codigo ASC
          ";
     try{
         $stmt = $db->prepare($query);

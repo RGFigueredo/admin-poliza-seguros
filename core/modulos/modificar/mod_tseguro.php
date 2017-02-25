@@ -12,14 +12,14 @@
         include STATIC_DIR.'/header.php';  
     
 
- $id = $_GET['id'];
+  $id = $_GET['id'];
  
-$query = "  SELECT id,
+$query = "  SELECT  
 codigo,
                     nombre,estatus,
                     observacion               
             
-            FROM    tiposeguro where id='$id'
+            FROM    tiposeguro where codigo='$id'
          ";
     try{
         $stmt = $db->prepare($query);
@@ -91,7 +91,7 @@ codigo,
                 </span> </a>
                                                     </li>-->
                                                     </ul>
-                                                    <input type='hidden' name="id" value="<?php echo $row['id'];?>">
+                                                    
                                                     <div id="step-1">
                                                         <h2 class="StepTitle">Paso 1: Datos Generales del seguro.</h2>
                                                         <table cellspacing="3" cellpadding="3" align="center">

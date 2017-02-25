@@ -1,9 +1,9 @@
 <?php
-$query = "  SELECT  id,
+$query = "  SELECT  
 codigo,
                     nombre,
                     observacion                 
-            FROM    tiposeguro where estatus!='Inactivo' ORDER BY id ASC
+            FROM    tiposeguro where estatus!='Inactivo' ORDER BY codigo ASC
          ";
     try{
         $stmt = $db->prepare($query);

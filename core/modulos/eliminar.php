@@ -4,8 +4,9 @@ if (! defined ( 'SRCP' )) {
 }
 ///////// Super inseguro pero funciona
 $tipo = $_GET['tipo'];
-$id = $_GET['id'];
-$cedula = $_GET['id'];
+ 
+$id = $_GET['id']; 
+ 
 function query($var1, $var2, PDO $db){
 	switch ($var1) {
 		case 'corredor':{
@@ -90,7 +91,7 @@ function query($var1, $var2, PDO $db){
 			$query = '	UPDATE tipopolizas   
 						SET 
 						       estatus = :estatus 
-						 WHERE id = :cedula
+						 WHERE codigo = :cedula
         		';
         $query_params = array(
             ':estatus' => 'Inactivo',
@@ -115,8 +116,8 @@ function query($var1, $var2, PDO $db){
                   case 'tiposeguro':{
 			$query = '	UPDATE tiposeguro   
 						SET 
-						       estatus = :estatus 
-						 WHERE id = :cedula
+				         estatus = :estatus 
+						 WHERE codigo = :cedula
         		';
         $query_params = array(
             ':estatus' => 'Inactivo',
@@ -165,8 +166,35 @@ function query($var1, $var2, PDO $db){
         break;
     } //fin case tiposeguro
             
+  
             
+                     case 'gastos':{
+			$query = '	UPDATE gastos   
+						SET 
+						       estatus = :estatus 
+						 WHERE codigo = :cedula
+        		';
+        $query_params = array(
+            ':estatus' => 'Inactivo',
+            ':cedula' => $var2
+            );
+        try {
+            $stmt = $db->prepare($query);
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            // Si tenemos problemas para ejecutar la consulta imprimimos el error
+            echo "<div class='panel-body'>
+                     <div class='alert alert-warning alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
+					</div>
+				  </div>".$ex->getMessage();
+        }//fin catch error
+        header('Location: index.php?do=listagastos');
+        break;
+    } //fin case tiposeguro
             
+  
             
             
             

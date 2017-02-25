@@ -15,7 +15,7 @@
  $id = $_GET['id'];
  
 $query = "  SELECT codigo,nombre,costo,estatus,cobertura
-            FROM    tipopolizas where id='$id'
+            FROM    tipopolizas where codigo='$id'
          ";
     try{
         $stmt = $db->prepare($query);

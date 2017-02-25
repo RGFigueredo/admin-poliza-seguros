@@ -205,18 +205,16 @@ function modificar($var1, $var2, PDO $db){
           case 'tipopolizas':
      $query = '  UPDATE tipopolizas   
                   SET 
-                          id = :id,
+                       
                           nombre = :nombre,
                           costo = :costo,
-                      
                           cobertura = :cobertura,
-                          estatus = :estatus,
-                                          
+                          estatus = :estatus,            
                           codigo = :codigo
-                   WHERE id = :cedula_old
+                   WHERE codigo = :cedula_old
                 ';
         $query_params = array(
-            ':id' => $_POST['id'],
+            
             ':nombre' => $_POST['nombre'],
             ':costo' => $_POST['costo'],
             ':cobertura' => $_POST['cobertura'],
@@ -242,21 +240,16 @@ function modificar($var1, $var2, PDO $db){
           case 'tiposeguro':
         $query = '  UPDATE tiposeguro   
                   SET 
-                          id = :id,
                           nombre = :nombre,
                           observacion = :observacion,
-                      
-                       
-                          estatus = :estatus,
-                                          
+                          estatus = :estatus,           
                           codigo = :codigo
-                   WHERE id = :cedula_old
+                   WHERE codigo = :cedula_old
                 ';
         $query_params = array(
-            ':id' => $_POST['id'],
-            ':nombre' => $_POST['nombre'],
-            ':observacion' => $_POST['observacion'],
             
+            ':nombre' => $_POST['nombre'],
+            ':observacion' => $_POST['observacion'],            
             ':estatus' => $_POST['estatus'],
             ':codigo' => $_POST['codigo'],
             ':cedula_old' => $var2
@@ -276,9 +269,45 @@ function modificar($var1, $var2, PDO $db){
         }//fin catch error
         header('Location: index.php?do=tseguro');
         break;
+         
+          
+              case 'gastos':
+        $query = '  UPDATE gastos   
+                  SET 
+                          codigo = :codigo,
+                          monto = :monto,
+                          estatus = :estatus,                    
+                          asegurado_cedula = :asegurado_cedula,               
+                          reembolso = :reembolso
+                   WHERE codigo = :cedula_old
+                ';
+        $query_params = array(
+            ':codigo' => $_POST['codigo'],
+            ':monto' => $_POST['monto'],
+            ':estatus' => $_POST['estatus'],            
+            ':asegurado_cedula' => $_POST['asegurado_cedula'],
+            ':reembolso' => $_POST['reembolso'],
+            ':cedula_old' => $var2
+            );
+        try {
+            $stmt = $db->prepare($query);
+
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            // Si tenemos problemas para ejecutar la consulta imprimimos el error
+            echo "<div class='panel-body'>
+                     <div class='alert alert-warning alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
+          </div>
+          </div>".$ex->getMessage();
+        }//fin catch error
+        header('Location: index.php?do=listagastos');
+        break;
           case 'EJEMPLO':
         # code...
         break;
+          
     default:
       //header('Location: index.php?do=panel');
       break;
