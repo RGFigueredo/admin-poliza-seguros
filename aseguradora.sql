@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2017 a las 11:29:42
+-- Tiempo de generación: 26-02-2017 a las 23:37:11
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -46,7 +46,8 @@ CREATE TABLE `asegurado` (
 --
 
 INSERT INTO `asegurado` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `direccion`, `correo`, `estatus`, `estado`, `corredor_cedula`) VALUES
-('11696062', 'CELINA', 'CASTILLO', '2017-02-01', '+58 ', 'X', 'C', 'En espera', NULL, '21726528');
+('11696062', 'CELINA', 'CASTILLO', '2017-02-01', '+58 ', 'X', 'C', 'En espera', NULL, '21726528'),
+('12342323', 'MANUEL', 'JOSE', '2017-01-30', '+58 ', '', '', 'Activo', NULL, '21726528');
 
 -- --------------------------------------------------------
 
@@ -74,7 +75,7 @@ CREATE TABLE `aseguradora` (
 
 INSERT INTO `aseguradora` (`rif`, `cuentabancaria`, `cedulacuentabancaria`, `nombre`, `direccion`, `telefonolocal`, `telefonopersonal`, `correo`, `estatus`, `estado`, `fechafundacion`) VALUES
 ('J-11696062', '2222-2222-22-2222222222 ', 'J-11696062', 'PROVINCIAL CA', 'CARACAS', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'C@G.COM', 'Inactivo', 'LA', '2017-02-04'),
-('J-21726528', '1111-1111-11-1111111111 ', 'J-21726528', 'MERCANTIL CA', 'ESTADO LARA BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@CORREO.COM', 'Activa', 'DI', '2017-01-30'),
+('J-21726528', '1111-1111-11-1111111111 ', 'J-21726528', 'MERCANTIL CA', 'ESTADO LARA BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@CORREO.COM', 'Activa', 'LA', '2017-01-30'),
 ('J-22222222', '3333-3333-33-3333', 'J-33333333', 'CONATEL', 'X', '+58 ', '+58 ', 'X', 'Inactivo', 'LA', '2017-02-04');
 
 -- --------------------------------------------------------
@@ -100,7 +101,7 @@ CREATE TABLE `beneficiario` (
 --
 
 INSERT INTO `beneficiario` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `direccion`, `telefono`, `correo`, `estatus`, `asegurado_cedula`) VALUES
-(123456789, 'CELIMAR ', 'ACOSTA', '2017-02-02', '', '+58 ', '', 'Activo', '11696062');
+(123456789, 'CELIMAR ', 'ACOSTA', '2017-02-02', '', '+58 ', '', 'Inactivo', '11696062');
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,7 @@ CREATE TABLE `corredor` (
 --
 
 INSERT INTO `corredor` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `correo`, `direccion`, `fecharegistro`, `estatus`, `aseguradora_rif`) VALUES
-('21726528', 'ERICK ANTONIO', 'SUAREZ CASTILLO', '1991-05-29', '+58 (0426) 355-3619', 'ERICK@GMAIL.COM', 'BARQUISIMETO SAN JUAN CALLE 36', '2017-02-04', 'Activo', 'J-21726528');
+('21726528', 'ERICK ANTONIO', 'SUAREZ', '1991-05-29', '+58 (0426) 355-3619', 'ERICK@GMAIL.COM', 'BARQUISIMETO SAN JUAN CALLE 36', '2017-02-04', 'Inactivo', 'J-21726528');
 
 -- --------------------------------------------------------
 
@@ -153,10 +154,23 @@ CREATE TABLE `factura` (
 CREATE TABLE `gastos` (
   `codigo` varchar(45) NOT NULL,
   `monto` varchar(45) DEFAULT NULL,
-  `reembolso` varchar(45) DEFAULT NULL,
+  `reembolso` varchar(45) DEFAULT 'Pendiente',
   `asegurado_cedula` varchar(10) NOT NULL,
-  `estatus` varchar(45) DEFAULT 'Activo'
+  `estatus` varchar(45) DEFAULT 'Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `gastos`
+--
+
+INSERT INTO `gastos` (`codigo`, `monto`, `reembolso`, `asegurado_cedula`, `estatus`) VALUES
+('1', '18000,00', 'Pagado', '12342323', 'Inactivo'),
+('123', '12.00', 'Pagado', '11696062', 'Inactivo'),
+('2', '1500,00', 'Pagado', '11696062', 'Inactivo'),
+('23', '23', 'Pendiente', '11696062', 'Inactivo'),
+('2525252', '500.00', 'Pendiente', '11696062', 'Inactivo'),
+('3', '15000,00', 'Pendiente', '12342323', 'Inactivo'),
+('5511', '5511.11', 'Pendiente', '11696062', 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -192,11 +206,18 @@ CREATE TABLE `polizas` (
 
 CREATE TABLE `reembolsos` (
   `monto` varchar(45) DEFAULT NULL,
-  `fecha` varchar(45) DEFAULT NULL,
+  `fecha` date DEFAULT NULL,
   `gastos_codigo` varchar(45) NOT NULL,
   `asegurado_cedula` varchar(10) NOT NULL,
-  `estatus` varchar(45) DEFAULT 'Activo'
+  `estatus` varchar(45) DEFAULT 'Pendiente'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `reembolsos`
+--
+
+INSERT INTO `reembolsos` (`monto`, `fecha`, `gastos_codigo`, `asegurado_cedula`, `estatus`) VALUES
+('123321.00', '2017-01-30', '3', '11696062', 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -231,18 +252,17 @@ CREATE TABLE `tipopolizas` (
   `nombre` varchar(45) DEFAULT NULL,
   `costo` varchar(45) DEFAULT NULL,
   `cobertura` varchar(45) DEFAULT NULL,
-  `estatus` varchar(45) DEFAULT 'Activo',
-  `id` int(5) NOT NULL
+  `estatus` varchar(45) DEFAULT 'Activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tipopolizas`
 --
 
-INSERT INTO `tipopolizas` (`codigo`, `nombre`, `costo`, `cobertura`, `estatus`, `id`) VALUES
-('TP-1', 'Póliza de cobertura limitada', '2500', 'Limitada', 'Activo', 0),
-('TP-2', 'Póliza básica', '5000', 'Nacional', 'Activo', 2),
-('TP-3', 'La póliza más popular', '15000', 'Internacional', 'Activa', 0);
+INSERT INTO `tipopolizas` (`codigo`, `nombre`, `costo`, `cobertura`, `estatus`) VALUES
+('TP-1', 'Póliza de cobertura limitada', '53254', 'Limitada', 'Inactivo'),
+('TP-2', 'Póliza básica', '5000', 'Nacional', 'Inactivo'),
+('TP-3', 'La póliza más popular', '15000', 'Internacional', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -251,7 +271,6 @@ INSERT INTO `tipopolizas` (`codigo`, `nombre`, `costo`, `cobertura`, `estatus`, 
 --
 
 CREATE TABLE `tiposeguro` (
-  `id` int(5) NOT NULL,
   `codigo` varchar(10) NOT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `observacion` varchar(100) DEFAULT NULL,
@@ -262,33 +281,33 @@ CREATE TABLE `tiposeguro` (
 -- Volcado de datos para la tabla `tiposeguro`
 --
 
-INSERT INTO `tiposeguro` (`id`, `codigo`, `nombre`, `observacion`, `estatus`) VALUES
-(1, 'TS-1', 'Seguro de Vida', 'Cubre el riesgo de muerte natural o supervivencia y la incapacidad.', 'Activa'),
-(2, 'TS-2', 'Seguro de responsabilidad civil', 'Cubre los riesgos que involuntariamente pueden causar daños a terceras personas.', ''),
-(3, 'TS-3', 'Seguro familiar', 'Cubre el riesgo de daños que pueden ocasionar el tomador, su cónyuge, sus hijos menores de edad y/o ', ''),
-(4, 'TS-4', 'Seguro profesional', 'Cubre el riesgo de daños que puedan derivarse del ejercicio de la profesión.', ''),
-(5, 'TS-5', 'Seguro de productos', 'Cubre los riesgos que pueden derivarse de los productos fabricados, distribuidos, vendidos, etc.', ''),
-(6, 'TS-6', 'Seguro empresarial', 'Cubre el riesgo de los daños que pueda ocasionar involuntariamente una empresa en su actividad norma', ''),
-(7, 'TS-7', 'Seguro patronal', ' garantiza las indemnizaciones económicas que pueden derivarse de lesiones corporales ocasionadas a ', ''),
-(8, 'TS-8', 'Seguro de crédito', 'cubre al asegurado de la insolvencia de sus deudores.', ''),
-(9, 'TS-9', 'Seguro de Caución', 'tiene por objeto el garantizar el pago de una obligación', ''),
-(10, 'TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', 'Activa'),
-(11, 'TS-11', 'seguros empresariales', 'cubren los riesgos que tanto los empleados como la propia empresa puedan ser objeto.', ''),
-(12, 'TS-12', 'Seguro de Accidentes', 'Cubre el riesgo de incapacidad o muerte como consecuencia de un accidente.', ''),
-(13, 'TS-13', 'seguro terrestre', 'cubren objetos situados en la tierra.', ''),
-(14, 'TS-14', 'seguro marítimo', 'cubren objetos situados en el mar.', ''),
-(15, 'TS-15', 'seguro aéreo', 'cubren objetos situados en el aire.', ''),
-(16, 'TS-16', 'Seguro de prima temporal', 'indican que la prima se abonará durante un período determinado.', ''),
-(17, 'TS-17', 'Seguro de prima vitalicia', 'indican que el pago de la prima se efectuará siempre que viva el asegurado.', ''),
-(18, 'TS-18', 'Seguro de prima única', 'indican que la prima se paga de una sola vez', ''),
-(19, 'TS-19', 'Seguro de prima periódica', 'indican que la prima se pagará durante toda la duración de la póliza.', ''),
-(20, 'TS-20', 'Seguro de Enfermedad', 'Cubre los gastos de asistencia médica para caso de enfermedad.', ''),
-(21, 'TS-21', 'Seguro de Enterramiento o decesos', 'Cubre los gastos ocasionados a los herederos por los servicios funerarios.', ''),
-(22, 'TS-22', 'Seguro de incendio', 'Ccubre los daños ocasionados por el fuego o como consecuencia del intento de salvarlos del incendio.', ''),
-(23, 'TS-23', 'Seguro de robo', 'Cubre los objetos robados y los deterioros ocasionados a consecuencia del mismo.', ''),
-(24, 'TS-24', 'Seguro de transporte', 'Cubre los daños ocurridos durante el transporte de mercancías tanto a los medios de transporte como ', ''),
-(25, 'TS-25', 'Seguro de automóvil', 'Cubre variados riesgos en función del tipo de póliza suscrita.', ''),
-(26, 'TS-26', 'Seguro agrícola', 'Cubre los riesgos que afectan a explotaciones agrícolas, ganaderas y forestales.', '');
+INSERT INTO `tiposeguro` (`codigo`, `nombre`, `observacion`, `estatus`) VALUES
+('TS-1', 'Seguro de Vida', 'Cubre el riesgo de muerte natural o supervivencia y la incapacidad.', 'Activa'),
+('TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', 'Inactivo'),
+('TS-11', 'seguros empresariales', 'cubren los riesgos que tanto los empleados como la propia empresa puedan ser objeto.', 'Inactivo'),
+('TS-12', 'Seguro de Accidentes', 'Cubre el riesgo de incapacidad o muerte como consecuencia de un accidente.', 'Activa'),
+('TS-13', 'seguro terrestre', 'cubren objetos situados en la tierra.', ''),
+('TS-14', 'seguro marítimo', 'cubren objetos situados en el mar.', ''),
+('TS-15', 'seguro aéreo', 'cubren objetos situados en el aire.', ''),
+('TS-16', 'Seguro de prima temporal', 'indican que la prima se abonará durante un período determinado.', ''),
+('TS-17', 'Seguro de prima vitalicia', 'indican que el pago de la prima se efectuará siempre que viva el asegurado.', ''),
+('TS-18', 'Seguro de prima única', 'indican que la prima se paga de una sola vez', ''),
+('TS-19', 'Seguro de prima periódica', 'indican que la prima se pagará durante toda la duración de la póliza.', ''),
+('TS-2', 'Seguro de responsabilidad civil', 'Cubre los riesgos que involuntariamente pueden causar daños a terceras personas.', 'Activa'),
+('TS-20', 'Seguro de Enfermedad', 'Cubre los gastos de asistencia médica para caso de enfermedad.', ''),
+('TS-21', 'Seguro de Enterramiento o decesos', 'Cubre los gastos ocasionados a los herederos por los servicios funerarios.', ''),
+('TS-22', 'Seguro de incendio', 'Ccubre los daños ocasionados por el fuego o como consecuencia del intento de salvarlos del incendio.', ''),
+('TS-23', 'Seguro de robo', 'Cubre los objetos robados y los deterioros ocasionados a consecuencia del mismo.', ''),
+('TS-24', 'Seguro de transporte', 'Cubre los daños ocurridos durante el transporte de mercancías tanto a los medios de transporte como ', ''),
+('TS-25', 'Seguro de automóvil', 'Cubre variados riesgos en función del tipo de póliza suscrita.', ''),
+('TS-26', 'Seguro agrícola', 'Cubre los riesgos que afectan a explotaciones agrícolas, ganaderas y forestales.', ''),
+('TS-3', 'Seguro familiar', 'Cubre el riesgo de daños que pueden ocasionar el tomador, su cónyuge, sus hijos menores de edad y/o ', 'Activa'),
+('TS-4', 'Seguro profesional', 'Cubre el riesgo de daños que puedan derivarse del ejercicio de la profesión.', ''),
+('TS-5', 'Seguro de productos', 'Cubre los riesgos que pueden derivarse de los productos fabricados, distribuidos, vendidos, etc.', ''),
+('TS-6', 'Seguro empresarial', 'Cubre el riesgo de los daños que pueda ocasionar involuntariamente una empresa en su actividad norma', ''),
+('TS-7', 'Seguro patronal', ' garantiza las indemnizaciones económicas que pueden derivarse de lesiones corporales ocasionadas a ', ''),
+('TS-8', 'Seguro de crédito', 'cubre al asegurado de la insolvencia de sus deudores.', ''),
+('TS-9', 'Seguro de Caución', 'tiene por objeto el garantizar el pago de una obligación', '');
 
 -- --------------------------------------------------------
 
@@ -316,7 +335,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `nombre`, `apellido`, `correo`, `telefono`, `direccion`, `password`, `salt`, `cedula`, `nivel`, `cookie`, `logueado`) VALUES
-(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 606056161, 'SI');
+(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 45843781, 'SI');
 
 --
 -- Índices para tablas volcadas
@@ -414,8 +433,7 @@ ALTER TABLE `tipopolizas`
 -- Indices de la tabla `tiposeguro`
 --
 ALTER TABLE `tiposeguro`
-  ADD PRIMARY KEY (`id`,`codigo`),
-  ADD UNIQUE KEY `id_UNIQUE` (`id`),
+  ADD PRIMARY KEY (`codigo`),
   ADD UNIQUE KEY `codigo_UNIQUE` (`codigo`);
 
 --
@@ -428,11 +446,6 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
---
--- AUTO_INCREMENT de la tabla `tiposeguro`
---
-ALTER TABLE `tiposeguro`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
