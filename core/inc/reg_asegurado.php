@@ -97,7 +97,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=listaasegurado');
+        header('Location: index.php?do=listaasegurado&accion=registrado');
     }
 
     if (isset($_GET['accion'])) {

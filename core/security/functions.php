@@ -68,7 +68,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listacorredor');
+        header('Location: index.php?do=listacorredor&accion=modificado');
         break;
     } //fin case corredor
       case 'aseguradora':
@@ -114,7 +114,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listaaseguradora');
+        header('Location: index.php?do=listaaseguradora&accion=modificado');
         break;
       case 'asegurado':
          $query = '  UPDATE asegurado   
@@ -157,7 +157,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listaasegurado');
+        header('Location: index.php?do=listaasegurado&accion=modificado');
         break;
       case 'beneficiario':
         $query = '  UPDATE beneficiario   
@@ -200,7 +200,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listabeneficiario');
+        header('Location: index.php?do=listabeneficiario&accion=modificado');
         break;
           case 'tipopolizas':
      $query = '  UPDATE tipopolizas   
@@ -235,7 +235,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=tpoliza');
+        header('Location: index.php?do=tpoliza&accion=modificado');
         break;
           case 'tiposeguro':
         $query = '  UPDATE tiposeguro   
@@ -267,7 +267,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=tseguro');
+        header('Location: index.php?do=tseguro&accion=modificado');
         break;
          
           
@@ -302,7 +302,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listagastos');
+        header('Location: index.php?do=listagastos&accion=modificado');
         break;
           
                      case 'reembolsos':
@@ -336,7 +336,7 @@ function modificar($var1, $var2, PDO $db){
           </div>
           </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listareembolsos');
+        header('Location: index.php?do=listareembolsos&accion=modificado');
         break;
           
           

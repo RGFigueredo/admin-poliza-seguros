@@ -2,11 +2,10 @@
 if (! defined ( 'SRCP' )) {
     die ( "Logged Hacking attempt!" );
 }
-if (!empty($_POST['registro']))
-    {
-           $query = "
+if (!empty($_POST['cita'])){
+         $query = "
             SELECT 1
-            FROM usuarios
+            FROM cita
             WHERE correo = :correo
         ";
         $query_params = array( ':correo' => $_POST['correo'] );
@@ -33,43 +32,27 @@ if (!empty($_POST['registro']))
         // TESTING NIVEL 1 = ADMINISTRADOR.
         $nivel = 1;
         $query = "
-            INSERT INTO usuarios (
-                nombre,
-                apellido,
+            INSERT INTO cita (
+                nombres,
+                apellidos,
 				correo,
                 telefono,
-                direccion,
-                password,
-                salt,
-                cedula,
-                nivel
-            ) VALUES (
-                :nombre,
-                :apellido,
+                cedula
+                ) VALUES (
+                :nombres,
+                :apellidos,
                 :correo,
                 :telefono,
-                :direccion,
-                :password,
-                :salt,
-                :cedula,
-                :nivel
+                :cedula
             )
         ";
-        $salt = str_replace('=', '.', base64_encode(mcrypt_create_iv(20)));
-        $password = hash('sha512', $_POST['password'] . $salt);
-        for($round = 0; $round < 65536; $round++){
-         $password = hash('sha512', $password . $salt);
-          }
+       
         $query_params = array(
-            ':nombre' => $_POST['nombre'],
-			':apellido' => $_POST['apellido'],
+            ':nombres' => $_POST['nombres'],
+			':apellidos' => $_POST['apellidos'],
             ':correo' => $_POST['correo'],
-            ':telefono' => $_POST['telefono'],
-            ':direccion' => $_POST['direccion'],
-            ':password' => $password,
-            ':salt' => $salt,
-			':cedula' => $_POST['cedula'],
-            ':nivel' => $nivel
+            ':telefono' => $_POST['telefono'],          
+			':cedula' => $_POST['cedula']
         );
         try {
             $stmt = $db->prepare($query);
@@ -81,9 +64,9 @@ if (!empty($_POST['registro']))
                           <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
                           Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
 					</div>" .$ex->getMessage();}
-		header('Location: index.php?accion=registrado');
+		header('Location: index.php?accion=cita');
 }
-
+ 
 
 
 ?>

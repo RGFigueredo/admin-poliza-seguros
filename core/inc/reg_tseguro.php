@@ -80,7 +80,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-        header('Location: index.php?do=tseguro');
+        header('Location: index.php?do=tseguro&accion=registrado');
     }
 
     if (isset($_GET['accion'])) {

@@ -81,8 +81,8 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
-       
-        header('Location: index.php?do=listagastos');
+        header('Location: index.php?do=listagastos&accion=registrado');
+         
     }
 
     if (isset($_GET['accion'])) {

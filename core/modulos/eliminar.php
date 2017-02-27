@@ -31,7 +31,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listacorredor');
+        header('Location: index.php?do=listacorredor&accion=eliminado');
         break;
     } //fin case corredor
             
@@ -58,7 +58,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listaasegurado');
+        header('Location: index.php?do=listaasegurado&accion=eliminado');
         break;
     } //fin case asegurado
             
@@ -84,7 +84,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listabeneficiario');
+        header('Location: index.php?do=listabeneficiario&accion=eliminado');
         break;
     } //fin case tipopolizas
                case 'tipopolizas':{
@@ -109,7 +109,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=tpoliza');
+        header('Location: index.php?do=tpoliza&accion=eliminado');
         break;
     } //fin case tipopolizas
             
@@ -135,7 +135,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=tseguro');
+        header('Location: index.php?do=tseguro&accion=eliminado');
         break;
     } //fin case tiposeguro
             
@@ -162,7 +162,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listaaseguradora');
+        header('Location: index.php?do=listaaseguradora&accion=eliminado');
         break;
     } //fin case tiposeguro
             
@@ -190,7 +190,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listagastos');
+        header('Location: index.php?do=listagastos&accion=eliminado');
         break;
     } //fin case tiposeguro
             
@@ -221,7 +221,7 @@ function query($var1, $var2, PDO $db){
 					</div>
 				  </div>".$ex->getMessage();
         }//fin catch error
-        header('Location: index.php?do=listareembolsos');
+        header('Location: index.php?do=listareembolsos&accion=eliminado');
         break;
     } //fin case tiposeguro
             

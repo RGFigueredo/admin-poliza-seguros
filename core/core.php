@@ -286,6 +286,91 @@ include_once CORE_DIR.'/modulos/listas/lista_reembolsos.php';
 
 if (isset($_GET['accion'])) {
     switch ($_GET['accion']) {
+            
+            
+    case 'cita':
+        echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Tu cita ha sido registrada con éxito!</p>
+					<p> Solo debes esperar un correo donde se te indicara el dia que debe asistir.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+    break;   
+            
+       case 'modificado':
+        echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Tu modificacion se realizo con éxito!</p>
+					<p>Puedes verlo en la siguiente lista, si no se encuentra debe contactar al administrador..</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+    break; 
+    case 'registrado':
+        echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Tu registro se realizo éxitosamente!</p>
+					<p>Puedes verlo en la siguiente lista, si no se encuentra debe contactar al administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+    break; 
+            
+     case 'eliminado':
+        echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha eliminado éxitosamente!</p>
+					<p>Para poder devolver los datos eliminados debe contactar a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+    break;        
+            
     case 'registrado':
         echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>

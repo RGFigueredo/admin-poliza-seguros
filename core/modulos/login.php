@@ -8,6 +8,9 @@ include_once (CORE_DIR . '/security/check.login.php');
 if (!empty($_POST['registro'])){
 include_once (CORE_DIR . '/security/check.registro.php');
 }
+if (!empty($_POST['cita'])){
+include_once (CORE_DIR . '/security/check.cita.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,7 +130,16 @@ include_once (CORE_DIR . '/security/check.registro.php');
 												<a class="btn btn-danger">
 													<i class="ace-icon fa fa-google-plus"></i>
 												</a>
+                                                
+                                              
+                                                
 											</div>
+                                            
+                                         
+											
+											 
+                                            
+                                            
 										</div><!-- /.widget-main -->
 
 										<div class="toolbar clearfix">
@@ -145,6 +157,33 @@ include_once (CORE_DIR . '/security/check.registro.php');
 												</a>
 											</div>
 										</div>
+                                        
+                                        
+                                        
+                                       
+                                        
+                                
+                                        
+                                          <div class="toolbar clearfix">
+											        <center><div>
+												<a href="#" data-target="#cita-box" class="forgot-password-link">
+													<i class="ace-icon fa fa-plus"></i>
+													Reservar cita
+												</a>
+											</div>     </center>
+										</div>
+
+                                        
+                                        
+                                   
+                                     
+											 
+                                          
+                                           
+                                            
+                                            
+										</div>
+                                        
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 
@@ -188,6 +227,7 @@ include_once (CORE_DIR . '/security/check.registro.php');
 										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.forgot-box -->
+                                
 
 								<div id="signup-box" class="signup-box widget-box no-border">
 									<div class="widget-body">
@@ -291,6 +331,87 @@ include_once (CORE_DIR . '/security/check.registro.php');
 										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.signup-box -->
+                            
+                            
+                            
+                            
+                            	<div id="cita-box" class="cita-box widget-box no-border">
+									<div class="widget-body">
+										<div class="widget-main">
+											<h4 class="header green lighter bigger">
+												<i class="ace-icon fa fa-users blue"></i>
+												Registrar una cita.
+											</h4>
+
+											<div class="space-6"></div>
+											<p> Rellene con sus datos para registrar una cita. </p>
+
+											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form" name="cita">
+												<fieldset>
+
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-left">
+															<input name="nombres" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombres" id="nombres" required />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+                                                    	<label class="block clearfix">
+														<span class="block input-icon input-icon-left">
+															<input name="apellidos" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Apellidos" id="apellidos" required />
+															<i class="ace-icon fa fa-user"></i>
+														</span>
+													</label>
+                                                    
+                                                    	<label class="block clearfix">
+														<span class="block input-icon input-icon-left">
+															<input name="cedula" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Cedula" id="cedula" required />
+															<i class="ace-icon fa fa-credit-card"></i>
+														</span>
+													</label>
+													<label class="block clearfix">
+														<span class="block input-icon input-icon-left">
+															<input name="telefono" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Telefono" required />
+															<i class="ace-icon fa fa-phone"></i>
+														</span>
+													</label>
+
+												<label class="block clearfix">
+														<span class="block input-icon input-icon-left">
+															<input name="correo" onkeyup="this.value=this.value.toUpperCase()" type="email" class="form-control" placeholder="Correo" required />
+															<i class="ace-icon fa fa-envelope-o"></i>
+														</span>
+													</label>
+												 
+													<div class="space-24"></div>
+
+													<div class="clearfix">
+														<button type="reset" class="width-30 pull-left btn btn-sm">
+															<i class="ace-icon fa fa-refresh"></i>
+															<span class="bigger-110">Limpiar</span>
+														</button>
+
+														<button type="submit" value="cita" name="cita" id="cita" class="width-65 pull-right btn btn-sm btn-success">
+															<span class="bigger-110">Registrar</span>
+
+															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+														</button>
+													</div>
+												</fieldset>
+											</form>
+										</div>
+
+										<div class="toolbar center">
+											<a href="#" data-target="#login-box" class="back-to-login-link">
+												<i class="ace-icon fa fa-arrow-left"></i>
+												Regresar al panel de inicio de sesión.
+											</a>
+										</div>
+									</div><!-- /.widget-body -->
+								</div><!-- /.signup-box -->
+                            
+                            
+                            
+                            
 							</div><!-- /.position-relative -->
 
 							<div class="navbar-fixed-top align-right">
