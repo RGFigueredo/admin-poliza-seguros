@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-02-2017 a las 23:37:11
+-- Tiempo de generación: 27-02-2017 a las 15:35:47
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -164,13 +164,7 @@ CREATE TABLE `gastos` (
 --
 
 INSERT INTO `gastos` (`codigo`, `monto`, `reembolso`, `asegurado_cedula`, `estatus`) VALUES
-('1', '18000,00', 'Pagado', '12342323', 'Inactivo'),
-('123', '12.00', 'Pagado', '11696062', 'Inactivo'),
-('2', '1500,00', 'Pagado', '11696062', 'Inactivo'),
-('23', '23', 'Pendiente', '11696062', 'Inactivo'),
-('2525252', '500.00', 'Pendiente', '11696062', 'Inactivo'),
-('3', '15000,00', 'Pendiente', '12342323', 'Inactivo'),
-('5511', '5511.11', 'Pendiente', '11696062', 'Inactivo');
+('1', '1,00', 'Pendiente', '11696062', 'Pendiente');
 
 -- --------------------------------------------------------
 
@@ -217,7 +211,7 @@ CREATE TABLE `reembolsos` (
 --
 
 INSERT INTO `reembolsos` (`monto`, `fecha`, `gastos_codigo`, `asegurado_cedula`, `estatus`) VALUES
-('123321.00', '2017-01-30', '3', '11696062', 'Pendiente');
+('1', '2017-02-27', '1', '11696062', 'Activa');
 
 -- --------------------------------------------------------
 
@@ -335,7 +329,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `nombre`, `apellido`, `correo`, `telefono`, `direccion`, `password`, `salt`, `cedula`, `nivel`, `cookie`, `logueado`) VALUES
-(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 45843781, 'SI');
+(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 45843781, 'NO');
 
 --
 -- Índices para tablas volcadas
