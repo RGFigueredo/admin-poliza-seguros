@@ -51,24 +51,16 @@ if (!empty($_POST)) {
 		$stmt->execute($query_params);
 		// las querry pueden ser de cualquier tipo.
 		$query2 = '	UPDATE gastos
-					SET   reembolso = :reembolso
-                               
-				            )
+					SET   reembolso = "Pagado";
         		';
-        // si no tenemos parametros podemos borar esto.
-		$query_params = array(
-		':reembolso' => $_POST['reembolso']            
-		);
-		
 		//p		reparamos la query 1
 		$stmt = $db->prepare($query2);
-		
 		// 		ejecutamos la transaccion, no guardamos nada en variable porque
 		// 		solo queremos ejecutar y ya. Esto se guarda en memoria mientras
 		// 		esperamos a terminar todas las transacciones
         //      cuando vamos a ejecutar si no usamos parametros ejemplo en delete normal o un select.
         //      solamente ponemos $stmt->execute();
-		$stmt->execute($query_params);
+		$stmt->execute();
 		
 		// 		hacemos commit y mandamos todas las transacciones a la base de datos
 		$db->commit();	
