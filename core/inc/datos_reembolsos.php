@@ -1,11 +1,11 @@
 <?php
-$query = "  SELECT  asegurado_cedula,
-                    codigo,
-                    monto,
-                    reembolso,
+$query = "  SELECT  monto,
+                    fecha,
+                    gastos_codigo,
+                    asegurado_cedula,
                     estatus
-            FROM    gastos
-            where reembolso!='Pagado' AND estatus!='Inactivo'
+            FROM    reembolsos
+            where estatus!='Pagado'
          ";
     try{
         $stmt = $db->prepare($query);

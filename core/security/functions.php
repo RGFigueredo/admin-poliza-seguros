@@ -304,9 +304,48 @@ function modificar($var1, $var2, PDO $db){
         }//fin catch error
         header('Location: index.php?do=listagastos');
         break;
+          
+                     case 'reembolsos':
+        $query = '  UPDATE reembolsos   
+                  SET 
+                          monto = :monto,
+                          fecha = :fecha,
+                          gastos_codigo = :gastos_codigo,                    
+                          asegurado_cedula = :asegurado_cedula,               
+                          estatus = :estatus
+                   WHERE gastos_codigo = :cedula_old
+                ';
+        $query_params = array(
+            ':monto' => $_POST['monto'],
+            ':fecha' => $_POST['fecha'],
+            ':gastos_codigo' => $_POST['gastos_codigo'],            
+            ':asegurado_cedula' => $_POST['asegurado_cedula'],
+            ':estatus' => $_POST['estatus'],
+            ':cedula_old' => $var2
+            );
+        try {
+            $stmt = $db->prepare($query);
+
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            // Si tenemos problemas para ejecutar la consulta imprimimos el error
+            echo "<div class='panel-body'>
+                     <div class='alert alert-warning alert-dismissable'>
+                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
+          </div>
+          </div>".$ex->getMessage();
+        }//fin catch error
+        header('Location: index.php?do=listareembolsos');
+        break;
+          
+          
+          
+          
           case 'EJEMPLO':
         # code...
         break;
+          
           
     default:
       //header('Location: index.php?do=panel');

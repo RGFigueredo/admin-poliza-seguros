@@ -70,6 +70,8 @@ if (!defined('SRCP')) {
         try {
             $stmt = $db->prepare($query);
             $result = $stmt->execute($query_params);
+                     echo '<script language="javascript">alert("juassssssss");</script>'; 
+                    
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
             echo "<div class='panel-body'>
@@ -79,6 +81,7 @@ if (!defined('SRCP')) {
 					</div>
 				  </div>".$ex->getMessage();
         }
+       
         header('Location: index.php?do=listagastos');
     }
 

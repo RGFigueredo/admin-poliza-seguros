@@ -142,7 +142,22 @@
                         <a href="index.php?do=listagastos"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
                 </ul>
             </li>
-        </ul>';
+        </ul>
+             <!--PANEL REEMBOLSOS-->
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa fa-credit-card"></i> <span class="menu-text"> Panel Reembolsos</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=addreembolsos"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
+                    <li class="">
+                        <a href="index.php?do=listareembolsos"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
+                </ul>
+            </li>
+        </ul>
+        
+        
+        ';
                                         break;
                                     case 2:
                                     // si somos corredor imprimimos menu de corredor

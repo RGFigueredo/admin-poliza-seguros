@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Listar Gastos </title>
+    <title>Listar Reembolsos </title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datos_gastos.php';
+        include INC_DIR.'/datos_reembolsos.php';
         include STATIC_DIR.'/header.php';
         ?>
 </head>
@@ -19,8 +19,8 @@
             <div class="main-content-inner">
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
-                          <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
-                        <li class="active">Lista de Gastos</li>
+                        <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
+                        <li class="active">Lista de Reembolsos</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                             <div class="clearfix">
                                 <div class="pull-right tableTools-container"></div>
                             </div>
-                            <div class="table-header"> Asegurados Gastos </div>
+                            <div class="table-header"> Asegurados Reembolsos </div>
                             <!-- div.table-responsive -->
                             <!-- div.dataTables_borderWrap -->
                             <div>
@@ -48,10 +48,10 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
-                                            <th>Codigo</th>
-                                            <th>Cedula Asegurado</th>
+                                            <th>Codigo Factura</th>
                                             <th>Monto</th>
-                                            <th>Reembolso</th>
+                                            <th>Fecha</th>
+                                            <th>Cedula Asegurado</th>
                                             <th>Estatus</th>
                                             <th></th>
                                         </tr>
@@ -62,28 +62,28 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <?php echo $row['codigo'];   ?>
+                                                    <?php echo $row['gastos_codigo'];   ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['asegurado_cedula'];  ?>
+                                                    <?php echo $row['monto'];  ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['monto'];?>
+                                                    <?php echo $row['fecha'];?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['reembolso']; ?>
+                                                    <?php echo $row['asegurado_cedula']; ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['estatus']?>
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modgastos&id=<?PHP echo $row['codigo']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modreembolsos&id=<?PHP echo $row['gastos_codigo']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=gastos&id=<?PHP echo $row['codigo']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=reembolsos&id=<?PHP echo $row['gastos_codigo']?>">
                                                             <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>

@@ -100,6 +100,13 @@ include_once CORE_DIR.'/modulos/registros/add_gastos.php';
     } else {
             include_once CORE_DIR.'/modulos/login.php';
         }
+                   case 'addreembolsos' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/registros/add_reembolsos.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
         
         
         
@@ -150,6 +157,13 @@ include_once CORE_DIR.'/modulos/modificar/mod_tseguro.php';
                    case 'modgastos' :
     if ($login_ok) {
 include_once CORE_DIR.'/modulos/modificar/mod_gastos.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
+                   case 'modreembolsos' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/modificar/mod_reembolsos.php';
         break;  
     } else {
             include_once CORE_DIR.'/modulos/login.php';
@@ -219,6 +233,13 @@ include_once CORE_DIR.'/modulos/listas/lista_gastos.php';
             include_once CORE_DIR.'/modulos/login.php';
         }
 
+     case 'listareembolsos' :
+    if ($login_ok) {
+include_once CORE_DIR.'/modulos/listas/lista_reembolsos.php';
+        break;  
+    } else {
+            include_once CORE_DIR.'/modulos/login.php';
+        }
 
      
 

@@ -19,7 +19,7 @@
             <div class="main-content-inner">
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
-                        <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.php">Inicio</a> </li>
+                          <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
                         <li class="active">Lista de Corredores</li>
                     </ul>
                     <!-- /.breadcrumb -->
