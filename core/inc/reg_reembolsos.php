@@ -1,54 +1,24 @@
 <?php
 
 if (!defined('SRCP')) {
-	
+
 	die('Logged Hacking attempt!');
-	
+
 }
 
 //comienzo del registro de los corredor.
 if (!empty($_POST)) {
-	$db->beginTransaction();
-	
-	$query = '  SELECT 1
-            		FROM reembolsos
-            		WHERE asegurado_cedula = :asegurado_cedula
-        		  ';
-	
-	$query_params = array(':asegurado_cedula' => $_POST['asegurado_cedula']);
-	
-	try {
-		
-		$stmt = $db->prepare($query);
-		
-		$result = $stmt->execute($query_params);
-		
-	}
-	catch (PDOException $ex) {
-		
-		
-		/*
-        	  TODO: Aqui de igual forma cambiaremos a un modal
-        	 */
-		
-		die('Fallamos al hacer la busqueda: '.$ex->getMessage());
-		
-	}
-	
-	$row = $stmt->fetch();
-	
-	if ($row) {
-		
-		echo "<div class='panel-body'>
-                <div class='alert alert-warning alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                Error: La cédula ya existe.</div>
-            </div>";
-		
-	}
-	
-	///	Si todo pasa enviamos los datos a la base de datos mediante PDO para evitar Inyecciones SQL
-	$query2 = '	INSERT INTO reembolsos (
+
+	try
+	{
+
+		// 		comenzamos la transaccion
+		$db->beginTransaction();
+
+		// 		podemos ejecutar cosas asi simples. 
+		//$		db->exec('INSERT INTO tabla (campo) values (valor)');
+		// 		preparando como hacemos siempre
+		$query1 = '	INSERT INTO reembolsos (
 				                gastos_codigo,
                                 asegurado_cedula,
                                 monto, 
@@ -63,59 +33,55 @@ if (!empty($_POST)) {
                                 :estatus
 				            )
         		';
-	
-	$query_params = array(
-	':gastos_codigo' => $_POST['gastos_codigo'],
-	':asegurado_cedula' => $_POST['asegurado_cedula'],
-	':monto' => $_POST['monto'],
-	':fecha' => $_POST['fecha'],
-	':estatus' => $_POST['estatus']            
-	);
-	
-	try {
+
+		$query_params = array(
+		':gastos_codigo' => $_POST['gastos_codigo'],
+		':asegurado_cedula' => $_POST['asegurado_cedula'],
+		':monto' => $_POST['monto'],
+		':fecha' => $_POST['fecha'],
+		':estatus' => $_POST['estatus']            
+		);
 		
+		//p		reparamos la query 1
+		$stmt = $db->prepare($query1);
+		
+		// 		ejecutamos la transaccion, no guardamos nada en variable porque
+		// 		solo queremos ejecutar y ya. Esto se guarda en memoria mientras
+		// 		esperamos a terminar todas las transacciones
+		$stmt->execute($query_params);
+		// las querry pueden ser de cualquier tipo.
+		$query2 = '	UPDATE gastos
+					SET   reembolso = :reembolso
+                               
+				            )
+        		';
+        // si no tenemos parametros podemos borar esto.
+		$query_params = array(
+		':reembolso' => $_POST['reembolso']            
+		);
+		
+		//p		reparamos la query 1
 		$stmt = $db->prepare($query2);
 		
-		$result = $stmt->execute($query_params);
+		// 		ejecutamos la transaccion, no guardamos nada en variable porque
+		// 		solo queremos ejecutar y ya. Esto se guarda en memoria mientras
+		// 		esperamos a terminar todas las transacciones
+        //      cuando vamos a ejecutar si no usamos parametros ejemplo en delete normal o un select.
+        //      solamente ponemos $stmt->execute();
+		$stmt->execute($query_params);
+		
+		// 		hacemos commit y mandamos todas las transacciones a la base de datos
+		$db->commit();	
 		
 	}
-	catch (PDOException $ex) {
+	
+	catch (Exception $e)
+	{
 		
-		// 		Si tenemos problemas para ejecutar la consulta imprimimos el error
-		echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-					</div>
-				  </div>".$ex->getMessage();
-		
+		// 	si hay un fallo hacemos rollback y no guardamos ninguna de las cosas.
+		$db->rollBack();
+		// mandamos un error para saber que paso.
+		echo 'ERROR: ' . $e->getMessage();
+			
 	}
-$db->commit();	
-	
-	
-	header('Location: index.php?do=listareembolsos');
-	
 }
-
-
-if (isset($_GET['accion'])) {
-	
-	
-	//c	heck the action
-	switch ($_GET['accion']) {
-		
-		case 'error':
-		echo "<div class='panel-body'>
-                    <div class='alert alert-success alert-dismissable'>
-                      <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                      Hay varios errores en tu registro.
-                      Si necesitas ayuda puedes hacer clic al botón de Ayuda en el fondo de la página.
-					</div>
-				</div>";
-		
-		break;
-		
-	}
-	
-}
-
