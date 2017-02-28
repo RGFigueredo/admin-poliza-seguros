@@ -1,295 +1,540 @@
-<?PHP
+<?php
 
 if (!defined('SRCP')) {
-    die('Logged Hacking attempt!');
+	
+	die('Logged Hacking attempt!');
+	
 }
+
 #include_once CORE_DIR.'/sys_config.php';
+
 require CORE_DIR.'/config.php';
+
 include_once CORE_DIR.'/security/check.loged.php';
+
 include_once CORE_DIR.'/security/functions.php';
+
 switch ($_GET['do']) {
-    case 'panel' :
-    if ($login_ok) {
-        include_once CORE_DIR.'/modulos/panel.php';
-        break;
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-        
-    case 'salir' :
-        include_once CORE_DIR.'/security/logout.php';
-        break;
-        
-        
-        
-        
-        
-  
-        case 'perfil' :
-        if ($login_ok) {
-            include_once CORE_DIR.'/modulos/perfil.php';
-            break;
-        } else {
-                include_once CORE_DIR.'/modulos/login.php';
-            }
-        
-        
-        
-        
-        
-           case 'eliminar' :
-        if ($login_ok) {
-            include_once CORE_DIR.'/modulos/eliminar.php';
-            break;
-        } else {
-                include_once CORE_DIR.'/modulos/login.php';
-            }
-        
-        
-        
-        
-  
-    
-        //REGISTROS
-case 'addaseguradora' :
-    if ($login_ok) { 
-    include_once CORE_DIR.'/modulos/registros/add_aseguradora.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }            
-  case 'addcorredor' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_corredor.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }       
-  case 'addasegurado' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_asegurado.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }       
-  case 'addbeneficiario' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-         case 'addtseguro' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_tseguro.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-               case 'addtpoliza' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_tpoliza.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-               case 'addgastos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_gastos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-                   case 'addreembolsos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/registros/add_reembolsos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-        
-        
-        
-        
-//MODIFICACIONES        
- case 'modaseguradora' :
-    if ($login_ok) { 
-    include_once CORE_DIR.'/modulos/modificar/mod_aseguradora.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }            
-  case 'modcorredor' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_corredor.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }       
-  case 'modasegurado' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_asegurado.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }       
-  case 'modbeneficiario' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-          case 'modtpoliza' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_tpoliza.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-           case 'modtseguro' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_tseguro.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-                   case 'modgastos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_gastos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-                   case 'modreembolsos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/modificar/mod_reembolsos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
- 
-        
-        
-        
-        
-        //LISTAS   
-         case 'listaaseguradora' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_aseguradora.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
- case 'listacorredor' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_corredor.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-        
-         case 'listaasegurado' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_asegurado.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-         case 'listabeneficiario' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_beneficiario.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-          case 'datosaseguradora' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/datos_aseguradora.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-        
-    case 'tseguro' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_tseguro.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-         case 'tpoliza' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_tpoliza.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-                 case 'listagastos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_gastos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
+	
+	case 'panel' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/panel.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	case 'salir' :
+	include_once CORE_DIR.'/security/logout.php';
+	
+	break;
+	
+	
+	
+	
+	
+	
+	
+	case 'perfil' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/perfil.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	
+	
+	
+	
+	case 'eliminar' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/eliminar.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	//R	EGISTROS
+	case 'addaseguradora' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_aseguradora.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addcorredor' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_corredor.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addasegurado' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_asegurado.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addbeneficiario' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_beneficiario.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addtseguro' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_tseguro.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addtpoliza' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_tpoliza.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addgastos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_gastos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addreembolsos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_reembolsos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'addservicio' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/registros/add_servicio.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	
+	
+	//M	ODIFICACIONES        
+	case 'modaseguradora' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_aseguradora.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modcorredor' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_corredor.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modasegurado' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_asegurado.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modbeneficiario' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_beneficiario.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modtpoliza' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_tpoliza.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modtseguro' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_tseguro.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modgastos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_gastos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'modreembolsos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/modificar/mod_reembolsos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	
+	
+	
+	
+	//L	ISTAS   
+	case 'listaaseguradora' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_aseguradora.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'listacorredor' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_corredor.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	case 'listaasegurado' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_asegurado.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'listabeneficiario' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_beneficiario.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'datosaseguradora' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/datos_aseguradora.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	case 'tseguro' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_tseguro.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'tpoliza' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_tpoliza.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'listagastos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_gastos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	case 'listareembolsos' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_reembolsos.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	case 'panel' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/panel.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}
+	
+	case 'login' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/panel.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+		break;
+		
+	}
+	
+	default:
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/panel.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+		break;
+		
+	}
+	
+}
 
-     case 'listareembolsos' :
-    if ($login_ok) {
-include_once CORE_DIR.'/modulos/listas/lista_reembolsos.php';
-        break;  
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }
-
-     
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    case 'panel' :
-    if ($login_ok) {
-        include_once CORE_DIR.'/modulos/panel.php';
-        break;
-    } else {
-            include_once CORE_DIR.'/modulos/login.php';
-        }       
-    case 'login' :
-    if ($login_ok) {
-        include_once CORE_DIR.'/modulos/panel.php';
-        break;
-    } else {
-        include_once CORE_DIR.'/modulos/login.php';
-        break;
-    }  
-    default:
-    if ($login_ok) {
-        include_once CORE_DIR.'/modulos/panel.php';
-        break;
-    } else {
-        include_once CORE_DIR.'/modulos/login.php';
-        break;
-    }
-    }
 
 if (isset($_GET['accion'])) {
-    switch ($_GET['accion']) {
-            
-            
-    case 'cita':
-        echo "
+	
+	switch ($_GET['accion']) {
+		
+		
+		
+		case 'cita':
+		echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		<div class='modal-dialog'>
             <div class='modal-content'>
@@ -307,10 +552,12 @@ if (isset($_GET['accion'])) {
             </div>
       	  </div>
     	</div>";
-    break;   
-            
-       case 'modificado':
-        echo "
+		
+		break;
+		
+		
+		case 'modificado':
+		echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		<div class='modal-dialog'>
             <div class='modal-content'>
@@ -328,9 +575,11 @@ if (isset($_GET['accion'])) {
             </div>
       	  </div>
     	</div>";
-    break; 
-    case 'registrado':
-        echo "
+		
+		break;
+		
+		case 'registrado':
+		echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		<div class='modal-dialog'>
             <div class='modal-content'>
@@ -348,10 +597,12 @@ if (isset($_GET['accion'])) {
             </div>
       	  </div>
     	</div>";
-    break; 
-            
-     case 'eliminado':
-        echo "
+		
+		break;
+		
+		
+		case 'eliminado':
+		echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		<div class='modal-dialog'>
             <div class='modal-content'>
@@ -369,10 +620,12 @@ if (isset($_GET['accion'])) {
             </div>
       	  </div>
     	</div>";
-    break;        
-            
-    case 'registrado':
-        echo "
+		
+		break;
+		
+		
+		case 'registrado':
+		echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		<div class='modal-dialog'>
             <div class='modal-content'>
@@ -390,9 +643,11 @@ if (isset($_GET['accion'])) {
             </div>
       	  </div>
     	</div>";
-    break;
-    case 'pass_error':
-        echo "
+		
+		break;
+		
+		case 'pass_error':
+		echo "
 		<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		 <div class='modal-dialog'>
              <div class='modal-content'>
@@ -409,9 +664,11 @@ if (isset($_GET['accion'])) {
                 </div>
             </div>
         </div>";
-    break;
-    case 'log_error':
-        echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		
+		break;
+		
+		case 'log_error':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
 		 <div class='modal-dialog'>
              <div class='modal-content'>
 				<div class='modal-header'>
@@ -427,9 +684,11 @@ if (isset($_GET['accion'])) {
                 </div>
             </div>
         </div>";
-    break;
-    case 'salir':
-      echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		
+		break;
+		
+		case 'salir':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
    <div class='modal-dialog'>
              <div class='modal-content'>
           <div class='modal-header'>
@@ -445,9 +704,11 @@ if (isset($_GET['accion'])) {
             </div>
         </div>
     </div>";
-    break;
-    case 'inactivo':
-      echo "
+		
+		break;
+		
+		case 'inactivo':
+		echo "
       <div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
    <div class='modal-dialog'>
              <div class='modal-content'>
@@ -464,9 +725,11 @@ if (isset($_GET['accion'])) {
             </div>
         </div>
     </div>";
-    break;
-    case 'logueado':
-      echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		
+		break;
+		
+		case 'logueado':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
    <div class='modal-dialog'>
              <div class='modal-content'>
           <div class='modal-header'>
@@ -482,7 +745,11 @@ if (isset($_GET['accion'])) {
             </div>
         </div>
     </div>";
-    break;
-        } //fin del switch
-} //fin del isset accion
+		
+		break;
+		
+	}
+	//f	in del switch
+}
+//fin del isset accion
 ;
