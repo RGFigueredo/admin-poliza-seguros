@@ -119,17 +119,14 @@ include_once (CORE_DIR . '/security/check.cita.php');
 											<div class="space-6"></div>
 
 											<div class="social-login center">
-												<a class="btn btn-primary">
-													<i class="ace-icon fa fa-facebook"></i>
+											 <div class="toolbar clearfix">
+											        <center><div>
+												<a href="#" data-target="#cita-box" class="forgot-password-link">
+													<i class="ace-icon fa fa-plus fa-lg"></i>
+													Reserva tu cita Gratis!!
 												</a>
-
-												<a class="btn btn-info">
-													<i class="ace-icon fa fa-twitter"></i>
-												</a>
-
-												<a class="btn btn-danger">
-													<i class="ace-icon fa fa-google-plus"></i>
-												</a>
+											</div>     </center>
+										</div>
                                                 
                                               
                                                 
@@ -164,14 +161,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
                                         
                                 
                                         
-                                          <div class="toolbar clearfix">
-											        <center><div>
-												<a href="#" data-target="#cita-box" class="forgot-password-link">
-													<i class="ace-icon fa fa-plus"></i>
-													Reservar cita
-												</a>
-											</div>     </center>
-										</div>
+                                         
 
                                         
                                         
