@@ -139,8 +139,8 @@ $query = "  SELECT  cedula,
                                                                         <option>
                                                                             <?php echo $row['estatus'];   ?>
                                                                         </option>
-                                                                        <option>En espera</option>
-                                                                        <option>Sin asignar</option>
+                                                                        <option>Activo</option>
+                                                                        <option>Inactivo</option>
                                                                     </select>
                                                                 </td>
                                                                 <td align="left"><span id="msg_estatus"></span>&nbsp;</td>

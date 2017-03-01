@@ -1,6 +1,6 @@
 <?php
 $query = "  SELECT  *
-            FROM    reembolsos
+            FROM    servicio
             where estatus!='Inactivo'
          ";
     try{

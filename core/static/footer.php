@@ -3,7 +3,8 @@
 					<div class="footer-content">
 						<span class="bigger-120">
 							<span class="blue bolder">Sistema</span>
-							&copy; <?php echo date("Y");?>
+							&copy; <?php echo date("Y h:i:sa"); ?>
+                            
 						</span>
 
 						&nbsp; &nbsp;

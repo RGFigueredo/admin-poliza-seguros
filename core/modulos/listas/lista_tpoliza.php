@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Listar tipos de poliza </title>
+    <title>Listar Polizas </title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
@@ -19,8 +19,8 @@
             <div class="main-content-inner">
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
-                         <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
-                        <li class="active">Lista de poliza</li>
+                        <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
+                        <li class="active">Lista de Polizas</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                             <div class="clearfix">
                                 <div class="pull-right tableTools-container"></div>
                             </div>
-                            <div class="table-header"> Poliza registradas </div>
+                            <div class="table-header"> Polizas registrados </div>
                             <!-- div.table-responsive -->
                             <!-- div.dataTables_borderWrap -->
                             <div>
@@ -49,9 +49,9 @@
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
                                             <th>Codigo</th>
-                                            <th>Nombre</th>
                                             <th>Costo</th>
                                             <th>Cobertura</th>
+                                         
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -64,14 +64,13 @@
                                                     <?php echo $row['codigo'];   ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['nombre'];  ?>
-                                                </td>
-                                                <td>
-                                                    <?php echo $row['costo'];?>
+                                                    <?php echo $row['costo'];  ?>
                                                 </td>
                                                 <td>
                                                     <?php echo $row['cobertura'];?>
                                                 </td>
+                                                
+                                              
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modtpoliza&id=<?PHP echo $row['codigo']?>">

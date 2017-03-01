@@ -34,12 +34,14 @@ if (!empty($_POST['cita'])){
         $query = "
             INSERT INTO cita (
                 nombres,
+                fecha,
                 apellidos,
 				correo,
                 telefono,
                 cedula
                 ) VALUES (
                 :nombres,
+                :fecha,
                 :apellidos,
                 :correo,
                 :telefono,
@@ -49,6 +51,7 @@ if (!empty($_POST['cita'])){
        
         $query_params = array(
             ':nombres' => $_POST['nombres'],
+            ':fecha' => $_POST['fecha'],
 			':apellidos' => $_POST['apellidos'],
             ':correo' => $_POST['correo'],
             ':telefono' => $_POST['telefono'],          

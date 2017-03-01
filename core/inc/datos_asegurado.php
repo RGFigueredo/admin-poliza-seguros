@@ -1,9 +1,5 @@
 <?php
-$query = "  SELECT  cedula,
-                    nombres,
-                    apellidos,
-                    telefono,
-                    estatus
+$query = "  SELECT  *
             FROM    asegurado
             where estatus!='Inactivo'
          ";

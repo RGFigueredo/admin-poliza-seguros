@@ -20,26 +20,26 @@ if (!empty($_POST)) {
 		// 		preparando como hacemos siempre
 		$query1 = '	INSERT INTO reembolsos (
 				                gastos_codigo,
-                                asegurado_cedula,
+                                 
                                 monto, 
-                                fecha,
-                                estatus
+                                fecha
+                           
                                 
 				    ) VALUES (
                                 :gastos_codigo,
-                                :asegurado_cedula,
+                              
                                 :monto, 
-                                :fecha,
-                                :estatus
+                                :fecha
+                              
 				            )
         		';
 
 		$query_params = array(
 		':gastos_codigo' => $_POST['gastos_codigo'],
-		':asegurado_cedula' => $_POST['asegurado_cedula'],
+	 
 		':monto' => $_POST['monto'],
-		':fecha' => $_POST['fecha'],
-		':estatus' => $_POST['estatus']            
+		':fecha' => $_POST['fecha']
+	         
 		);
 		
 		//p		reparamos la query 1
@@ -50,9 +50,11 @@ if (!empty($_POST)) {
 		// 		esperamos a terminar todas las transacciones
 		$stmt->execute($query_params);
 		// las querry pueden ser de cualquier tipo.
-		$query2 = '	UPDATE gastos
-					SET   reembolso = "Pagado";
-        		';
+         $codigo = $_POST['gastos_codigo'];
+		$query2 = "	UPDATE gastos
+					SET   reembolso = 'Pagado'
+                   where codigo='$codigo'
+        		";
 		//p		reparamos la query 1
 		$stmt = $db->prepare($query2);
 		// 		ejecutamos la transaccion, no guardamos nada en variable porque
@@ -76,4 +78,5 @@ if (!empty($_POST)) {
 		echo 'ERROR: ' . $e->getMessage();
 			
 	}
+      header('Location: index.php?do=listareembolsos&accion=registrado');
 }

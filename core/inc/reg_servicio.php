@@ -26,8 +26,9 @@ if (!empty($_POST)) {
                                 fechaculminacion,
                                 beneficios,
                                 monto,
-                                estatus,
-                                cobertura,
+                                   asegurado_cedula,
+                            
+                        
                                 observaciones,
                                 tipopolizas_codigo,
                                 aseguradora_rif,
@@ -41,8 +42,8 @@ if (!empty($_POST)) {
                                 :fecul,
                                 :ben,
                                 :mont,
-                                :esta,
-                                :cober,
+                                :asegurado_cedula,
+                        
                                 :obser,
                                 :tpolcod,
                                 :asegu,
@@ -58,8 +59,9 @@ if (!empty($_POST)) {
         ':fecul' => $_POST['fecha_culm'],
         ':ben' => $_POST['beneficios'],
         ':mont' => $_POST['monto'],
-        ':esta' => $_POST['estatus'],
-        ':cober' => $_POST['cobertura'],
+             ':asegurado_cedula' => $_POST['asegurado_cedula'],
+       
+      
         ':obser' => $_POST['observacion'],
         ':tpolcod' => $_POST['cod_poliza'],
         ':asegu' => $_POST['rif_aseg'],
@@ -87,4 +89,5 @@ if (!empty($_POST)) {
 		echo 'ERROR: ' . $e->getMessage();
 			
 	}
+          header('Location: index.php?do=listaservicios&accion=registrado');
 }

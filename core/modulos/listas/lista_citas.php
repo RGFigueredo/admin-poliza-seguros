@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Listar Reembolsos </title>
+    <title>Listar Citas </title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datos_reembolsos.php';
+        include INC_DIR.'/datos_citas.php';
         include STATIC_DIR.'/header.php';
         ?>
 </head>
@@ -20,7 +20,7 @@
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
                         <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
-                        <li class="active">Lista de Reembolsos</li>
+                        <li class="active">Lista de Citas</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                             <div class="clearfix">
                                 <div class="pull-right tableTools-container"></div>
                             </div>
-                            <div class="table-header"> Asegurados Reembolsos </div>
+                            <div class="table-header"> Asegurados registrados </div>
                             <!-- div.table-responsive -->
                             <!-- div.dataTables_borderWrap -->
                             <div>
@@ -48,10 +48,10 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
-                                            <th>Codigo Factura</th>
-                                            <th>Monto</th>
-                                            <th>Fecha</th>
-                                           
+                                            <th>Cédula</th>
+                                            <th>Nombres</th>
+                                            <th>Apellidos</th>
+                                            <th>Telefono</th>
                                             <th>Estatus</th>
                                             <th></th>
                                         </tr>
@@ -62,27 +62,30 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <?php echo $row['gastos_codigo'];   ?>
+                                                    <?php echo $row['cedula'];   ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['monto'];  ?>
+                                                    <?php echo $row['nombres'];  ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['fecha'];?>
+                                                    <?php echo $row['apellidos'];?>
                                                 </td>
-                                               
+                                                <td>
+                                                    <?php echo $row['telefono']; ?>
+                                                </td>
                                                 <td>
                                                     <?php echo $row['estatus']?>
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modreembolsos&id=<?PHP echo $row['gastos_codigo']?>">
-                                                            <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=citas2&id=<?PHP echo $row['cedula']?>">
+                                                            <button class="btn btn-xs btn-danger" title="No Asistio"> <i class="ace-icon fa fa-times bigger-120"></i> </button>
                                                         </a>
                                                     </div>
+                                                    
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=reembolsos&id=<?PHP echo $row['gastos_codigo']?>">
-                                                            <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=citas&id=<?PHP echo $row['cedula']?>">
+                                                            <button class="btn btn-xs btn-success" title="Asistio"> <i class="ace-icon fa fa-check bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                 </td>

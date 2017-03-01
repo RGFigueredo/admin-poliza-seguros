@@ -52,7 +52,7 @@
                                             <th>Cedula Asegurado</th>
                                             <th>Monto</th>
                                             <th>Reembolso</th>
-                                            <th>Estatus</th>
+                                 
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -73,9 +73,7 @@
                                                 <td>
                                                     <?php echo $row['reembolso']; ?>
                                                 </td>
-                                                <td>
-                                                    <?php echo $row['estatus']?>
-                                                </td>
+                                                
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modgastos&id=<?PHP echo $row['codigo']?>">

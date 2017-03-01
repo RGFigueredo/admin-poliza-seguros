@@ -1,13 +1,5 @@
 <?php
-$query = "  SELECT  cedula,
-                                nombres,
-                                apellidos,
-                                fechanacimiento,
-                                direccion,
-                                telefono,
-                                correo,                              
-                                estatus,
-                                asegurado_cedula
+$query = "  SELECT  *
             FROM    beneficiario where estatus!='Inactivo'
          ";
     try{

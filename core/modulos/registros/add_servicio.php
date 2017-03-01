@@ -154,7 +154,8 @@ $codigo = $num['random_number'];
                                             <tr>
 								<td align="right">Codigo:</td>
 								<td align="left">
-									<input type="text" id="codigo" name="codigo" value="<?php echo $codigo;?>" class="txtBox"> </td>
+                                    <input type='hidden' name="codigo" value="<?php echo $codigo;?>">
+									<input type="text" disabled id="codigo" name="codigo" value="<?php echo $codigo;?>" class="txtBox"> </td>
 								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
 							</tr>                
 									<tr>
@@ -181,17 +182,53 @@ $codigo = $num['random_number'];
 						</td>
 						<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
 					</tr>
-							<tr>
-								<td align="right">Monto en Bolivares:</td>
-								<td align="left">
-									<input type="text" id="monto" name="monto" value="" class="txtBox"> </td>
-								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
-							</tr>
+                                                            
+                                                                                                         <?php  
+   include INC_DIR.'/datos_asegurado.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['cedula']."'>".$row['cedula']."</option>"; 
+}
+                                               
+?>
+                                                          
+                                                               
+                                                            
+                                                                  <tr>
+														<td align="right">Cedula del asegurado:</td>
+														<td align="left">
+															 <select required id="asegurado_cedula" name="asegurado_cedula" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
+														</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
+													</tr>
+                                                            
+					 
+                                                            
+                                                                    <tr>
+														<td align="right">Monto en Bolivares:</td>
+														<td align="left">
+															 <select required id="monto" name="monto" >                                       
+                                                        <option value="10000">10000</option>
+                                                                 <option value="10000">10000</option>
+                                                                 <option value="15000">15000</option>
+                                                                 <option value="20000">20000</option>
+                                                                 <option value="25000">25000</option>
+                                                                 <option value="30000">30000</option> 
+                                                            </select>,00 BsF
+														</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
+													</tr>
 							
 							<tr>
 								<td align="right">Fecha:</td>
 								<td align="left"> <span class="block input-icon input-icon-right">
-									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha" value="" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha" value="<?php echo date("Y-m-d"); ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 									
 							</span> </td>
 									
@@ -199,7 +236,7 @@ $codigo = $num['random_number'];
 							<tr>
 								<td align="right">Fecha adquisicion:</td>
 								<td align="left"> <span class="block input-icon input-icon-right">
-									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_adqui" value="" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_adqui" value="<?php echo date("Y-m-d"); ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 									
 							</span> </td>
 									
@@ -207,7 +244,7 @@ $codigo = $num['random_number'];
 							<tr>
 								<td align="right">Fecha vigencia:</td>
 								<td align="left"> <span class="block input-icon input-icon-right">
-									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_vige" value="" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_vige" value="<?php echo date("Y-m-d"); ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 									
 							</span> </td>
 									
@@ -215,48 +252,58 @@ $codigo = $num['random_number'];
 							<tr>
 								<td align="right">Fecha culminacion:</td>
 								<td align="left"> <span class="block input-icon input-icon-right">
-									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_culm" value="" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+									<input class="date-picker txtBox" id="id-date-picker-1" name="fecha_culm" value="<?php echo date("Y-m-d"); ?>" type="text" data-date-format="yyyy-mm-dd" required="required"/>
 									
 							</span> </td>
 									
 							</tr>
 							<tr>
-								<td align="right">Beneficios:</td>
+								<td align="right">Beneficios acordados:</td>
 								<td align="left">
 									<input type="text" id="beneficios" name="beneficios" value="" class="txtBox"> </td>
 								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
 							</tr>
-							<tr>
-								<td align="right">Cobertura:</td>
-								<td align="left">
-									<input type="text" id="cobertura" name="cobertura" value="" class="txtBox"> </td>
-								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
-							</tr>
+						
 							<tr>
 								<td align="right">Obserbvaciones:</td>
 								<td align="left">
 									<input type="text" id="observacion" name="observacion" value="" class="txtBox"> </td>
 								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
 							</tr>
-							<tr>
-								<td align="right">RIF de la aseguradora:</td>
-								<td align="left">
-									<input type="text" id="rif_aseg" name="rif_aseg" value="" class="txtBox"> </td>
-								<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
-							</tr>
+                                                            
+                                                            
+                                                            
+                                                            
+                                                                                                   
+                                                                  <?php  
+   include INC_DIR.'/datos_aseguradora.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['rif']."'>".$row['rif']."</option>"; 
+}
+                                               
+?>
+                                                          
+                                                               
+                                                            
+                                                                  <tr>
+														<td align="right">RIF de la aseguradora:</td>
+														<td align="left">
+															 <select required id="rif_aseg" name="rif_aseg" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
+														</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
+													</tr>
+                                                            
+                                                            
+					 
 							
-							
-							<tr>
-								<td align="right">Estatus:</td>
-								<td align="left">
-									<select id="estatus" name="estatus" class="form-control selectpicker">
-										
-										<option>Activa</option>
-										<option>Inactiva</option>
-									</select>
-								</td>
-								<td align="left"><span id="msg_estatus"></span>&nbsp;</td>
-							</tr>
+							 
 						</table>
 					</div>
 			

@@ -1,10 +1,5 @@
 <?php
-$query = "  SELECT  
-codigo,
-                    nombre,
-                     costo,
-                     estatus,
-                    cobertura                 
+$query = "  SELECT *               
             FROM    tipopolizas  where estatus!='Inactivo' ORDER BY codigo ASC
          ";
     try{

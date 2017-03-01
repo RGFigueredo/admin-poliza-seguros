@@ -1,7 +1,7 @@
 <?php
 $query = "  SELECT  *
-            FROM    reembolsos
-            where estatus!='Inactivo'
+            FROM    cita
+            ORDER BY estatus
          ";
     try{
         $stmt = $db->prepare($query);

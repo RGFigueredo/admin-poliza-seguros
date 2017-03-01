@@ -459,6 +459,46 @@ switch ($_GET['do']) {
 		
 	}
 	
+	case 'listacitas' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_citas.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}       
+	case 'listausuarios' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_usuarios.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}   
+        
+    case 'listaservicios' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_servicios.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}          
 	
 	
 	
@@ -645,6 +685,49 @@ if (isset($_GET['accion'])) {
     	</div>";
 		
 		break;
+            
+            
+            case 'asistio':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+   <div class='modal-dialog'>
+             <div class='modal-content'>
+          <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h3>¡Se ha actualizado la Asistencia!</h3>
+          </div>
+          <div class='modal-body'>
+          <p>Una o varias personas se ha marcado en asistencia.</p>
+          </div>
+          <div class='modal-footer'>
+<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+           </div>
+            </div>
+        </div>
+    </div>";
+		
+		break;
+            
+                case 'noasistio':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+   <div class='modal-dialog'>
+             <div class='modal-content'>
+          <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h3>¡Se ha actualizado la Asistencia!</h3>
+          </div>
+          <div class='modal-body'>
+          <p>Una o varias personas se ha marcado en asistencia.</p>
+          </div>
+          <div class='modal-footer'>
+<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+           </div>
+            </div>
+        </div>
+    </div>";
+		
+		break;
+            
+            
 		
 		case 'pass_error':
 		echo "

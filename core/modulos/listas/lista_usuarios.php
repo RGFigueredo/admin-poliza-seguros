@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Listar Reembolsos </title>
+    <title>Listar Usuarios </title>
     <?php
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
         $data = getDataBySession($_COOKIE['session'], $db);
-        include INC_DIR.'/datos_reembolsos.php';
+        include INC_DIR.'/datos_usuarios.php';
         include STATIC_DIR.'/header.php';
         ?>
 </head>
@@ -20,7 +20,7 @@
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
                         <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="">Inicio</a> </li>
-                        <li class="active">Lista de Reembolsos</li>
+                        <li class="active">Lista de Usuarios conectados</li>
                     </ul>
                     <!-- /.breadcrumb -->
                     <div class="nav-search" id="nav-search">
@@ -37,7 +37,7 @@
                             <div class="clearfix">
                                 <div class="pull-right tableTools-container"></div>
                             </div>
-                            <div class="table-header"> Asegurados Reembolsos </div>
+                            <div class="table-header"> Usuarios conectados</div>
                             <!-- div.table-responsive -->
                             <!-- div.dataTables_borderWrap -->
                             <div>
@@ -48,11 +48,12 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
-                                            <th>Codigo Factura</th>
-                                            <th>Monto</th>
-                                            <th>Fecha</th>
-                                           
-                                            <th>Estatus</th>
+                                            
+                                            <th>Nombres</th>
+                                            <th>Apellido</th>
+                                            <th>Correo</th>
+                                            <th>Cedula</th>
+                                            <th>Nivel</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -62,29 +63,27 @@
                                             <tr>
                                                 <td></td>
                                                 <td>
-                                                    <?php echo $row['gastos_codigo'];   ?>
+                                                    <?php echo $row['nombre'];   ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['monto'];  ?>
+                                                    <?php echo $row['apellido'];  ?>
                                                 </td>
                                                 <td>
-                                                    <?php echo $row['fecha'];?>
+                                                    <?php echo $row['correo'];?>
                                                 </td>
-                                               
                                                 <td>
-                                                    <?php echo $row['estatus']?>
+                                                    <?php echo $row['cedula']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $row['nivel']?>
                                                 </td>
                                                 <td>
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modreembolsos&id=<?PHP echo $row['gastos_codigo']?>">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modasegurado&cedula=<?PHP echo $row['cedula']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>
-                                                    <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=reembolsos&id=<?PHP echo $row['gastos_codigo']?>">
-                                                            <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
-                                                        </a>
-                                                    </div>
+                                                    
                                                 </td>
                                             </tr>
                                             <?php

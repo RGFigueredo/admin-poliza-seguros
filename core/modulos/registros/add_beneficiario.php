@@ -96,7 +96,7 @@
 												<h2 class="StepTitle">Paso 1: Datos Generales beneficiario.</h2>
 												<table cellspacing="3" cellpadding="3" align="center">
                                                     
-                                                    
+                                                     <input type='hidden' name="estatus" value="Activo">
 													 <tr>
 														<td align="right">Nombres :</td>
 														<td align="left">
@@ -151,26 +151,39 @@
 												<h2 class="StepTitle">Paso 2: Detalles seguro</h2>
 												<table cellspacing="3" cellpadding="3" align="center">
 												
-                                                <tr>
-														<td align="right">N| Cedula por el cual es beneficiado :</td>
+                                                    
+                                                    
+                                                                                                       
+  <?php  
+   include INC_DIR.'/datos_asegurado.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['cedula']."'>".$row['apellidos'].",".$row['nombres']."-C.I:".$row['cedula']."</option>"; 
+}
+                                               
+?>
+                                                    
+                                                    
+                                                    
+                                                     <tr>
+														<td align="right">Seleccione Datos del asegurado por el cual es beneficiado:</td>
 														<td align="left">
-															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="asegurado_cedula" name="asegurado_cedula" value="" class="txtBox" data-format="dddddddd">
+															 <select required id="asegurado_cedula" name="asegurado_cedula" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
 														</td>
-														<td align="left"><span id="msg_asegurado_cedula"></span>&nbsp;</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
 													</tr>
                                                     
                                                     
-                                                    <tr>
-														<td align="right">Estatus :</td>
-														<td align="left">
-															<select id="estatus" name="estatus" class="form-control selectpicker">
-															  <option>Activo</option>
-															  <option>Inactivo</option>
-															
-															</select>
-														</td>
-														<td align="left"><span id="msg_estatus"></span>&nbsp;</td>
-													</tr>
+                                              
+                                                    
+                                                    
+                                                    
                                                  
                                                     
                                                    

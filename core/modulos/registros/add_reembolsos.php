@@ -85,7 +85,7 @@
                                                         <table cellspacing="3" cellpadding="3" align="center">
                                                          
                                                                   <?php  
-   include INC_DIR.'/datos_gastos.php';
+   include INC_DIR.'/datos_gastos2.php';
 $combobit="";   
 foreach ($rows as $row){
     $combobit.="->Seleccione:";    
@@ -111,30 +111,7 @@ foreach ($rows as $row){
                                                             
                                                             
                                                             
-                                                                                                                            <?php  
-   include INC_DIR.'/datos_gastos.php';
-$combobit="";   
-foreach ($rows as $row){
-    $combobit.="->Seleccione:";    
-    $combobit.=" <option value='".$row['asegurado_cedula']."'>".$row['asegurado_cedula']."</option>"; 
-}
-                                               
-?>
-                                                          
-                                                               
-                                                            
-                                                                  <tr>
-														<td align="right">Cedula del asegurado:</td>
-														<td align="left">
-															 <select required id="asegurado_cedula" name="asegurado_cedula" >                                       
-                                                                               <option value="">
-                                                                                   <?php echo $combobit; ?>
-                                                                            </option>
-                                                                          
-                                                                        </select>
-														</td>
-														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
-													</tr>
+                                 
                                                             
                                                             
                                                             
@@ -155,17 +132,7 @@ foreach ($rows as $row){
                                                             </tr>
                                                             
                                                          
-                                                            <tr>
-                                                                <td align="right">Estatus:</td>
-                                                                <td align="left">
-                                                                    <select id="estatus" name="estatus" class="form-control selectpicker">
-                                                                       
-                                                                        <option>Activa</option>
-                                                                        <option>Inactiva</option>
-                                                                    </select>
-                                                                </td>
-                                                                <td align="left"><span id="msg_estatus"></span>&nbsp;</td>
-                                                            </tr>
+                                                            
                                                         </table>
                                                     </div>
                                             

@@ -57,7 +57,8 @@
                                 switch ($data['nivel']) {
                                     case 1:
                                         // si somos admin imprimomos menu de admin.
-                                    echo '<!--CONFIG DEL ADMINISTRADOR-->
+                                    echo '
+        <!--CONFIG DEL ADMINISTRADOR-->
         <ul class="nav nav-list">
             <li class="">
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cogs"></i> <span class="menu-text"> ADMINISTRACION</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
@@ -67,10 +68,25 @@
                 </ul>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=listaaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Aseguradoras</a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=listaaseguradora"> <i class="menu-icon fa fa-caret-right"></i> Lista Aseguradoras</a> <b class="ardata"></b> </li>
                 </ul>
+                 <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listacitas"> <i class="menu-icon fa fa-caret-right"></i> Lista Citas</a> <b class="ardata"></b> </li>
+                </ul>
+                  <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listausuarios"> <i class="menu-icon fa fa-caret-right"></i> Lista Usuarios</a> <b class="ardata"></b> </li>
+                </ul>
+                
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listaservicios"> <i class="menu-icon fa fa-caret-right"></i> Lista Servicios</a> <b class="ardata"></b> </li>
+                </ul>
+                
             </li>
         </ul>
+    
         <!--PANEL CORREDOR-->
         <ul class="nav nav-list">
             <li class="">

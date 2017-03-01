@@ -131,17 +131,36 @@
                                                         <tr>
                                                             <td align="right">Fecha de registro :</td>
                                                             <td align="left"> <span class="block input-icon input-icon-right">
-																	<input class="date-picker txtBox" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" required="required"/>
+																	<input class="date-picker txtBox" id="id-date-picker-1" name="fecharegistro" type="text" data-date-format="yyyy-mm-dd" value="<?php echo date("Y-m-d"); ?>" required="required"/>
 																	<i class="ace-icon fa fa-calendar"></i>
 															</span> </td>
                                                             <td align="left"><span id="msg_fecharegistro"></span>&nbsp;</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td align="right">Rif - Seniat de la empresa:</td>
-                                                            <td align="left">
-                                                                <input type="text" id="aseguradora_rif" name="aseguradora_rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd"> </td>
-                                                            <td align="left"><span id="msg_rif"></span>&nbsp;</td>
-                                                        </tr>
+                                                                     <?php  
+   include INC_DIR.'/datos_aseguradora.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['rif']."'>".$row['rif']."</option>"; 
+}
+                                               
+?>
+                                                          
+                                                               
+                                                            
+                                                                  <tr>
+														<td align="right">RIF de la aseguradora:</td>
+														<td align="left">
+															 <select required id="aseguradora_rif" name="aseguradora_rif" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
+														</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
+													</tr>
+                                                        
                                                         <tr>
                                                             <td align="right">Estatus del corredor:</td>
                                                             <td align="left">

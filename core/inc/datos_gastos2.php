@@ -5,7 +5,7 @@ $query = "  SELECT  asegurado_cedula,
                     reembolso,
                     estatus
             FROM    gastos
-            where (estatus!='Inactivo') ORDER BY reembolso DESC
+            where (estatus!='Inactivo') AND (reembolso='Pendiente') ORDER BY reembolso DESC
          ";
     try{
         $stmt = $db->prepare($query);

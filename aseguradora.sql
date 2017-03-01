@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-02-2017 a las 15:35:47
+-- Tiempo de generación: 01-03-2017 a las 20:06:01
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -29,7 +29,6 @@ USE `aseguradora`;
 --
 
 CREATE TABLE `asegurado` (
-  `cedula` varchar(10) NOT NULL,
   `nombres` varchar(45) DEFAULT NULL,
   `apellidos` varchar(45) DEFAULT NULL,
   `fechanacimiento` date DEFAULT NULL,
@@ -37,17 +36,17 @@ CREATE TABLE `asegurado` (
   `direccion` varchar(100) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
   `estatus` varchar(45) DEFAULT 'Activo',
-  `estado` int(11) DEFAULT '1',
-  `corredor_cedula` varchar(45) NOT NULL
+  `estado` int(11) DEFAULT '3',
+  `corredor_cedula` varchar(45) NOT NULL,
+  `cedula` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `asegurado`
 --
 
-INSERT INTO `asegurado` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `direccion`, `correo`, `estatus`, `estado`, `corredor_cedula`) VALUES
-('11696062', 'CELINA', 'CASTILLO', '2017-02-01', '+58 ', 'X', 'C', 'En espera', NULL, '21726528'),
-('12342323', 'MANUEL', 'JOSE', '2017-01-30', '+58 ', '', '', 'Activo', NULL, '21726528');
+INSERT INTO `asegurado` (`nombres`, `apellidos`, `fechanacimiento`, `telefono`, `direccion`, `correo`, `estatus`, `estado`, `corredor_cedula`, `cedula`) VALUES
+('JOSE MARIA', 'VARGAS CASTRO', '2017-03-01', '+58 (0000) 000-0000', 'QUIBOR', 'JOSE@GMAIL.COM', 'En espera', 3, '21726528', 1);
 
 -- --------------------------------------------------------
 
@@ -74,9 +73,7 @@ CREATE TABLE `aseguradora` (
 --
 
 INSERT INTO `aseguradora` (`rif`, `cuentabancaria`, `cedulacuentabancaria`, `nombre`, `direccion`, `telefonolocal`, `telefonopersonal`, `correo`, `estatus`, `estado`, `fechafundacion`) VALUES
-('J-11696062', '2222-2222-22-2222222222 ', 'J-11696062', 'PROVINCIAL CA', 'CARACAS', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'C@G.COM', 'Inactivo', 'LA', '2017-02-04'),
-('J-21726528', '1111-1111-11-1111111111 ', 'J-21726528', 'MERCANTIL CA', 'ESTADO LARA BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@CORREO.COM', 'Activa', 'LA', '2017-01-30'),
-('J-22222222', '3333-3333-33-3333', 'J-33333333', 'CONATEL', 'X', '+58 ', '+58 ', 'X', 'Inactivo', 'LA', '2017-02-04');
+('J-99999999', '1111-1111-11-111111111', 'J-99999999', 'MERCANTIL CA', 'BARQUISIMETO', '+58 (0426) 000-0000', '+58 (0251) 000-0000', 'MERCANTIL@GMAIL.COM', 'Activa', 'LA', '2017-03-01');
 
 -- --------------------------------------------------------
 
@@ -93,7 +90,7 @@ CREATE TABLE `beneficiario` (
   `telefono` varchar(45) DEFAULT NULL,
   `correo` varchar(45) DEFAULT NULL,
   `estatus` varchar(45) DEFAULT 'Activo',
-  `asegurado_cedula` varchar(10) NOT NULL
+  `asegurado_cedula` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -101,7 +98,30 @@ CREATE TABLE `beneficiario` (
 --
 
 INSERT INTO `beneficiario` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `direccion`, `telefono`, `correo`, `estatus`, `asegurado_cedula`) VALUES
-(123456789, 'CELIMAR ', 'ACOSTA', '2017-02-02', '', '+58 ', '', 'Inactivo', '11696062');
+(2172652823, 'CELINA M', '33', '2017-03-09', 'barquisimeto', '+58 (0416) 000-000', 'XXXXXXXXXX@GMAIL.COM', 'Activo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cita`
+--
+
+CREATE TABLE `cita` (
+  `cedula` int(8) NOT NULL,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  `estatus` varchar(20) NOT NULL DEFAULT 'En Espera',
+  `fecha` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`cedula`, `nombres`, `apellidos`, `telefono`, `correo`, `estatus`, `fecha`) VALUES
+(1, 'JOSE', 'MANUEL', '1', 'MANUEL@GMAIL.COM', 'Asistio', '2017-03-01');
 
 -- --------------------------------------------------------
 
@@ -127,7 +147,7 @@ CREATE TABLE `corredor` (
 --
 
 INSERT INTO `corredor` (`cedula`, `nombres`, `apellidos`, `fechanacimiento`, `telefono`, `correo`, `direccion`, `fecharegistro`, `estatus`, `aseguradora_rif`) VALUES
-('21726528', 'ERICK ANTONIO', 'SUAREZ', '1991-05-29', '+58 (0426) 355-3619', 'ERICK@GMAIL.COM', 'BARQUISIMETO SAN JUAN CALLE 36', '2017-02-04', 'Inactivo', 'J-21726528');
+('21726528', 'ERICK ANTONIO', 'SUAREZ CASTILLO', '1991-05-29', '+58 (0426) 355-3619', 'ERICK@GMAIL.COM', 'BARQUISIMETO ESTADO LARA', '2017-03-01', 'Activo', 'J-99999999');
 
 -- --------------------------------------------------------
 
@@ -140,7 +160,7 @@ CREATE TABLE `factura` (
   `fecha` date DEFAULT NULL,
   `montototal` varchar(45) DEFAULT NULL,
   `montocancelado` varchar(45) DEFAULT NULL,
-  `estatus` varchar(45) DEFAULT 'Activo',
+  `estatus` varchar(45) DEFAULT 'Pendiente',
   `observaciones` varchar(100) DEFAULT NULL,
   `servicio_codigo` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -155,16 +175,16 @@ CREATE TABLE `gastos` (
   `codigo` varchar(45) NOT NULL,
   `monto` varchar(45) DEFAULT NULL,
   `reembolso` varchar(45) DEFAULT 'Pendiente',
-  `asegurado_cedula` varchar(10) NOT NULL,
-  `estatus` varchar(45) DEFAULT 'Pendiente'
+  `estatus` varchar(45) DEFAULT 'Pendiente',
+  `asegurado_cedula` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `gastos`
 --
 
-INSERT INTO `gastos` (`codigo`, `monto`, `reembolso`, `asegurado_cedula`, `estatus`) VALUES
-('1', '1,00', 'Pendiente', '11696062', 'Pendiente');
+INSERT INTO `gastos` (`codigo`, `monto`, `reembolso`, `estatus`, `asegurado_cedula`) VALUES
+('1', '1500', 'Pagado', 'Pendiente', 1);
 
 -- --------------------------------------------------------
 
@@ -173,9 +193,8 @@ INSERT INTO `gastos` (`codigo`, `monto`, `reembolso`, `asegurado_cedula`, `estat
 --
 
 CREATE TABLE `pagos_de_servicios` (
-  `factura_codigo` varchar(45) NOT NULL,
+  `codigo` varchar(45) NOT NULL,
   `servicio_codigo` varchar(45) NOT NULL,
-  `asegurado_cedula` varchar(10) NOT NULL,
   `estatus` varchar(45) DEFAULT 'Activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -188,8 +207,8 @@ CREATE TABLE `pagos_de_servicios` (
 CREATE TABLE `polizas` (
   `tipopolizas_codigo` varchar(45) NOT NULL,
   `corredor_cedula` varchar(45) NOT NULL,
-  `asegurado_cedula` varchar(10) NOT NULL,
-  `estatus` varchar(45) DEFAULT 'Activo'
+  `estatus` varchar(45) DEFAULT 'Activo',
+  `asegurado_cedula` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -202,16 +221,15 @@ CREATE TABLE `reembolsos` (
   `monto` varchar(45) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `gastos_codigo` varchar(45) NOT NULL,
-  `asegurado_cedula` varchar(10) NOT NULL,
-  `estatus` varchar(45) DEFAULT 'Pendiente'
+  `estatus` varchar(45) DEFAULT 'Pagado'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `reembolsos`
 --
 
-INSERT INTO `reembolsos` (`monto`, `fecha`, `gastos_codigo`, `asegurado_cedula`, `estatus`) VALUES
-('1', '2017-02-27', '1', '11696062', 'Activa');
+INSERT INTO `reembolsos` (`monto`, `fecha`, `gastos_codigo`, `estatus`) VALUES
+('1500', '2017-03-01', '1', 'Pagado');
 
 -- --------------------------------------------------------
 
@@ -228,12 +246,19 @@ CREATE TABLE `servicio` (
   `beneficios` varchar(45) DEFAULT NULL,
   `monto` varchar(45) DEFAULT NULL,
   `estatus` varchar(45) DEFAULT 'Activo',
-  `cobertura` varchar(45) DEFAULT 'NACIONAL',
   `observaciones` varchar(100) DEFAULT NULL,
   `tipopolizas_codigo` varchar(45) NOT NULL,
   `aseguradora_rif` varchar(45) NOT NULL,
-  `tiposeguro_codigo` varchar(10) NOT NULL
+  `tiposeguro_codigo` varchar(10) NOT NULL,
+  `asegurado_cedula` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `servicio`
+--
+
+INSERT INTO `servicio` (`codigo`, `fecha`, `fechaadquisicion`, `fechavigencia`, `fechaculminacion`, `beneficios`, `monto`, `estatus`, `observaciones`, `tipopolizas_codigo`, `aseguradora_rif`, `tiposeguro_codigo`, `asegurado_cedula`) VALUES
+('58007', '2017-03-01', '2017-03-01', '2017-03-01', '2017-03-01', 'asd', '20000', 'Inacti2', 'asd', 'TP-1', 'J-99999999', 'TS-1', 1);
 
 -- --------------------------------------------------------
 
@@ -254,8 +279,8 @@ CREATE TABLE `tipopolizas` (
 --
 
 INSERT INTO `tipopolizas` (`codigo`, `nombre`, `costo`, `cobertura`, `estatus`) VALUES
-('TP-1', 'Póliza de cobertura limitada', '53254', 'Limitada', 'Inactivo'),
-('TP-2', 'Póliza básica', '5000', 'Nacional', 'Inactivo'),
+('TP-1', 'Póliza de cobertura limitada', '53254', 'Limitada', 'Activa'),
+('TP-2', 'Póliza básica', '5000', 'Nacional', 'Activa'),
 ('TP-3', 'La póliza más popular', '15000', 'Internacional', 'Activa');
 
 -- --------------------------------------------------------
@@ -277,8 +302,8 @@ CREATE TABLE `tiposeguro` (
 
 INSERT INTO `tiposeguro` (`codigo`, `nombre`, `observacion`, `estatus`) VALUES
 ('TS-1', 'Seguro de Vida', 'Cubre el riesgo de muerte natural o supervivencia y la incapacidad.', 'Activa'),
-('TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', 'Inactivo'),
-('TS-11', 'seguros empresariales', 'cubren los riesgos que tanto los empleados como la propia empresa puedan ser objeto.', 'Inactivo'),
+('TS-10', 'Seguro de pérdida de beneficios', 'cubre al empresario de los perjuicios o pérdidas económicas derivadas de un siniestro.', 'Activa'),
+('TS-11', 'seguros empresariales', 'cubren los riesgos que tanto los empleados como la propia empresa puedan ser objeto.', 'Activa'),
 ('TS-12', 'Seguro de Accidentes', 'Cubre el riesgo de incapacidad o muerte como consecuencia de un accidente.', 'Activa'),
 ('TS-13', 'seguro terrestre', 'cubren objetos situados en la tierra.', ''),
 ('TS-14', 'seguro marítimo', 'cubren objetos situados en el mar.', ''),
@@ -329,7 +354,8 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`ID`, `nombre`, `apellido`, `correo`, `telefono`, `direccion`, `password`, `salt`, `cedula`, `nivel`, `cookie`, `logueado`) VALUES
-(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 45843781, 'NO');
+(1, 'ERICK', 'SUAREZ', 'ERICK@GMAIL.COM', '21726528', 'BARQUISIMETO', '916bf7c51ee8ccf1a6d54d6fabc7e4f3d077428584d1112b637652f02072911527409348078334300814bf9647e9f7f2beb0fa50a76edca586a8c26e6c3b3335', 'q18JV8rURDwxXiFQ1xShQeU1MiU.', 21726528, 1, 984141009, 'SI'),
+(3, 'MANUEL', 'JOSUE', 'MIGUEL@GMAIL.COM', '042615678', 'BARQUISIMETO', '9de4bdd2b15db3ba296deb91d6281749f290d99f405b707f688c92dd5df5969e98109338861aef6814dc279f6f7848c01c7faf295bf02537a63d1a471e91c29b', 'IxtlucHX2v6cdLqmkRlMcLyarqA.', 1234567, 1, 309723749, 'NO');
 
 --
 -- Índices para tablas volcadas
@@ -340,8 +366,8 @@ INSERT INTO `usuarios` (`ID`, `nombre`, `apellido`, `correo`, `telefono`, `direc
 --
 ALTER TABLE `asegurado`
   ADD PRIMARY KEY (`cedula`),
-  ADD UNIQUE KEY `cedula_UNIQUE` (`cedula`),
-  ADD KEY `fk_asegurado_corredor1_idx` (`corredor_cedula`);
+  ADD KEY `fk_asegurado_corredor1_idx` (`corredor_cedula`),
+  ADD KEY `fk_asegurado_cita1_idx` (`cedula`);
 
 --
 -- Indices de la tabla `aseguradora`
@@ -357,6 +383,12 @@ ALTER TABLE `beneficiario`
   ADD PRIMARY KEY (`cedula`),
   ADD UNIQUE KEY `cedula_UNIQUE` (`cedula`),
   ADD KEY `fk_beneficiario_asegurado1_idx` (`asegurado_cedula`);
+
+--
+-- Indices de la tabla `cita`
+--
+ALTER TABLE `cita`
+  ADD PRIMARY KEY (`cedula`);
 
 --
 -- Indices de la tabla `corredor`
@@ -386,9 +418,8 @@ ALTER TABLE `gastos`
 -- Indices de la tabla `pagos_de_servicios`
 --
 ALTER TABLE `pagos_de_servicios`
-  ADD KEY `fk_pagos_de_servicios_factura1_idx` (`factura_codigo`),
-  ADD KEY `fk_pagos_de_servicios_servicio1_idx` (`servicio_codigo`),
-  ADD KEY `fk_pagos_de_servicios_asegurado1_idx` (`asegurado_cedula`);
+  ADD KEY `fk_pagos_de_servicios_factura1_idx` (`codigo`),
+  ADD KEY `fk_pagos_de_servicios_servicio1_idx` (`servicio_codigo`);
 
 --
 -- Indices de la tabla `polizas`
@@ -403,8 +434,7 @@ ALTER TABLE `polizas`
 --
 ALTER TABLE `reembolsos`
   ADD PRIMARY KEY (`gastos_codigo`),
-  ADD KEY `fk_reembolsos_gastos1_idx` (`gastos_codigo`),
-  ADD KEY `fk_reembolsos_asegurado1_idx` (`asegurado_cedula`);
+  ADD KEY `fk_reembolsos_gastos1_idx` (`gastos_codigo`);
 
 --
 -- Indices de la tabla `servicio`
@@ -414,7 +444,8 @@ ALTER TABLE `servicio`
   ADD UNIQUE KEY `codigo_UNIQUE` (`codigo`),
   ADD KEY `fk_servicio_tipopolizas1_idx` (`tipopolizas_codigo`),
   ADD KEY `fk_servicio_aseguradora1_idx` (`aseguradora_rif`),
-  ADD KEY `fk_servicio_tiposeguro1_idx` (`tiposeguro_codigo`);
+  ADD KEY `fk_servicio_tiposeguro1_idx` (`tiposeguro_codigo`),
+  ADD KEY `fk_servicio_asegurado1_idx` (`asegurado_cedula`);
 
 --
 -- Indices de la tabla `tipopolizas`
@@ -444,7 +475,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Restricciones para tablas volcadas
 --
@@ -453,6 +484,7 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `asegurado`
 --
 ALTER TABLE `asegurado`
+  ADD CONSTRAINT `fk_asegurado_cita1` FOREIGN KEY (`cedula`) REFERENCES `cita` (`cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_asegurado_corredor1` FOREIGN KEY (`corredor_cedula`) REFERENCES `corredor` (`cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -483,8 +515,7 @@ ALTER TABLE `gastos`
 -- Filtros para la tabla `pagos_de_servicios`
 --
 ALTER TABLE `pagos_de_servicios`
-  ADD CONSTRAINT `fk_pagos_de_servicios_asegurado1` FOREIGN KEY (`asegurado_cedula`) REFERENCES `asegurado` (`cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_pagos_de_servicios_factura1` FOREIGN KEY (`factura_codigo`) REFERENCES `factura` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_pagos_de_servicios_factura1` FOREIGN KEY (`codigo`) REFERENCES `factura` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_pagos_de_servicios_servicio1` FOREIGN KEY (`servicio_codigo`) REFERENCES `servicio` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -499,13 +530,13 @@ ALTER TABLE `polizas`
 -- Filtros para la tabla `reembolsos`
 --
 ALTER TABLE `reembolsos`
-  ADD CONSTRAINT `fk_reembolsos_asegurado1` FOREIGN KEY (`asegurado_cedula`) REFERENCES `asegurado` (`cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_reembolsos_gastos1` FOREIGN KEY (`gastos_codigo`) REFERENCES `gastos` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `servicio`
 --
 ALTER TABLE `servicio`
+  ADD CONSTRAINT `fk_servicio_asegurado1` FOREIGN KEY (`asegurado_cedula`) REFERENCES `asegurado` (`cedula`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_servicio_aseguradora1` FOREIGN KEY (`aseguradora_rif`) REFERENCES `aseguradora` (`rif`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_servicio_tipopolizas1` FOREIGN KEY (`tipopolizas_codigo`) REFERENCES `tipopolizas` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_servicio_tiposeguro1` FOREIGN KEY (`tiposeguro_codigo`) REFERENCES `tiposeguro` (`codigo`) ON DELETE NO ACTION ON UPDATE NO ACTION;

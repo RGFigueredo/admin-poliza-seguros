@@ -1,7 +1,7 @@
 <?php
 $query = "  SELECT  *
-            FROM    reembolsos
-            where estatus!='Inactivo'
+            FROM    usuarios
+            where logueado='SI'
          ";
     try{
         $stmt = $db->prepare($query);

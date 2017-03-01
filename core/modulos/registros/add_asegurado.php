@@ -98,7 +98,7 @@
                                                     
                                                     
 													 <tr>
-														<td align="right">Nombres :</td>
+														<td align="right">Nombres (2) :</td>
 														<td align="left">
 															<input type="text" id="nombre" name="nombres" value="" class="txtBox">
 														</td>
@@ -107,21 +107,40 @@
                                                     
                                                     
 													<tr>
-														<td align="right">Apellidos :</td>
+														<td align="right">Apellidos (2):</td>
 														<td align="left">
 															<input type="text" id="apellidos" name="apellidos" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
 													</tr>
                                                     
-                                                    <tr>
-														<td align="right">Cedula :</td>
+                                                    
+                                                    <?php  
+   include INC_DIR.'/datos_citas.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['cedula']."'>".$row['apellidos'].",".$row['nombres']."-C.I:".$row['cedula']."</option>"; 
+}
+                                               
+?>
+                                                    
+                                                    
+                                                    
+                                                     <tr>
+														<td align="right">Seleccione Datos del asegurado:</td>
 														<td align="left">
-															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd">
+															 <select required id="cedula" name="cedula" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
 														</td>
 														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
 													</tr>
                                                     
+                                              
                                                     
                                                     <tr>
 														<td align="right">Fecha de nacimiento :</td>
@@ -166,14 +185,32 @@
                                                     
                                                    
                                                  
+                                                                       <?php  
+   include INC_DIR.'/datos_corredor.php';
+$combobit="";   
+foreach ($rows as $row){
+    $combobit.="->Seleccione:";    
+    $combobit.=" <option value='".$row['cedula']."'>".$row['apellidos'].",".$row['nombres']."-C.I:".$row['cedula']."</option>"; 
+}
+                                               
+?>
+                                                    
+                                                    
                                                     
                                                      <tr>
-														<td align="right">Cedula del corredor :</td>
+														<td align="right">Selecione datos del corredor :</td>
 														<td align="left">
-															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="corredor_cedula" value="" class="txtBox" data-format="dddddddd">
+															 <select required id="corredor_cedula" name="corredor_cedula" >                                       
+                                                                               <option value="">
+                                                                                   <?php echo $combobit; ?>
+                                                                            </option>
+                                                                          
+                                                                        </select>
 														</td>
-														<td align="left"><span id="msg_corredor_cedula"></span>&nbsp;</td>
+														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
 													</tr>
+                                                    
+                                                 
                                                     
                                                     
       

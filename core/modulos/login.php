@@ -79,6 +79,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 
 											<form name="form_login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" role="form">
 												<fieldset>
+                                                   
 												<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
 															<input onkeyup="this.value=this.value.toUpperCase()" type="email" name="correo" id="correo" required class="form-control" placeholder="Correo electronico" />
@@ -338,7 +339,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 
 											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form" name="cita">
 												<fieldset>
-
+                                                <input type='hidden' name="fecha" value="<?php echo date("Y-m-d"); ?>">
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
 															<input name="nombres" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombres" id="nombres" required />
