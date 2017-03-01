@@ -113,7 +113,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 											</form>
 
 											<div class="social-or-login center">
-												<span class="bigger-110">Usa las redes sociales</span>
+												<span class="bigger-110">-Reservar cita-</span>
 											</div>
 
 											<div class="space-6"></div>
