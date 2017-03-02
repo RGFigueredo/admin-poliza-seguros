@@ -500,6 +500,20 @@ switch ($_GET['do']) {
 		
 	}          
 	
+	    case 'reportes' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/reporte.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}          
+	
 	
 	
 	

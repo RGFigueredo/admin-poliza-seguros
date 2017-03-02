@@ -181,6 +181,16 @@
                 </ul>
             </li>
         </ul>
+        <!--PANEL reportes-->
+        <ul class="nav nav-list">
+            <li class="">
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cart-plus"></i> <span class="menu-text"> Reportes</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=reportes"> <i class="menu-icon fa fa-caret-right"></i> Reportes </a> <b class="ardata"></b> </li>
+                </ul>
+            </li>
+        </ul>
         
         
         ';

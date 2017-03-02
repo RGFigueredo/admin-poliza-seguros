@@ -26,9 +26,7 @@ if (!empty($_POST)) {
                                 fechaculminacion,
                                 beneficios,
                                 monto,
-                                   asegurado_cedula,
-                            
-                        
+                                asegurado_cedula,
                                 observaciones,
                                 tipopolizas_codigo,
                                 aseguradora_rif,
@@ -59,9 +57,7 @@ if (!empty($_POST)) {
         ':fecul' => $_POST['fecha_culm'],
         ':ben' => $_POST['beneficios'],
         ':mont' => $_POST['monto'],
-             ':asegurado_cedula' => $_POST['asegurado_cedula'],
-       
-      
+         ':asegurado_cedula' => $_POST['asegurado_cedula'],
         ':obser' => $_POST['observacion'],
         ':tpolcod' => $_POST['cod_poliza'],
         ':asegu' => $_POST['rif_aseg'],
@@ -89,5 +85,51 @@ if (!empty($_POST)) {
 		echo 'ERROR: ' . $e->getMessage();
 			
 	}
+
+	$query = '  INSERT INTO factura
+            	(
+				codigo,
+				fecha,
+				montototal,
+				montocancelado,
+				estatus,
+				observaciones,
+				servicio_codigo
+            	 ) VALUES (
+            	:cod,
+            	:fec,
+            	:mttal,
+            	:moncan,
+            	:obs,
+            	:serv_cod
+            	
+            	)
+        		  ';
+        $query_params = array(
+        	':cod' => $_POST['codigo'],
+        	':fec' => $_POST['fecha'],
+        	':mttal' => $_POST['monto'],
+        	':moncan' => $_POST['monto'],
+        	':obs' => $_POST['observacion'],
+        	':serv_cod' => $_POST['codigo']
+
+        	);
+        try {
+            $stmt = $db->prepare($query);
+            $result = $stmt->execute($query_params);
+        } catch (PDOException $ex) {
+            /*
+        	  TODO: Aqui de igual forma cambiaremos a un modal
+        	 */
+            die('Fallamos al hacer la busqueda: '.$ex->getMessage());
+        }
+        $row = $stmt->fetch();
+        if ($row) {
+            echo "<div class='panel-body'>
+                <div class='alert alert-warning alert-dismissable'>
+                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                Error: La cédula ya existe.</div>
+            </div>";
+        }
           header('Location: index.php?do=listaservicios&accion=registrado');
 }
