@@ -30,12 +30,12 @@
 
 							</a>
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                        <li>
+                        <!--<li>
                             <a href="#"> <i class="ace-icon fa fa-cog"></i> Configuración </a>
                         </li>
                         <li>
                             <a href="#"> <i class="ace-icon fa fa-user"></i> Perfil </a>
-                        </li>
+                        </li>-->
                         <li class="divider"></li>
                         <li>
                             <a href="index.php?do=salir"> <i class="ace-icon fa fa-power-off"></i> Cerrar sesión </a>
@@ -95,7 +95,8 @@
                     <li class="">
                         <a href="index.php?do=addcorredor"> <i class="menu-icon fa fa-caret-right"></i> Agregar </a> <b class="ardata"></b> </li>
                     <li class="">
-                        <a href="index.php?do=listacorredor"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=listacorredor"> <i class="menu-icon fa fa-caret-right"></i> Lista </a> <b class="ardata"></b> 
+                    </li>
                 </ul>
             </li>
         </ul>
@@ -187,8 +188,52 @@
                 <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cart-plus"></i> <span class="menu-text"> Reportes</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
-                        <a href="index.php?do=reportes"> <i class="menu-icon fa fa-caret-right"></i> Reportes </a> <b class="ardata"></b> </li>
+                        <a href="index.php?do=reportes"> <i class="menu-icon fa fa-caret-right"></i>Financiero </a> <b class="ardata"></b> </li>
                 </ul>
+                         <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listaaseguradora"> <i class="menu-icon fa fa-caret-right"></i>Aseguradoras</a> <b class="ardata"></b> </li>
+                </ul>
+                 <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listacitas"> <i class="menu-icon fa fa-caret-right"></i>Citas</a> <b class="ardata"></b> </li>
+                </ul>
+                  <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listausuarios"> <i class="menu-icon fa fa-caret-right"></i>Usuarios sistema</a> <b class="ardata"></b> </li>
+                </ul>
+                
+                <ul class="submenu">
+                    <li class="">
+                        <a href="index.php?do=listaservicios"> <i class="menu-icon fa fa-caret-right"></i>Servicios</a> <b class="ardata"></b> </li>
+                </ul>
+                
+                  <ul class="submenu">
+                      <li class="">
+                        <a href="index.php?do=listacorredor"> <i class="menu-icon fa fa-caret-right"></i>Corredores</a> <b class="ardata"></b> 
+                    </li>
+                </ul>
+                
+                  <ul class="submenu">
+                      <li class="">
+                        <a href="index.php?do=listagastos"> <i class="menu-icon fa fa-caret-right"></i>Gastos Asegurado</a> <b class="ardata"></b> 
+                    </li>
+                </ul>
+                
+                  <ul class="submenu">
+                      <li class="">
+                        <a href="index.php?do=listareembolsos"> <i class="menu-icon fa fa-caret-right"></i>Reembolsos</a> <b class="ardata"></b> 
+                    </li>
+                </ul>
+                 <ul class="submenu">
+                      <li class="">
+                        <a href="index.php?do=listafacturas"> <i class="menu-icon fa fa-caret-right"></i>Facturas</a> <b class="ardata"></b> 
+                    </li>
+                </ul>
+              
+                
+                
+                
             </li>
         </ul>
         

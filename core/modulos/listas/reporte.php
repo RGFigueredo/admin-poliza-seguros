@@ -48,8 +48,8 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
-                                            <th>Ganancias</th>
-                                            <th>Ganancias pendientes</th>
+                                            <th>Ganancias Netas</th>
+                                            <th>Ganancias Esperadas por cobrar</th>
                                             <th>Servicios activos</th>
                                             <th>??????</th>
                                         </tr>

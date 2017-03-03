@@ -14,10 +14,7 @@
 
  $id = $_GET['id'];
  
-$query = "  SELECT gastos_codigo,
-monto,
-                    fecha,asegurado_cedula,
-                    estatus               
+$query = "  SELECT *              
             
             FROM    reembolsos where gastos_codigo='$id'
          ";
@@ -102,14 +99,7 @@ monto,
                                                                     <input type="text" id="gastos_codigo" name="gastos_codigo" disabled value="<?php echo $row['gastos_codigo'];?>" > </td>
                                                                 <td align="left"><span id="msg_codigo"></span>&nbsp;</td>
                                                             </tr>
-                                                             <tr>
-                                                                <td align="right">Cedula del asegurado:</td>
-                                                                <td align="left">
-                                                                     <input type='hidden' name="asegurado_cedula" value="<?php echo $row['asegurado_cedula'];?>">
-                                                                    
-                                                                    <input type="text" id="asegurado_cedula" name="asegurado_cedula" disabled value="<?php echo $row['asegurado_cedula'];?>" > </td>
-                                                                <td align="left"><span id="msg_codigo"></span>&nbsp;</td>
-                                                            </tr>
+                                                              
                                                             
                                                             <tr>
                                                                 <td align="right">Monto en Bolivares:</td>

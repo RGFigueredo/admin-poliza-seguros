@@ -514,7 +514,19 @@ switch ($_GET['do']) {
 		
 	}          
 	
-	
+	    case 'listafacturas' :
+	if ($login_ok) {
+		
+		include_once CORE_DIR.'/modulos/listas/lista_facturas.php';
+		
+		break;
+		
+	}
+	else {
+		
+		include_once CORE_DIR.'/modulos/login.php';
+		
+	}        
 	
 	
 	

@@ -92,7 +92,7 @@ if (!empty($_POST)) {
 				fecha,
 				montototal,
 				montocancelado,
-				estatus,
+		 
 				observaciones,
 				servicio_codigo
             	 ) VALUES (
@@ -121,9 +121,9 @@ if (!empty($_POST)) {
             /*
         	  TODO: Aqui de igual forma cambiaremos a un modal
         	 */
-            die('Fallamos al hacer la busqueda: '.$ex->getMessage());
+          
         }
-        $row = $stmt->fetch();
+    
         if ($row) {
             echo "<div class='panel-body'>
                 <div class='alert alert-warning alert-dismissable'>

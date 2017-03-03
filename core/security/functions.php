@@ -311,7 +311,7 @@ function modificar($var1, $var2, PDO $db){
                           monto = :monto,
                           fecha = :fecha,
                           gastos_codigo = :gastos_codigo,                    
-                          asegurado_cedula = :asegurado_cedula,               
+                                      
                           estatus = :estatus
                    WHERE gastos_codigo = :cedula_old
                 ';
@@ -319,7 +319,7 @@ function modificar($var1, $var2, PDO $db){
             ':monto' => $_POST['monto'],
             ':fecha' => $_POST['fecha'],
             ':gastos_codigo' => $_POST['gastos_codigo'],            
-            ':asegurado_cedula' => $_POST['asegurado_cedula'],
+            
             ':estatus' => $_POST['estatus'],
             ':cedula_old' => $var2
             );
