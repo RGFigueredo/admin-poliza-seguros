@@ -118,7 +118,7 @@ foreach ($rows as $row){
                                                             <tr>
                                                                 <td align="right">Monto en Bolivares:</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="monto" name="monto" value="" class="txtBox"> </td>
+                                                                    <input type="text" onKeyPress="return SoloNumeros(event);" id="monto" name="monto" value="" class="txtBox"> </td>BsF
                                                                 <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                                             </tr>
                                                             

@@ -131,5 +131,22 @@ if (!empty($_POST)) {
                 Error: La cédula ya existe.</div>
             </div>";
         }
-          header('Location: index.php?do=listaservicios&accion=registrado');
+            	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha agregado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
 }

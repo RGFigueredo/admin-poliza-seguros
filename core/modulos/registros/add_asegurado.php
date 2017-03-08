@@ -100,7 +100,7 @@
 													 <tr>
 														<td align="right">Nombres (2) :</td>
 														<td align="left">
-															<input type="text" id="nombre" name="nombres" value="" class="txtBox">
+															<input type="text" id="nombre" onkeypress="return soloLetras(event);" name="nombres" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_nombres"></span>&nbsp;</td>
 													</tr>
@@ -109,7 +109,7 @@
 													<tr>
 														<td align="right">Apellidos (2):</td>
 														<td align="left">
-															<input type="text" id="apellidos" name="apellidos" value="" class="txtBox">
+															<input type="text" id="apellidos" onkeypress="return soloLetras(event);" name="apellidos" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
 													</tr>
@@ -239,7 +239,7 @@ foreach ($rows as $row){
 													<tr>
 														<td align="right">Telefono :</td>
 														<td align="left">
-															<input type="text" id="telefono" name="telefono" value="" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd">
+															<input type="text" id="telefono" name="telefono" onKeyPress="return SoloNumeros(event);" value="" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd">
 														</td>
 														<td align="left"><span id="msg_telefono"></span>&nbsp;</td>
 													</tr>

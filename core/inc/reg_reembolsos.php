@@ -75,8 +75,42 @@ if (!empty($_POST)) {
 		// 	si hay un fallo hacemos rollback y no guardamos ninguna de las cosas.
 		$db->rollBack();
 		// mandamos un error para saber que paso.
-		echo 'ERROR: ' . $e->getMessage();
+		               	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
 			
 	}
-      header('Location: index.php?do=listareembolsos&accion=registrado');
+      	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha agregado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
 }

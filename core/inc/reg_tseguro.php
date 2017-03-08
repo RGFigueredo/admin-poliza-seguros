@@ -22,11 +22,24 @@ if (!defined('SRCP')) {
         }
         $row = $stmt->fetch();
         if ($row) {
-            echo "<div class='panel-body'>
-                <div class='alert alert-warning alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                Error: La cédula ya existe.</div>
-            </div>";
+                   	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }
         $query = 'SELECT 1
             	  FROM tiposeguro
@@ -43,11 +56,24 @@ if (!defined('SRCP')) {
         }
         $row = $stmt->fetch();
         if ($row) {
-            echo "<div class='panel-body'>
-                <div class='alert alert-warning alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                Error: El correo ya esta en uso.</div>
-            </div>";
+         	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }
 
         /// Si todo pasa enviamos los datos a la base de datos mediante PDO para evitar Inyecciones SQL
@@ -73,14 +99,43 @@ if (!defined('SRCP')) {
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-					</div>
-				  </div>".$ex->getMessage();
+                     	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }
-        header('Location: index.php?do=tseguro&accion=registrado');
+      	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha agregado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
     }
 
     if (isset($_GET['accion'])) {

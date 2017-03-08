@@ -61,14 +61,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                   	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listacorredor&accion=modificado');
+         	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
     } //fin case corredor
       case 'aseguradora':
@@ -107,14 +136,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                  	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listaaseguradora&accion=modificado');
+          	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
       case 'asegurado':
          $query = '  UPDATE asegurado   
@@ -150,14 +208,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                 	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listaasegurado&accion=modificado');
+           	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
       case 'beneficiario':
         $query = '  UPDATE beneficiario   
@@ -193,14 +280,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+              	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listabeneficiario&accion=modificado');
+          	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
           case 'tipopolizas':
      $query = '  UPDATE tipopolizas   
@@ -228,14 +344,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                 	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=tpoliza&accion=modificado');
+         	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
           case 'tiposeguro':
         $query = '  UPDATE tiposeguro   
@@ -260,14 +405,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+           	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=tseguro&accion=modificado');
+      	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
          
           
@@ -295,14 +469,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listagastos&accion=modificado');
+     	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
           
                      case 'reembolsos':
@@ -329,14 +532,43 @@ function modificar($var1, $var2, PDO $db){
             $result = $stmt->execute($query_params);
         } catch (PDOException $ex) {
             // Si tenemos problemas para ejecutar la consulta imprimimos el error
-            echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                        <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                        Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-          </div>
-          </div>".$ex->getMessage();
+                	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Por favor contacte a un administrador.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         }//fin catch error
-        header('Location: index.php?do=listareembolsos&accion=modificado');
+          	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Felicidades!</h3>
+				</div>
+				<div class='modal-body'>
+					<p>Se ha Actualizado éxitosamente!</p>
+					
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info'  href='<?php index.php?do=listaaseguradora&accion=registrado' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
         break;
           
           

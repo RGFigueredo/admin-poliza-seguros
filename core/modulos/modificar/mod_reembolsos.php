@@ -104,7 +104,7 @@ $query = "  SELECT *
                                                             <tr>
                                                                 <td align="right">Monto en Bolivares:</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="monto" name="monto" value="<?php echo $row['monto'];?>" class="txtBox"> </td>
+                                                                    <input type="text" id="monto" onKeyPress="return SoloNumeros(event);" name="monto" value="<?php echo $row['monto'];?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                                             </tr>
                                                             

@@ -30,7 +30,7 @@
                 <div class="breadcrumbs" id="breadcrumbs">
                     <ul class="breadcrumb">
                         <li> <i class="ace-icon fa fa-home home-icon"></i> <a href="index.php">Inicio</a> </li>
-                        <li>Profesores</li>
+                        <li>Corredor</li>
                         <li class="active">Registro de corredor</li>
                     </ul>
                     <!-- /.breadcrumb -->
@@ -77,19 +77,19 @@
                                                         <tr>
                                                             <td align="right">Nombres :</td>
                                                             <td align="left">
-                                                                <input type="text" id="nombres" name="nombres" value="" class="txtBox"> </td>
+                                                                <input type="text" id="nombres" onkeypress="return soloLetras(event);" name="nombres" value="" class="txtBox"> </td>
                                                             <td align="left"><span id="msg_nombres"></span>&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                             <td align="right">Apellidos :</td>
                                                             <td align="left">
-                                                                <input type="text" id="apellidos" name="apellidos" value="" class="txtBox"> </td>
+                                                                <input type="text" id="apellidos" onkeypress="return soloLetras(event);" name="apellidos" value="" class="txtBox"> </td>
                                                             <td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
                                                         </tr>
                                                         <tr>
                                                             <td align="right">Cedula :</td>
                                                             <td align="left">
-                                                                <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd"> </td>
+                                                                <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" onkeypress="return soloLetras(event);" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd"> </td>
                                                             <td align="left"><span id="msg_cedula"></span>&nbsp;</td>
                                                         </tr>
                                                         <tr>

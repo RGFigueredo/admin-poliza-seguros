@@ -83,7 +83,7 @@
                                                         <tr>
                                                             <td align="right">Nombre :</td>
                                                             <td align="left">
-                                                                <input type="text" id="nombre" name="nombre" value="" class="txtBox"> </td>
+                                                                <input type="text" id="nombre" name="nombre" onkeypress="return soloLetras(event);" value="" class="txtBox"> </td>
                                                             <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                                         </tr>
                                                         <tr>

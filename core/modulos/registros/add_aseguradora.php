@@ -82,14 +82,14 @@
 													<tr>
 														<td align="right">Nombre de la empresa:</td>
 														<td align="left">
-															<input type="text" id="nombre" name="nombre" value="" class="txtBox">
+															<input type="text" id="nombre" name="nombre" onkeypress="return soloLetras(event);" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_nombre"></span>&nbsp;</td>
 													</tr> 
                                                     <tr>
 														<td align="right">Rif - Seniat :</td>
 														<td align="left">
-															<input type="text" id="rif" name="rif" value="" class="txtBox bfh-phone" data-format="J-dddddddd">
+															<input type="text" id="rif" name="rif" value="" onKeyPress="return SoloNumeros(event);" class="txtBox bfh-phone" data-format="J-dddddddd">
 														</td>
 														<td align="left"><span id="msg_rif"></span>&nbsp;</td>
 													</tr>											 

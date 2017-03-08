@@ -3,7 +3,7 @@
     $username = 'root';
     $password = '';
     $host = 'localhost';
-    $dbname = 'aseguradora';
+    $dbname = 'cristoes_aseguradora';
      // Opciones de la conexion PDO a MySQL con un Fetch mode en ASSOC!
 
     $options = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');

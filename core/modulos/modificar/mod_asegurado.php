@@ -104,19 +104,19 @@ $query = "  SELECT  cedula,
                                                             <tr>
                                                                 <td align="right">Nombres :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="nombre" name="nombres" value="<?php echo $row['nombres'];   ?>" class="txtBox"> </td>
+                                                                    <input type="text" id="nombre" name="nombres" onkeypress="return soloLetras(event);" value="<?php echo $row['nombres'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_nombres"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Apellidos :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'];   ?>" class="txtBox"> </td>
+                                                                    <input type="text" id="apellidos" name="apellidos" onkeypress="return soloLetras(event);" value="<?php echo $row['apellidos'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Cedula :</td>
                                                                 <td align="left">
-                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="<?php echo $row['cedula'];   ?>" class="txtBox" data-format="dddddddd"> </td>
+                                                                    <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" onKeyPress="return SoloNumeros(event);" type="text" id="cedula" name="cedula" value="<?php echo $row['cedula'];   ?>" class="txtBox" data-format="dddddddd"> </td>
                                                                 <td align="left"><span id="msg_cedula"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
@@ -165,7 +165,7 @@ $query = "  SELECT  cedula,
                                                             <tr>
                                                                 <td align="right">Telefono :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="telefono" name="telefono" value="<?php echo $row['telefono'];   ?>" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
+                                                                    <input type="text" id="telefono" onKeyPress="return SoloNumeros(event);" name="telefono" value="<?php echo $row['telefono'];   ?>" class="txtBox bfh-phone" data-format="+58 (dddd) ddd-dddd"> </td>
                                                                 <td align="left"><span id="msg_telefono"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>

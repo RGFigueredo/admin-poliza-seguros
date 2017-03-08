@@ -57,11 +57,11 @@ include_once (CORE_DIR . '/security/check.cita.php');
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<i class="ace-icon fa fa-leaf green"></i>
-									<span class="red">Sistema </span>
-									<span class="white" id="id-text2">Registro y Control de aseguradora</span>
+									<i class="ace-icon fa fa-user-md red"></i>
+									<span class="red">Sistema: </span>
+									<span class="white" id="id-text2">ProSalud</span>
 								</h1>
-								<h4 class="blue" id="id-company-text">&copy; </h4>
+								<h4 class="blue" id="id-company-text">&copy;SPS 2017 </h4>
 							</div>
 
 							<div class="space-6"></div>
@@ -236,20 +236,20 @@ include_once (CORE_DIR . '/security/check.cita.php');
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="nombre" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombre" id="nombre" required />
+															<input name="nombre" onkeyup="this.value=this.value.toUpperCase()" onkeypress="return soloLetras(event);"  type="text" class="form-control" placeholder="Nombre" id="nombre" required />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="apellido" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Apellido" id="apellido" required />
+															<input name="apellido" onkeypress="return soloLetras(event);" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Apellido" id="apellido" required />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="cedula" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Cedula" required />
+															<input name="cedula" onKeyPress="return SoloNumeros(event);" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Cedula" required />
 															<i class="ace-icon fa fa-list-alt"></i>
 														</span>
 													</label>
@@ -263,7 +263,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="telefono" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Telefono" required />
+															<input name="telefono" onKeyPress="return SoloNumeros(event);" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Telefono" required />
 															<i class="ace-icon fa fa-phone"></i>
 														</span>
 													</label>
@@ -342,26 +342,26 @@ include_once (CORE_DIR . '/security/check.cita.php');
                                                 <input type='hidden' name="fecha" value="<?php echo date("Y-m-d"); ?>">
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="nombres" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombres" id="nombres" required />
+															<input name="nombres" onkeypress="return soloLetras(event);" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombres" id="nombres" required />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
                                                     	<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="apellidos" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Apellidos" id="apellidos" required />
+															<input name="apellidos" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" onkeypress="return soloLetras(event);" placeholder="Apellidos" id="apellidos" required />
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
                                                     
                                                     	<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="cedula" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Cedula" id="cedula" required />
+															<input name="cedula" onKeyPress="return SoloNumeros(event);" type="text" class="form-control" placeholder="Cedula" id="cedula" required />
 															<i class="ace-icon fa fa-credit-card"></i>
 														</span>
 													</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
-															<input name="telefono" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Telefono" required />
+															<input name="telefono" onKeyPress="return SoloNumeros(event);" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" class="form-control" placeholder="Telefono" required />
 															<i class="ace-icon fa fa-phone"></i>
 														</span>
 													</label>
@@ -495,6 +495,64 @@ include_once (CORE_DIR . '/security/check.cita.php');
 			 });
 
 			});
+            
+            function soloLetras(e) {
+    key = e.keyCode || e.which;
+    tecla = String.fromCharCode(key).toString();
+    letras = " áéíóúabcdefghijklmnñopqrstuvwxyzÁÉÍÓÚABCDEFGHIJKLMNÑOPQRSTUVWXYZ";//Se define todo el abecedario que se quiere que se muestre.
+    especiales = [8, 37, 39, 46, 6]; //Es la validación del KeyCodes, que teclas recibe el campo de texto.
+
+    tecla_especial = false
+    for(var i in especiales) {
+        if(key == especiales[i]) {
+            tecla_especial = true;
+            break;
+        }
+    }
+
+    if(letras.indexOf(tecla) == -1 && !tecla_especial){
+ 
+        return false;
+      }
+}
+    function SoloNumeros(evt){
+ if(window.event){//asignamos el valor de la tecla a keynum
+  keynum = evt.keyCode; //IE
+ }
+ else{
+  keynum = evt.which; //FF
+ } 
+ //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
+ if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
+  return true;
+ }
+ else{
+  return false;
+ }
+}
+            
+$('.date-picker').datepicker({
+autoclose: true,
+todayHighlight: true
+})
+//Mostrar el datepicker al hacer click en el icono
+.next().on(ace.click_event, function() {
+$(this).prev().focus();
+});
+//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+$('input[name=date-range-picker]').daterangepicker({
+'applyClass': 'btn-sm btn-success',
+'cancelClass': 'btn-sm btn-default',
+locale: {
+applyLabel: 'Apply',
+cancelLabel: 'Cancel',
+}
+})
+.prev().on(ace.click_event, function() {
+$(this).next().focus();
+});   
+
+        
 		</script>
 	</body>
 </html>

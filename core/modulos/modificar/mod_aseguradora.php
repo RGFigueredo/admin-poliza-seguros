@@ -108,7 +108,7 @@ $query = "  SELECT  rif,
                                                             <tr>
                                                                 <td align="right">Nombre de la empresa:</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="nombre" name="nombre" value="<?php echo $row['nombre'];   ?>" class="txtBox"> </td>
+                                                                    <input type="text" id="nombre" onkeypress="return soloLetras(event);" name="nombre" value="<?php echo $row['nombre'];   ?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>

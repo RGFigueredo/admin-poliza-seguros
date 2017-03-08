@@ -3,8 +3,14 @@
         <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar"> <span class="sr-only">Toggle sidebar</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
         <div class="navbar-header pull-left">
             <a href="index.php?do=panel" class="navbar-brand"> <small>
-							<i class="fa fa-leaf"></i>
-							Sistema de control y registro aseguradora. (Usted es: <?php 
+						 
+                
+                
+             
+                
+                <i class="ace-icon fa fa-user-md red"></i>
+								
+							ProSalud (Conectado como: <?php 
                                 switch ($data['nivel']) {
                                     case 1:
                                         echo "Administrador";
@@ -185,7 +191,7 @@
         <!--PANEL reportes-->
         <ul class="nav nav-list">
             <li class="">
-                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-cart-plus"></i> <span class="menu-text"> Reportes</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
+                <a href="#" class="dropdown-toggle"> <i class="menu-icon fa  fa-download"></i> <span class="menu-text"> Reportes</span> <b class="ardata fa fa-angle-down"></b> </a> <b class="ardata"></b>
                 <ul class="submenu">
                     <li class="">
                         <a href="index.php?do=reportes"> <i class="menu-icon fa fa-caret-right"></i>Financiero </a> <b class="ardata"></b> </li>

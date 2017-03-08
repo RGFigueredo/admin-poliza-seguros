@@ -54,6 +54,7 @@
                                             <th>Correo</th>
                                             <th>Cedula</th>
                                             <th>Nivel</th>
+                                            <th>Acceso al Sistema</th>
                                             <th></th>
                                         </tr>
                                     </thead>
@@ -78,9 +79,18 @@
                                                     <?php echo $row['nivel']?>
                                                 </td>
                                                 <td>
+                                                    <?php echo $row['estatus']?>
+                                                </td>
+                                                <td>
+                                                       <div class="hidden-sm hidden-xs btn-group">
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=users&id=<?PHP echo $row['correo']?>">
+                                                            <button class="btn btn-xs btn-danger" title="Inactivo"> <i class="ace-icon fa fa-times bigger-120"></i> </button>
+                                                        </a>
+                                                    </div>
+                                                    
                                                     <div class="hidden-sm hidden-xs btn-group">
-                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modasegurado&cedula=<?PHP echo $row['cedula']?>">
-                                                            <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
+                                                        <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=users2&id=<?PHP echo $row['correo']?>">
+                                                            <button class="btn btn-xs btn-success" title="Activo"> <i class="ace-icon fa fa-check bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                     

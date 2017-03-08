@@ -100,7 +100,7 @@
 													 <tr>
 														<td align="right">Nombres :</td>
 														<td align="left">
-															<input type="text" id="nombre" name="nombres" value="" class="txtBox">
+															<input type="text" id="nombre" onkeypress="return soloLetras(event);" name="nombres" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_nombres"></span>&nbsp;</td>
 													</tr>
@@ -109,7 +109,7 @@
 													<tr>
 														<td align="right">Apellidos :</td>
 														<td align="left">
-															<input type="text" id="apellidos" name="apellidos" value="" class="txtBox">
+															<input type="text" id="apellidos" onkeypress="return soloLetras(event);" name="apellidos" value="" class="txtBox">
 														</td>
 														<td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
 													</tr>
@@ -117,7 +117,7 @@
                                                     <tr>
 														<td align="right">Cedula :</td>
 														<td align="left">
-															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd">
+															<input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" onKeyPress="return SoloNumeros(event);" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd">
 														</td>
 														<td align="left"><span id="msg_cedula"></span>&nbsp;</td>
 													</tr>

@@ -102,13 +102,13 @@ $query = "  SELECT cedula,
                                                             <tr>
                                                                 <td align="right">Nombres :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="nombres" name="nombres" value="<?php echo $row['nombres'];?>" class="txtBox"> </td>
+                                                                    <input type="text" id="nombres" onkeypress="return soloLetras(event);" name="nombres" value="<?php echo $row['nombres'];?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_nombres"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>
                                                                 <td align="right">Apellidos :</td>
                                                                 <td align="left">
-                                                                    <input type="text" id="apellidos" name="apellidos" value="<?php echo $row['apellidos'];?>" class="txtBox"> </td>
+                                                                    <input type="text" id="apellidos" onkeypress="return soloLetras(event);" name="apellidos" value="<?php echo $row['apellidos'];?>" class="txtBox"> </td>
                                                                 <td align="left"><span id="msg_apellidos"></span>&nbsp;</td>
                                                             </tr>
                                                             <tr>

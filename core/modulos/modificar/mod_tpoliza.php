@@ -101,13 +101,13 @@ $query = "  SELECT codigo,nombre,costo,estatus,cobertura
                                     <tr>
                                         <td align="right">Nombre :</td>
                                         <td align="left">
-                                            <input type="text" id="nombre" name="nombre" value="<?php echo $row['nombre'];?>" class="txtBox"> </td>
+                                            <input type="text" id="nombre" name="nombre" onkeypress="return soloLetras(event);" value="<?php echo $row['nombre'];?>" class="txtBox"> </td>
                                         <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td align="right">Costo :</td>
                                         <td align="left">
-                                            <input type="text" id="costo" name="costo" value="<?php echo $row['costo'];?>" class="txtBox"> </td>
+                                            <input type="text" id="costo" onKeyPress="return SoloNumeros(event);" name="costo" value="<?php echo $row['costo'];?>" class="txtBox"> </td>
                                         <td align="left"><span id="msg_costo"></span>&nbsp;</td>
                                     </tr>
                                     <tr>

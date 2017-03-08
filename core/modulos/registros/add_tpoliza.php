@@ -84,19 +84,19 @@
                                     <tr>
                                         <td align="right">Nombre :</td>
                                         <td align="left">
-                                            <input type="text" id="nombre" name="nombre" value="" class="txtBox"> </td>
+                                            <input type="text" onkeypress="return soloLetras(event);" id="nombre" name="nombre" value="" class="txtBox"> </td>
                                         <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td align="right">Costo :</td>
                                         <td align="left">
-                                            <input type="text" id="costo" name="costo" value="" class="txtBox"> </td>
+                                            <input type="text" onKeyPress="return SoloNumeros(event);" id="costo" name="costo" value="" class="txtBox"> </td>
                                         <td align="left"><span id="msg_costo"></span>&nbsp;</td>
                                     </tr>
                                     <tr>
                                         <td align="right">Cobertura :</td>
                                         <td align="left">
-                                            <input type="text" id="cobertura" name="cobertura" value="" class="txtBox"> </td>
+                                            <input type="text" id="cobertura" onkeypress="return soloLetras(event);" name="cobertura" value="" class="txtBox"> </td>
                                         <td align="left"><span id="msg_nombre"></span>&nbsp;</td>
                                     </tr>
                                     </table>
