@@ -856,6 +856,25 @@ if (isset($_GET['accion'])) {
     </div>";
 		
 		break;
+		case 'fecha_error':
+		echo "<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+   <div class='modal-dialog'>
+             <div class='modal-content'>
+          <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+          <h3>¡La fecha esta full!</h3>
+          </div>
+          <div class='modal-body'>
+          <p>Lo sentimos, pero la fecha que elegiste esta full de citas para ese dia, por favor intenta con otra fecha.</p>
+          </div>
+          <div class='modal-footer'>
+<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+           </div>
+            </div>
+        </div>
+    </div>";
+		
+		break;
 		
 	}
 	//f	in del switch

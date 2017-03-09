@@ -1,15 +1,15 @@
 <?php
-if (! defined ( 'SRCP' )) {
-	die ( "Logged Hacking attempt!" );
+if (!defined('SRCP')) {
+    die("Logged Hacking attempt!");
 }
-if (!empty($_POST['login'])){
-include_once (CORE_DIR . '/security/check.login.php');
+if (!empty($_POST['login'])) {
+    include_once CORE_DIR . '/security/check.login.php';
 }
-if (!empty($_POST['registro'])){
-include_once (CORE_DIR . '/security/check.registro.php');
+if (!empty($_POST['registro'])) {
+    include_once CORE_DIR . '/security/check.registro.php';
 }
-if (!empty($_POST['cita'])){
-include_once (CORE_DIR . '/security/check.cita.php');
+if (!empty($_POST['cita'])) {
+    include_once CORE_DIR . '/security/check.cita.php';
 }
 ?>
 <!DOCTYPE html>
@@ -23,13 +23,16 @@ include_once (CORE_DIR . '/security/check.cita.php');
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 
 		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="assets/css/datepicker.min.css" />
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="assets/font-awesome/4.2.0/css/font-awesome.min.css" />
 
 		<!-- text fonts -->
+
 		<link rel="stylesheet" href="assets/fonts/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
+				<link rel="stylesheet" href="assets/css/datepicker.min.css" />
 		<link rel="stylesheet" href="assets/css/ace.min.css" />
 
 		<!--[if lte IE 9]>
@@ -77,9 +80,9 @@ include_once (CORE_DIR . '/security/check.cita.php');
 
 											<div class="space-6"></div>
 
-											<form name="form_login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" role="form">
+											<form name="form_login" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" role="form">
 												<fieldset>
-                                                   
+
 												<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
 															<input onkeyup="this.value=this.value.toUpperCase()" type="email" name="correo" id="correo" required class="form-control" placeholder="Correo electronico" />
@@ -128,16 +131,16 @@ include_once (CORE_DIR . '/security/check.cita.php');
 												</a>
 											</div>     </center>
 										</div>
-                                                
-                                              
-                                                
+
+
+
 											</div>
-                                            
-                                         
-											
-											 
-                                            
-                                            
+
+
+
+
+
+
 										</div><!-- /.widget-main -->
 
 										<div class="toolbar clearfix">
@@ -155,26 +158,26 @@ include_once (CORE_DIR . '/security/check.cita.php');
 												</a>
 											</div>
 										</div>
-                                        
-                                        
-                                        
-                                       
-                                        
-                                
-                                        
-                                         
 
-                                        
-                                        
-                                   
-                                     
-											 
-                                          
-                                           
-                                            
-                                            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 										</div>
-                                        
+
 									</div><!-- /.widget-body -->
 								</div><!-- /.login-box -->
 
@@ -218,7 +221,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.forgot-box -->
-                                
+
 
 								<div id="signup-box" class="signup-box widget-box no-border">
 									<div class="widget-body">
@@ -231,7 +234,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 											<div class="space-6"></div>
 											<p> Rellene con sus datos para registrarse. </p>
 
-											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form" name="registro">
+											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" role="form" name="registro">
 												<fieldset>
 
 													<label class="block clearfix">
@@ -322,10 +325,10 @@ include_once (CORE_DIR . '/security/check.cita.php');
 										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.signup-box -->
-                            
-                            
-                            
-                            
+
+
+
+
                             	<div id="cita-box" class="cita-box widget-box no-border">
 									<div class="widget-body">
 										<div class="widget-main">
@@ -337,9 +340,14 @@ include_once (CORE_DIR . '/security/check.cita.php');
 											<div class="space-6"></div>
 											<p> Rellene con sus datos para registrar una cita. </p>
 
-											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" role="form" name="cita">
+											<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" role="form" name="cita">
 												<fieldset>
-                                                <input type='hidden' name="fecha" value="<?php echo date("Y-m-d"); ?>">
+												<label class="block clearfix">
+                                                <span class="block input-icon input-icon-right">
+													<input placeholder="Fecha de la cita" class="date-picker form-control" id="id-date-picker-1" name="fecha" type="date" data-date-format="yyyy-mm-dd" required="required"/>
+													<i class="ace-icon fa fa-calendar"></i>
+												</span>
+												</label>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
 															<input name="nombres" onkeypress="return soloLetras(event);" onkeyup="this.value=this.value.toUpperCase()" type="text" class="form-control" placeholder="Nombres" id="nombres" required />
@@ -352,7 +360,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 															<i class="ace-icon fa fa-user"></i>
 														</span>
 													</label>
-                                                    
+
                                                     	<label class="block clearfix">
 														<span class="block input-icon input-icon-left">
 															<input name="cedula" onKeyPress="return SoloNumeros(event);" type="text" class="form-control" placeholder="Cedula" id="cedula" required />
@@ -372,7 +380,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 															<i class="ace-icon fa fa-envelope-o"></i>
 														</span>
 													</label>
-												 
+
 													<div class="space-24"></div>
 
 													<div class="clearfix">
@@ -399,10 +407,10 @@ include_once (CORE_DIR . '/security/check.cita.php');
 										</div>
 									</div><!-- /.widget-body -->
 								</div><!-- /.signup-box -->
-                            
-                            
-                            
-                            
+
+
+
+
 							</div><!-- /.position-relative -->
 
 							<div class="navbar-fixed-top align-right">
@@ -442,6 +450,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 			window.jQuery || document.write("<script src='assets/js/jquery.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
+			<script src="assets/js/bootstrap-datepicker.min.js"></script>
 
 		<!-- <![endif]-->
 
@@ -495,7 +504,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
 			 });
 
 			});
-            
+
             function soloLetras(e) {
     key = e.keyCode || e.which;
     tecla = String.fromCharCode(key).toString();
@@ -511,7 +520,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
     }
 
     if(letras.indexOf(tecla) == -1 && !tecla_especial){
- 
+
         return false;
       }
 }
@@ -521,7 +530,7 @@ include_once (CORE_DIR . '/security/check.cita.php');
  }
  else{
   keynum = evt.which; //FF
- } 
+ }
  //comprobamos si se encuentra en el rango numérico y que teclas no recibirá.
  if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 6 ){
   return true;
@@ -530,7 +539,29 @@ include_once (CORE_DIR . '/security/check.cita.php');
   return false;
  }
 }
-        
+		//datepicker plugin
+		//link
+		$('.date-picker').datepicker({
+				autoclose: true,
+				todayHighlight: true
+			})
+			//Mostrar el datepicker al hacer click en el icono
+			.next().on(ace.click_event, function() {
+				$(this).prev().focus();
+			});
+		//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+		$('input[name=date-range-picker]').daterangepicker({
+				'applyClass': 'btn-sm btn-success',
+				'cancelClass': 'btn-sm btn-default',
+				locale: {
+					applyLabel: 'Apply',
+					cancelLabel: 'Cancel',
+				}
+			})
+			.prev().on(ace.click_event, function() {
+				$(this).next().focus();
+			});
+
 		</script>
 	</body>
 </html>
