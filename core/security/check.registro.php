@@ -121,7 +121,7 @@ if (!empty($_POST['registro']))
     	</div>";
 
 }
-		header('Location: index.php?accion=registrado');
+	 
 }
 
 

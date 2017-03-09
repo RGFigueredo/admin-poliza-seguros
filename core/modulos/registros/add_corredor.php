@@ -89,7 +89,7 @@
                                                         <tr>
                                                             <td align="right">Cedula :</td>
                                                             <td align="left">
-                                                                <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" onkeypress="return soloLetras(event);" type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd"> </td>
+                                                                <input onkeyup="this.value=this.value.replace(/[^0-9]/g,'');"   type="text" id="cedula" name="cedula" value="" class="txtBox" data-format="dddddddd"> </td>
                                                             <td align="left"><span id="msg_cedula"></span>&nbsp;</td>
                                                         </tr>
                                                         <tr>

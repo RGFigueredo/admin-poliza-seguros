@@ -125,11 +125,7 @@ if (!empty($_POST)) {
         }
     
         if ($row) {
-            echo "<div class='panel-body'>
-                <div class='alert alert-warning alert-dismissable'>
-                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                Error: La cédula ya existe.</div>
-            </div>";
+         
         }
             	echo "
     	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>

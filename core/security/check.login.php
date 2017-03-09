@@ -26,7 +26,7 @@ if (!empty($_POST['login'])){
 				</div>
 				<div class='modal-body'>
 			 
-					<p>Si ya usted esta registrado debe esperar ser abrobado para tener acceso.</p>
+					<p>El correo no es correcto.!</p>
 				</div>
 				<div class='modal-footer'>
 				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
@@ -95,7 +95,7 @@ if (!empty($_POST['login'])){
 				</div>
 				<div class='modal-body'>
 			 
-					<p>Si ya usted esta registrado debe esperar ser abrobado para tener acceso.</p>
+					<p>Los datos ingresados no son correctos. asegure que tanto usuario y clave sean correctos..!</p>
 				</div>
 				<div class='modal-footer'>
 				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>

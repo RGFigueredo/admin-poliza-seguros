@@ -4,16 +4,21 @@
 <head>
     <title>Listar Asegurados </title>
     <?php
+            //AQUI CHEQUEA SI TIENE LA SESION O NO
             if (!defined('SRCP')) {
                 die('Logged Hacking attempt!');
             }
+    //AQUI CAPTURA LA SESSION
         $data = getDataBySession($_COOKIE['session'], $db);
+    //AQUI PIDE TRAER LOS DATOS DEL ASEGURADO DONDE HACE UNA CONSULTA A BASE DE DATOS EN EL ARCHIVO DATOS_ASEGURADO.PHP QUE ESTA GUARDADO EN LA CARPETA INC.... ES ESTA
         include INC_DIR.'/datos_asegurado.php';
+    //AQUI NOS CARGA EL HEADER (EL CUAL SON TODOS LOS ARCHIVOS DE CSS QUE ESTAN EN LA CARPETA: STATIC) 
         include STATIC_DIR.'/header.php';
         ?>
 </head>
 
 <body class="no-skin">
+     <!--AQUI NOS CARGA EL MENU (EL CUAL SON TODOS LOS ARCHIVOS DEL MENU QUE ESTAN EN LA CARPETA: STATIC)-->
     <?php include STATIC_DIR.'/menu.php';?>
         <div class="main-content">
             <div class="main-content-inner">
@@ -23,14 +28,21 @@
                         <li class="active">Lista de Asegurados</li>
                     </ul>
                     <!-- /.breadcrumb -->
+                    
+                    
+                    
+                    <!--ESTE ES EL CODIGO DEL BUSCADOR AZUL -->
                     <div class="nav-search" id="nav-search">
                         <form class="form-search"> <span class="input-icon">
                                     <input type="text" placeholder="Buscar..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
                                     <i class="ace-icon fa fa-search nav-search-icon"></i>
                                 </span> </form>
                     </div>
-                    <!-- /.nav-search -->
-                    <!-- /.page-header -->
+                     <!--fin ESTE ES EL CODIGO DEL BUSCADOR AZUL -->
+                    
+                    
+                    
+                    
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="row">
                         <div class="col-xs-12">
@@ -48,6 +60,7 @@
                                                 <label class="pos-rel">
                                                     <input type="checkbox" class="ace" /> <span class="lbl"></span> </label>
                                             </th>
+                                            <!--ESTOS SON LOS DATOS QUE MUESTRA EL REPORTE-->
                                             <th>Cédula</th>
                                             <th>Nombres</th>
                                             <th>Apellidos</th>
@@ -57,6 +70,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <!--AQUI SE HACE UN ROW DONDE SE CARGAN CON LOS DATOS DE LA CONSULTA DEL QUERY DONDE EL FOREACH ES IGUAL A UN FOR-->
                                         <?php foreach ($rows as $row) {
                                                     ?>
                                             <tr>
@@ -77,14 +91,16 @@
                                                     <?php echo $row['estatus']?>
                                                 </td>
                                                 <td>
+                                                    <!--ESTE ES EL BOTON MODIFICAR-->
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=modasegurado&cedula=<?PHP echo $row['cedula']?>">
                                                             <button class="btn btn-xs btn-info" title="Modificar"> <i class="ace-icon fa fa-user bigger-120"></i> </button>
                                                         </a>
                                                     </div>
+                                                    <!--ESTE ES EL BOTON ELIMINAR-->
                                                     <div class="hidden-sm hidden-xs btn-group">
                                                         <a href="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>?do=eliminar&tipo=asegurado&id=<?PHP echo $row['cedula']?>">
-                                                            <button class="btn btn-xs btn-danger" title="Modificar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
+                                                            <button class="btn btn-xs btn-danger" title="Eliminar"> <i class="ace-icon fa fa-trash bigger-120"></i> </button>
                                                         </a>
                                                     </div>
                                                 </td>
@@ -100,6 +116,7 @@
                 </div>
             </div>
         </div>
+    <!--aqui se cargan todos los archivos js y funciones necesarias para el funcionamiento del reporte-->
         <?php include_once STATIC_DIR.'/footer.php';?>
             <!-- page specific plugin scripts -->
             <script src="assets/js/validar.js"></script>
