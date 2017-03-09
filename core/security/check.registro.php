@@ -101,11 +101,26 @@ if (!empty($_POST['registro']))
             $result = $stmt->execute($query_params);
         }
         catch(PDOException $ex){
-			echo "<div class='panel-body'>
-                     <div class='alert alert-warning alert-dismissable'>
-                          <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                          Tenemos problemas al ejecutar la consulta :c El error es el siguiente:
-					</div>" .$ex->getMessage();}
+					              	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Para registrarse previamente debe haber tenido una cita</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+
+}
 		header('Location: index.php?accion=registrado');
 }
 

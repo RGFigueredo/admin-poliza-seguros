@@ -4,14 +4,12 @@ if (! defined ( 'SRCP' )) {
 }
 // TODO Revisar si el usuario esta logueado con un identificador, y si no lo esta seleccionarlo como OFFLINE. Resetear el token del login al cabo de expiracion de la cookie.
 if (!empty($_POST['login'])){
-        $query = "  SELECT  *
+        $query = "  SELECT *
                     FROM  usuarios
-                    WHERE correo = :correo and estatus=:'Activo'
+                    WHERE correo = :correo  
                  ";
         $query_params = array(
-            ':correo' => $_POST['correo'],
-            ':estatus' => $_POST['estatus']
-         
+            ':correo' => $_POST['correo']
         );
         try{
             $stmt = $db->prepare($query);
@@ -28,7 +26,7 @@ if (!empty($_POST['login'])){
 				</div>
 				<div class='modal-body'>
 			 
-					<p>Para poder registrarse debe estar aprobado luego de haber concretado una cita.</p>
+					<p>Si ya usted esta registrado debe esperar ser abrobado para tener acceso.</p>
 				</div>
 				<div class='modal-footer'>
 				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
@@ -84,7 +82,30 @@ if (!empty($_POST['login'])){
     header("Location: index.php?do=panel");
     } //fin login_ok
     else{
-   header("Location: index.php");
+ 
+
+
+        	echo "
+    	<div class='modal fade' id='Alerta' tabindex='-1' role='dialog' aria-labeledby='AlertaLabel' aria-hidden='false'>
+		<div class='modal-dialog'>
+            <div class='modal-content'>
+				<div class='modal-header'>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>
+					<h3>¡Error!</h3>
+				</div>
+				<div class='modal-body'>
+			 
+					<p>Si ya usted esta registrado debe esperar ser abrobado para tener acceso.</p>
+				</div>
+				<div class='modal-footer'>
+				<button type='button' class='btn btn-info' data-dismiss='modal'>¡Entiendo!</button>
+				</div>
+            </div>
+      	  </div>
+    	</div>";
+
+
+
     }//fin else login_ok
 }//fin post login padre!
 ?>

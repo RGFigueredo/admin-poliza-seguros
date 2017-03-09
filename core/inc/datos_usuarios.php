@@ -1,7 +1,7 @@
 <?php
 $query = "  SELECT  *
             FROM    usuarios
-            where logueado='SI'
+            
          ";
     try{
         $stmt = $db->prepare($query);
