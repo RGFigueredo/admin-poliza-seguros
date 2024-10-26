@@ -1,2 +1,2 @@
-# admin-poliza-seguros
+Synergy Apps # admin-poliza-seguros
 Sistema básico de pólizas de seguros.
